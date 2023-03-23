@@ -55,7 +55,7 @@ create table reservation(
 	foreign key (mno) references member(mno),
     foreign key (pno) references playinglist(pno)
 );
-
+ 
 -- 좌석 테이블
 create table seats(
 	seat varchar(10),			# 좌석
