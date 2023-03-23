@@ -50,7 +50,9 @@ create table playinglist(
 drop table if exists reservation;
 create table reservation(
 	rno int auto_increment primary key, -- 예약고유번호
+    mno int,							-- 예약회원번호(FK)
     sno int,							-- 영화관번호(FK)
+	foreign key (mno) references member(mno),
     foreign key (sno) references screen(sno)
 );
 
