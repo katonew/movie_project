@@ -57,7 +57,7 @@ JSP project
 
 ## mysql ER 다이어그램 구성도
 
-![1](https://user-images.githubusercontent.com/67307023/227144575-3366d4e0-6cb6-45ca-8b48-2ab4450c202f.png)
+![2](https://user-images.githubusercontent.com/67307023/227147076-d9655d02-a02a-4a42-9891-06af378b56f8.png)
 
 
 
