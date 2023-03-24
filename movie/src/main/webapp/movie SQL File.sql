@@ -9,7 +9,7 @@ create table member(
     mid varchar(20),-- ID
     mpwd varchar(20), -- 비밀번호
     memail varchar(20),-- 이메일
-    mimg varchar(20)-- 프로필 이미지
+    mimg varchar(20)-- 프로필 이미지 
 );
 
 -- 영화 테이블
