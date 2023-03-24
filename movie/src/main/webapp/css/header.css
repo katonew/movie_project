@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.wrap{
+	width: 1200px;
+	margin: 0 auto;
+	border: 1px solid red;
+}
+
+*{
+	margin:0px;
+	padding: 0px;
+}
