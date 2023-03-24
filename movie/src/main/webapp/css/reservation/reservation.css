@@ -1,1 +1,27 @@
 @charset "UTF-8";
+
+/* 전체 1 */
+.wrap{	
+	width:1200px;
+}
+
+/* 전체 2 */
+.reservation_wrap{	
+	width:100%;
+}
+
+/* 영화 제목, 날짜 선택 전체*/
+.reservation_content{
+	width:70%;
+	margin:0px auto;
+	display:flex;
+}
+
+.movie_select_font, .date_font {
+	width:350px;
+	padding:10px;
+	background-color: black;
+	border: white 1px solid;
+    color: white;
+    text-align: center;
+}
