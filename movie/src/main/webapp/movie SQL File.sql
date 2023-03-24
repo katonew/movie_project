@@ -9,8 +9,8 @@ create table member(
     mid varchar(20),-- ID
     mpwd varchar(20), -- 비밀번호
     memail varchar(20),-- 이메일
-    mimg varchar(20)-- 프로필 이미지
-);
+    mimg varchar(20)-- 프로필 이미지 
+); 
 
 -- 영화 테이블
 drop table if exists movie;
@@ -50,7 +50,16 @@ create table playinglist(
 drop table if exists reservation;
 create table reservation(
 	rno int auto_increment primary key, -- 예약고유번호
-    sno int,							-- 영화관번호(FK)
-    foreign key (sno) references screen(sno)
+    mno int,							-- 예약회원번호(FK)
+    pno int,							-- 상영번호(FK)
+	foreign key (mno) references member(mno),
+    foreign key (pno) references playinglist(pno)
 );
-
+    
+-- 좌석 테이블
+create table seats(
+	seat varchar(10),			# 좌석
+	rno int,					# 예약번호 fk - (예약된 좌석 찾기위함)
+	foreign key (rno) references reservation(rno)
+);
+select * from seats;
