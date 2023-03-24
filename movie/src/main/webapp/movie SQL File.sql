@@ -59,11 +59,7 @@ create table reservation(
 -- 좌석 테이블
 create table seats(
 	seat varchar(10),			# 좌석
-	pno int,			    	# 상영 고유번호 fk -(상영시간 필요함)
-	sno int,					# 영화관 고유번호 fk-(상영관 필요함)
 	rno int,					# 예약번호 fk - (예약된 좌석 찾기위함)
-	foreign key (pno) references playinglist(pno),
-	foreign key (sno) references playinglist(sno),
 	foreign key (rno) references reservation(rno)
 );
 select * from seats;
