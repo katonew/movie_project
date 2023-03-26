@@ -1,16 +1,74 @@
 @charset "UTF-8";
 
-.wrap{
-	width: 1200px;
-	margin: 0 auto;
-	border: 1px solid red;
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
 *{
 	margin:0px;
 	padding: 0px;
+	list-style-type: none;
+	font-family: 'SUIT-Regular';
 }
 
 a{
 	text-decoration: none !important;
+	color : white;
+}
+
+/* Color Theme Swatches in Hex */
+.RA-Webpage-1-hex { color: #00263D; }
+.RA-Webpage-2-hex { color: #02FCFF; }
+.RA-Webpage-3-hex { color: #0080A3; }
+.RA-Webpage-4-hex { color: #00B4DE; }
+.RA-Webpage-5-hex { color: #00456B; }
+
+
+body{
+	background-color: #00263D;
+	color: white;
+}
+
+.wrap{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.header{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.menu{
+	width: 100%;
+	display: flex;
+}
+
+.mainmenu{ /*메인메뉴*/	
+	width: 70%; 
+	display: flex;
+	justify-content: flex-start;
+	margin: 0px !important; /* 부트스트랩 여백 제거 */
+	font-size: 15px;
+} 
+
+.mainmenu li{ 	margin : 0px 20px; }
+
+.logo{
+	width: 200px;
+}
+
+.logo img{
+	width: 100%;
+}
+
+.line{
+	width: 100%;
+	height: 5px;
+	border-bottom: 1px solid #00456B;
+	margin: 20px 0px;
 }
