@@ -10,8 +10,23 @@
 <body>
 	<%@include file="/header.jsp" %>
 	<div class="wrap">
-		회원가입
+		<h3>회원가입</h3>
+		<br>
+		<form class="signupForm">
+			아이디 <input class="mid" type="text"> <br>
+
+			비밀번호 <input class="mpwd" type="text">  <br>
+
+			비밀번호확인 <input class="" type="text">  <br>
+
+			이메일 <input class="memail" type="text">  <br>
+			프로필 <input class="mimg" type="file">  <br>
+
+			<button class="signupbtn" type="button" onclick="signup()"> 회원가입 </button>
+
+		</form>
 	</div>
 
+	<script src="/movie/js/member/signup.js" type="text/javascript"></script>
 </body>
 </html>
