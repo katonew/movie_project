@@ -9,14 +9,20 @@ function signup(){
 	console.log(signupFormData)
 	
 	$.ajax({
-		url : "",
-		method : "" ,
+		url : "/movie/memberinfo",
+		method : "post" ,
 		data : signupFormData ,
 		contentType : false , 
 		processData : false ,
 		success : (r)=>{
 			console.log('통신')
 			console.log(r)
+			if ( r == 'true'){
+				alert('회원가입 성공')
+				location.href="/movie/index.jsp"
+			}else{
+				alert('회원가입 실패')
+			}
 		}
 	})
 }

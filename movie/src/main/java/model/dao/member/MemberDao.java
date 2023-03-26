@@ -47,15 +47,29 @@ public class MemberDao extends Dao {
 	      return false;
 	   }
 	   
+
 	   // 로그인 // mno 반환
 	   public int login( String mid , String mpwd ) {
-	      String sql = "select mno from member where mid = "+mid+" and mpwd ="+mpwd+";";
+	      String sql = "select mno from member where mid = '"+mid+"' and mpwd ='"+mpwd+"'";
+	      System.out.println("sql : "+sql);
 	      try {
 	         ps = con.prepareStatement(sql);
 	         rs = ps.executeQuery();
 	         if ( rs.next() ) { return rs.getInt(1); }
 	      } catch (Exception e) { System.out.println(e);    }
 	      return 0;
+	   }
+	   
+	   // 로그인정보 dto 반환
+	   public MemberDto getMemberDto( Object mno ) {
+		   String sql = "select * from member where mno = "+mno;
+		   try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if ( rs.next() ) { 
+				return new MemberDto(rs.getInt(1), rs.getString(2), null, rs.getString(4), rs.getString(5));}
+			} catch (Exception e) { System.out.println(e);	}
+		   return null;
 	   }
 	   
 	   // 아이디찾기

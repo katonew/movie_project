@@ -11,8 +11,11 @@
 
 	<div class="wrap">
 		<div class="header">
-			헤더입니다.
-			<div><a href="/movie/member/signup.jsp">회원가입</a></div>
+			헤더입니다. <br>
+
+			<div class="submenu"></div>
+			
+			
 		</div>
 	
 	</div>

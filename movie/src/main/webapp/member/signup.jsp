@@ -13,14 +13,14 @@
 		<h3>회원가입</h3>
 		<br>
 		<form class="signupForm">
-			아이디 <input class="mid" type="text"> <br>
+			아이디 <input name="mid" type="text"> <br>
 
-			비밀번호 <input class="mpwd" type="text">  <br>
+			비밀번호 <input name="mpwd" type="text">  <br>
 
-			비밀번호확인 <input class="" type="text">  <br>
+			비밀번호확인 <input name="mpwdcheck" type="text">  <br>
 
-			이메일 <input class="memail" type="text">  <br>
-			프로필 <input class="mimg" type="file">  <br>
+			이메일 <input name="memail" type="text">  <br>
+			프로필 <input name="mimg" type="file">  <br>
 
 			<button class="signupbtn" type="button" onclick="signup()"> 회원가입 </button>
 
