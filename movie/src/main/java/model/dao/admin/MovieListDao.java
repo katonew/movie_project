@@ -8,7 +8,7 @@ public class MovieListDao extends Dao{
 	private static MovieListDao dao = new MovieListDao();
 	private MovieListDao() {};
 	public static MovieListDao getInstance() {return dao;}
-	
+	 
 	
 
 }

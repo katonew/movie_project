@@ -11,7 +11,7 @@
 	<%-- <%@ include file="/header.jsp" %> --%>
 	<div class="wrap">
 	
-	
+	 
 	</div>
 	
 	<script src="/erp/js/admin/newMovieList.js" type="text/javascript"></script>

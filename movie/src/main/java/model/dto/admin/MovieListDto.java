@@ -17,7 +17,7 @@ public class MovieListDto {
 		this.pno = pno;
 		this.pstate = pstate;
 		this.pseat = pseat;
-		this.pprice = pprice;
+		this.pprice = pprice; 
 		this.playtime = playtime;
 		this.mno = mno;
 		this.sno = sno;

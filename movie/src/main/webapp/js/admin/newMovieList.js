@@ -1,1 +1,1 @@
-console.log('newMovieList js 열+림')
+console.log('newMovieList js 열+림') 
