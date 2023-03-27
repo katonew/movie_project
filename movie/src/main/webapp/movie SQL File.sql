@@ -8,8 +8,8 @@ create table member(
 	mno int auto_increment primary key,-- 회원번호
     mid varchar(20),-- ID
     mpwd varchar(20), -- 비밀번호
-    memail varchar(20),-- 이메일
-    mimg varchar(20)-- 프로필 이미지 
+    memail varchar(30),-- 이메일
+    mimg longtext -- 프로필 이미지 
 ); 
 
 -- 영화 테이블

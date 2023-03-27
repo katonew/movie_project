@@ -7,10 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/header.jsp" %>
 	
-	<div class="wrap">
-		인덱스페이지 <br>
-	</div>
+	<% 
+		request.getSession().setAttribute("login", null);
+	%>
+	
+	<script type="text/javascript">
+		location.href="/movie/index.jsp"
+	</script>
+	
 </body>
 </html>
