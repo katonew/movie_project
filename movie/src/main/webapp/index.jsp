@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화의 모든 것 CINEVERSE</title>
 </head>
 <body>
 	<%@include file="/header.jsp" %>

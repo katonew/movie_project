@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화의 모든 것 CINEVERSE</title>
 	<link href="/movie/css/header.css" rel="stylesheet">
 </head>
 <body>
@@ -13,13 +13,17 @@
 		<div class="header">
 		
 			<div class="logo" ><a href="/movie/index.jsp"><img alt="" src="/movie/img/logo.png"></a></div>
+			<div class="line"></div>
 			<div class="menu">
-				<ul class="mainmenu">
-					<li> <a href="#"> 예매 </a> </li>
-					<li> <a href="#"> 영화검색 </a> </li>
-					<li> <a href="#"> 개봉예정작 </a> </li>
-					<li> <a href="#"> 커뮤니티 </a> </li>
-				</ul>
+				<div class="mainmenu">
+					<a href="#"> 예매 </a>
+					<span class="verticalBar">|</span>
+					<a href="#"> 영화검색 </a>
+					<span class="verticalBar">|</span>
+					<a href="#"> 개봉예정작 </a>
+					<span class="verticalBar">|</span>
+					<a href="#"> 커뮤니티 </a>
+				</div>
 				<div class="submenu"></div>
 			</div>
 			
@@ -29,7 +33,7 @@
 	
 	</div>
 	
-	<div class="line"></div>
+	
 	
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
