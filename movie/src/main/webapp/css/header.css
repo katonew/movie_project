@@ -25,6 +25,8 @@ a{
 .RA-Webpage-3-hex { color: #0080A3; }
 .RA-Webpage-4-hex { color: #00B4DE; }
 .RA-Webpage-5-hex { color: #00456B; }
+.RA-Webpage-6-hex { color: #B3FF00; }
+
 
 
 body{
@@ -40,26 +42,46 @@ body{
 .header{
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .menu{
 	width: 100%;
 	display: flex;
+	position: relative;
 }
 
 .mainmenu{ /*메인메뉴*/	
-	width: 70%; 
+	width: 100%; 
 	display: flex;
 	justify-content: flex-start;
+	align-items: center;
 	margin: 0px !important; /* 부트스트랩 여백 제거 */
-	font-size: 15px;
+	
 } 
+.mainmenu a{
+	margin: 0 20px;
+	font-size: 17px;
+	font-weight: bold;
+}
 
-.mainmenu li{ 	margin : 0px 20px; }
+.verticalBar{
+	font-size: 17px;
+	color: #00456B;
+}
+
+.submenu{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	right: 0px;
+	top: 0px;
+}
+
 
 .logo{
-	width: 200px;
+	width: 250px;
+	margin: 2% 1% 0% 1%;
 }
 
 .logo img{
@@ -70,5 +92,5 @@ body{
 	width: 100%;
 	height: 5px;
 	border-bottom: 1px solid #00456B;
-	margin: 20px 0px;
+	margin: 10px 0px 20px 0px;
 }

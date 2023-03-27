@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+
+.boxoffice{
+	width: 100%;
+	margin-top: 100px;
+}
+
+.boxoffice_title{
+	width: 100%;
+	text-align: center;
+}
