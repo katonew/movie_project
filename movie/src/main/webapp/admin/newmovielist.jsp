@@ -10,10 +10,17 @@
 	
 	<%-- <%@ include file="/header.jsp" %> --%>
 	<div class="wrap">
-	
+		<div>
+			<h3> 날짜 선택 </h3>
+			<select class="year"></select>
+			<select class="month"></select>
+			<select class="date"></select>
+			
+		</div>
+		
 	 
 	</div>
 	
-	<script src="/erp/js/admin/newMovieList.js" type="text/javascript"></script>
+	<script src="/movie/js/admin/newMovieList.js" type="text/javascript"></script>
 </body>
 </html>
