@@ -15,7 +15,7 @@
 			<div class="reservation_content">	<!-- 영화제목, 날짜 -->
 				
 				<div class="movie_select">	<!-- 영화선택 -->
-					<div class="movie_select_font">  영화 선택  </div>	<!-- 클릭시 클릭한 글자로 번경 -->
+					<div class="movie_select_font">  영화 선택  </div>	<!-- 클릭시 클릭한 글자로 변경 -->
 					<div class="movie_title">	<!-- 상영중인 영화 제목 (DB)-->
 							
 							<!-- 임시 -->
@@ -31,7 +31,7 @@
 				
 				
 				<div class="select_date">	<!-- 영화 날짜 -->
-					<div class="date_font">  날짜/시간 </div>	<!-- 클릭시 클릭한 글자로 번경 -->
+					<div class="date_font">  날짜/시간 </div>	<!-- 클릭시 클릭한 글자로 변경 -->
 					<div class="date_week">	<!-- 현재날짜~ 7일뒤 날짜 -->
 					</div> <!-- date_week e -->
 					
