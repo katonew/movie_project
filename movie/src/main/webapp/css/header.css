@@ -61,11 +61,12 @@ body{
 } 
 .mainmenu a{
 	margin: 0 20px;
-	font-size: 16px;
+	font-size: 17px;
+	font-weight: bold;
 }
 
 .verticalBar{
-	font-size: 15px;
+	font-size: 17px;
 	color: #00456B;
 }
 
