@@ -14,7 +14,7 @@
 		<div class="boxoffice">
 			<div class="boxoffice_title">박스오피스</div>
 			<div class="onemovie">
-				
+				   
 			</div>
 		</div>
 		
