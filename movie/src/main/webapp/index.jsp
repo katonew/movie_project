@@ -16,7 +16,7 @@
 			<div class="onemovie">
 				   
 			</div>
-		</div>
+		</div>  
 		
 	</div>
 	    
