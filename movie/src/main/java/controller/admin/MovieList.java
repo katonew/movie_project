@@ -30,6 +30,7 @@ public class MovieList extends HttpServlet {
 		ArrayList<MovieListDto> result = null;
 		if(type.equals("1")) {
 			result = MovieListDao.getInstance().getallmovielist();
+			System.out.println("result : " + result);
 		}else if(type.equals("2")) {
 			String selectday = request.getParameter("selectday");
 			result = MovieListDao.getInstance().gettimemovielist(selectday);

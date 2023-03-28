@@ -51,9 +51,17 @@ function startweb(){
 	// 시간 셀렉트 출력
 	html = ``;
 	for(let i =0;i<=24;i++){
-		html += `<option>
+		if(i==12){
+			html += `<option selected>
+						${i}
+					</option>`
+			
+		}else{
+			html += `<option>
 					${i<10? "0"+i : i}
 				</option>`
+		}
+		
 	}
 	document.querySelector('.hour').innerHTML = html;
 	html = '';
@@ -113,6 +121,8 @@ getMovieList()
 function getMovieList(){
 	console.log('getmovielist 시작')
 	// 아직 선택한게 아무것도 없을때
+	console.log(selectday)
+	console.log(selecttime)
 	if(selectday == null&&selecttime==null) {
 		$.ajax({
 			url : "/movie/admin/movieList",
@@ -120,9 +130,14 @@ function getMovieList(){
 			data : { "type" : 1},
 			success : (r)=>{
 				console.log(r)
+				result(r)
 			}// success e
 		}) // ajax e
 	} // if e
+	else if(selectday==null){ // 시간은 선택하고 날짜는 선택 안했을때
+		alert('날짜를 먼저 선택해주세요');
+		return;
+	}// else if e
 	else if(selecttime==null){ // 날짜는 선택하고 시간은 선택 안했을때
 		$.ajax({
 			url : "/movie/admin/movieList",
@@ -130,20 +145,72 @@ function getMovieList(){
 			data : { "type" : 2, "selectday" : selectday},
 			success : (r)=>{
 				console.log(r)
+				result(r)
+			}// success e
+		}) // ajax e
+	} // else if e
+	else{
+		$.ajax({
+			url : "/movie/admin/movieList",
+			method : "get",
+			data : { "type" : 2, "selectday" : selectday},
+			success : (r)=>{
+				console.log(r)
+				result(r)
 			}// success e
 		}) // ajax e
 	}
 } // getMovieList e
 
+//날짜선택버튼을 눌렀을때
 function setSelectday(){
-	selectyear = document.querySelector('.year').value
-	selectmonth = document.querySelector('.month').value
-	selectdate = document.querySelector('.date').value
-	selectday = selectyear+'-'+
-				`${ selectmonth<10? "0"+selectmonth : selectmonth}`
-			+'-'+`${selectdate<10? "0"+selectdate : selectdate}`;
+	let selectyear = document.querySelector('.year').value
+	let selectmonth = document.querySelector('.month').value
+	let selectdate = document.querySelector('.date').value
+	selectday = selectyear+ "-"+
+				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
+			+`${selectdate<10? "0"+selectdate : selectdate}`;
 	console.log(selectday);
 	getMovieList()
+}
+// 시간 선택버튼을 눌렀을때
+function setSelecttime(){
+	let selecthour = document.querySelector('.hour').value
+	let selectminute = document.querySelector('.minute').value
+	selecttime = selecthour +":"+selectminute
+	if(selectday!=null){
+		selectday = selectday+" "+selecttime
+		console.log(selecttime)
+		getMovieList()
+	}else{
+		alert('날짜를 먼저 선택해주세요');
+		return;
+	}
+	
+}
+
+// 검색결과 출력
+function result(r){
+	let html = `<tr>
+					<th>영화제목</th>
+					<th>상영관</th>
+					<th>상영시간</th>
+					<th>예약좌석수</th>
+					<th>만석상태</th>
+					<th>비고</th>
+				</tr>`;
+	r.forEach((o)=>{
+		html +=`<tr>
+					<td>${o.title}</td>
+					<td>${o.sno}관</td>
+					<td>${o.playtime}</td>
+					<td>${o.pseat}</td>
+					<td>${o.pstate ? "00석남음" : "만석"}</td>
+					<td>비고</td>
+				</tr>`
+	})
+	document.querySelector('.movielisttable').innerHTML = html
+			
 }
 
 

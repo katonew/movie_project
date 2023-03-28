@@ -1,5 +1,7 @@
 package model.dto.admin;
 
+import model.dao.admin.MovieDao;
+
 public class MovieListDto {
 	
 	private int pno;				// 고유번호
@@ -9,19 +11,27 @@ public class MovieListDto {
 	private String playtime; 		// 상영시간
 	private int mno ;				// 영화(FK)
 	private int sno ;				// 영화관번호(FK)
+	// 추가정보
+	private String title;
+	
 	
 	public MovieListDto() {}
 
-	public MovieListDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno) {
+
+	public MovieListDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno,
+			String title) {
 		super();
 		this.pno = pno;
 		this.pstate = pstate;
 		this.pseat = pseat;
-		this.pprice = pprice; 
+		this.pprice = pprice;
 		this.playtime = playtime;
 		this.mno = mno;
 		this.sno = sno;
+		this.title = title;
 	}
+
+
 
 	public int getPno() {
 		return pno;
@@ -79,10 +89,20 @@ public class MovieListDto {
 		this.sno = sno;
 	}
 
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
 	@Override
 	public String toString() {
 		return "MovieListDto [pno=" + pno + ", pstate=" + pstate + ", pseat=" + pseat + ", pprice=" + pprice
-				+ ", playtime=" + playtime + ", mno=" + mno + ", sno=" + sno + "]";
+				+ ", playtime=" + playtime + ", mno=" + mno + ", sno=" + sno + ", title=" + title + "]";
 	}
 	
 	

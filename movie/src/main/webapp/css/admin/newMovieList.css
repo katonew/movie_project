@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+
+.selectbox{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.selectdate{
+	display: flex;
+}
+.selectdate select{
+	text-align: center;
+}
+.selectdate button{
+	margin: 0 auto;
+	border: none;
+}
+
+
+.selectday{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.selecttime select{
+	text-align: center;
+}
+
+.playingMovie{
+	width: 55%;
+}
+
+.movielist{
+	width: 40%;
+}
+
+.selecttime{
+	display: flex;
+}
