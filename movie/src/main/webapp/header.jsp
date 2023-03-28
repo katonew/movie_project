@@ -12,8 +12,21 @@
 	<div class="wrap">
 		<div class="header">
 		
-			<div class="logo" ><a href="/movie/index.jsp"><img alt="" src="/movie/img/logo.png"></a></div>
-			<div class="line"></div>
+			<div class="logodiv" >
+				<div class="logo"> <a href="/movie/index.jsp"><img alt="" src="/movie/img/logo.png"></a> </div>
+				<div class="profileimgdiv"></div>
+				<div class="dropdown_menu">
+					<ul>
+						<li class="dropdown_li">마이페이지</li>
+						<li class="dropdown_li">예약조회</li>
+						<li class="dropdown_li">회원정보수정</li>
+						<li class="dropdown_li"><a href="/movie/member/logout.jsp">로그아웃</a></li>
+					</ul>
+				</div>
+			</div>
+			
+<!-- 			<div class="line"></div> -->
+			
 			<div class="menu">
 				<div class="mainmenu">
 					<a href="#"> 예매 </a>
@@ -37,6 +50,8 @@
 	
 	<!-- jquery -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- 폰트어썸 -->
+	<script src="https://kit.fontawesome.com/44a4c3357b.js" crossorigin="anonymous"></script>
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	<!-- 사용자 정의 -->

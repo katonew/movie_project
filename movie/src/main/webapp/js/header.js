@@ -17,16 +17,22 @@ function getLogin(){
 			let html = ''
 			if ( r == null ){ // 로그인 안함
 				html += `
-						<a href="/movie/member/signup.jsp">회원가입</a>
-						<a href="/movie/member/login.jsp">로그인</a>
+						<span class="submenumargin"> <a href="/movie/member/signup.jsp">회원가입</a> </span>
+						<span class="submenumargin"> <a href="/movie/member/login.jsp">로그인</a> <span>
 						`
-			}else{ // 로그인
+			}else{ // 로그인 // memberInfo에 mno , mid , memail , mimg 있음
 				html +=`
-						[ 로그인아이디 : ${r.mid} ]  memberInfo에 mno , mid , memail , mimg 있음 |
-						<a href="/movie/member/logout.jsp">로그아웃</a>
+						<img src="/movie/member/img/${r.mimg == null ? 'default.webp' : r.mimg }" class="profileimg">
 						`
 			}
-			document.querySelector('.submenu').innerHTML = html;
+			document.querySelector('.profileimgdiv').innerHTML = html;
 		}
 	})
 }
+
+// 드롭다운 제이쿼리
+$(".profileimg").click(function() {
+
+        $(".dropdown_menu").stop().slideToggle(500)
+
+      })
