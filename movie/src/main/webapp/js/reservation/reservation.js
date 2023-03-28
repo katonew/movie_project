@@ -5,7 +5,7 @@ $.ajax({
 	method:"get",
 	success:((r)=>{
 		console.log(r);
-		console.log(r.mlist)
+		console.log(r.mlist) //????????
 	 	
 	})
 })
