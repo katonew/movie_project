@@ -35,6 +35,20 @@ public class plistDto {
 	
 	
 	
+	
+	public plistDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno) {
+		super();
+		this.pno = pno;
+		this.pstate = pstate;
+		this.pseat = pseat;
+		this.pprice = pprice;
+		this.playtime = playtime;
+		this.mno = mno;
+		this.sno = sno;
+	}
+
+
+
 
 	@Override
 	public String toString() {
