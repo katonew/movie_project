@@ -2,17 +2,23 @@
 
 
 
-.m_list{
-	border: 1px solid red;
-}
-
 .m_p{
 	border: 1px solid red;
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 }
 
 .m_wrap{
 	border: 1px solid red;
-	
-	
+	width: 16%;
+	margin: 20px 20px;
+}
+
+.m_wrap img{
+	max-width: 100%;
+	width: auto !important;
+	height: auto;
 	
 }
