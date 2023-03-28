@@ -16,11 +16,15 @@ function Search(){
 				html +=`
 						<div class="m_wrap">
 						<a href="${o.link}">
-						<img class="m_img" src="${o.pimg}"><br/>
+						<div>
+						<img class="img-fluid" src="${o.pimg}"><br/>
+						</div>
+						<div>
 						<span class="m_title">${o.title}</span><br/>
 						<span class="m_count">${o.count}</span>
+						</div>
 						</a>
-						<div>
+						</div>
 						`
 				
 			})

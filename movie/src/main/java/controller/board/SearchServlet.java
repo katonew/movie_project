@@ -2,6 +2,7 @@ package controller.board;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +38,7 @@ public class SearchServlet extends HttpServlet {
 		
 		ArrayList<SearchDto> list = new ArrayList<>();
 		list = Search.search();
+		
 		
 		// java 형식 ---> js형식 
 		ObjectMapper mapper = new ObjectMapper();
