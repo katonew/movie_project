@@ -1,11 +1,19 @@
-/*
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 현재 상영중인 영화 제목 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+let pmovie_html = '';
 $.ajax({
-   url : "/movie/admin/movie",
-   method : "get",
-   success : (r)=>{ 
-	   console.log(r);
-   }
-})*/
+	url:"/movie/playing/moive",
+	method:"get",
+	success:((r)=>{
+		console.log(r);
+		console.log(r.mlist)
+	 	
+	})
+})
+
+
+
+
+
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ날짜 구하기 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 //현재 년도, 월, 일 구하기
@@ -13,17 +21,12 @@ let year = (new Date().getFullYear())
 let month = new Date().getMonth()   //0~11 => 1~12
 let date = new Date().getDate();
 
-console.log("년도 : "+year)
-console.log("월 : "+month)
-console.log("일 : "+date);
 
 //말일, 요일
 let last = new Date(year,month+1,0).getDate(); //+1인채로
 let week = ['일', '월', '화', '수', '목', '금', '토'];
 let week_day = week[new Date(year,month,date).getDay()]
 
-console.log("말일 : "+last)
-console.log("현재 요일 : "+week_day)
 
 let monthCount = 0;
 let month_kor =  month+1+'월'; // 최초 한번은 뜨고 시작
@@ -65,7 +68,6 @@ function dayPrint(){
 						 <span class="date_day D${month}_${date}"> ${date} </span> 
 						 <span class="date_week_day" ${week_day === '토'|| week_day === '일' ? 'style="color:red"' : 'style="color:black"'}> ${week_day} </span> 
 					</li>`
-			console.log(week_day === '토' ||  week_day === '일')
 			dateCalculate() // 1일씩 증가하는 함수
 		}// for j e	
 		
