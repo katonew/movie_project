@@ -76,7 +76,7 @@
 .date_week_li{
 	display:flex;
 	justify-content: space-around;
-	padding:30px 45px;
+	padding:25px ;
 	font-size:15px;
 	border-bottom:2px solid black;
 }
@@ -92,16 +92,18 @@
 /* 월 */
 .date_month{
 	font-size:12px;
-	height:10px;
-	
+	height:16px;
+	text-align:center;
 	box-sizing: border-box;
-
+	
 }
 
 /*  일  */
 .date_day{
+	width:30px;
+	height:30px;
 	font-size:16px;
-	padding:10px;
+	padding:5px 5px;
 }
 
 /* 요일 */
@@ -109,7 +111,12 @@
 	font-size:14px;
 }
 
-/* 캐러셀 버튼  */
+/* 캐러셀 아이콘  */
 .carousel-control-next-icon, .carousel-control-prev-icon{
 	background-color: #8d8b8b;
+}
+
+/* 캐러셀 버튼*/
+.carousel button{
+	width:30px;
 }

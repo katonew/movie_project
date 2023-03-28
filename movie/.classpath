@@ -15,7 +15,12 @@
 	<classpathentry kind="lib" path="C:/cos.jar"/>
 	<classpathentry kind="lib" path="C:/java-activation.jar"/>
 	<classpathentry kind="lib" path="C:/java-mail.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/jsoup-1.13.1.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="C:/commons-io.jar"/>
+>>>>>>> branch '이경석' of https://github.com/katonew/movie_project
 	<classpathentry kind="lib" path="C:/jackson-annotations-2.9.8.jar"/>
 	<classpathentry kind="lib" path="C:/jackson-core-2.9.8.jar"/>
 	<classpathentry kind="lib" path="C:/jackson-databind-2.9.8.jar"/>
