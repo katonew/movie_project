@@ -36,7 +36,7 @@ public class FindIdPw extends HttpServlet {
 		
 		// 타입 1 ,2(아이디찾기,비번찾기) 공통으로 이메일 필요함
 		String memail = request.getParameter("memail");
-		System.out.println("memail" + memail);
+		System.out.println("memail : " + memail);
 		
 		// 공통 result
 		String result = null;
