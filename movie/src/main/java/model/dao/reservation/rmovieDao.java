@@ -11,7 +11,7 @@ public class rmovieDao extends Dao{
 	private static rmovieDao rdao = new rmovieDao();
 	private rmovieDao() {};
 	public static rmovieDao getInstance() {return rdao;}
-	
+	 
 	//현재 상영중인 영화 전체 출력
 	public ArrayList<plistDto> Playing_movie(){
 		
