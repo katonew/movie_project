@@ -28,12 +28,15 @@ public class MovieList extends HttpServlet {
 		String type = request.getParameter("type");
 		System.out.println("type : " + type);
 		ArrayList<MovieListDto> result = null;
+		
 		if(type.equals("1")) {
 			result = MovieListDao.getInstance().getallmovielist();
 			System.out.println("result : " + result);
 		}else if(type.equals("2")) {
 			String selectday = request.getParameter("selectday");
-			result = MovieListDao.getInstance().gettimemovielist(selectday);
+			String selecttime = request.getParameter("selecttime");
+			String selectdate = selectday+" "+selecttime;
+			result = MovieListDao.getInstance().gettimemovielist(selectdate);
 		}else if(type.equals("3")) {
 			
 		}
@@ -45,7 +48,23 @@ public class MovieList extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		
+		System.out.println("post로 왔음");
+		int pprice = Integer.parseInt(request.getParameter("pprice"));
+		String playtime = request.getParameter("playtime");
+		int mno = Integer.parseInt(request.getParameter("mno"));
+		int sno = Integer.parseInt(request.getParameter("sno"));
+		
+		
+		System.out.println("pprice : " + pprice);
+		System.out.println("playtime : " + playtime);
+		System.out.println("mno : " + mno);
+		System.out.println("sno : " + sno);
+		
+		
+		boolean result = MovieListDao.getInstance().newplayinglist(pprice,playtime,mno,sno);
+		response.getWriter().print(result);
 	}
 
 	
