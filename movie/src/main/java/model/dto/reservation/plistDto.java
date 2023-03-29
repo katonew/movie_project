@@ -13,9 +13,12 @@ public class plistDto {
 	private int mno;			//영화(FK)
     private int sno;			//영화관번호(FK)
     
+    //2023-03-29 추가
     public ArrayList<MovieDto> getMlist() {
 		return mlist;
 	}
+    
+    
 
 
 

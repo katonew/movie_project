@@ -143,6 +143,8 @@ function select_date(month, date){
 
 /*----------------------------- 상영관 출력 -------------------------*/
 function screen(){
-	
+	s_movie ; //선택한 영화
+	 s_month ; //선택한 월
+	 s_day; // 선택한 일
 }
 

@@ -62,7 +62,13 @@ public class rmovieDao extends Dao{
 		return null;
 	}
 	
-
+	public ArrayList<plistDto> screen_print(){
+		ArrayList<plistDto> plist;
+		
+		//선택한 영화의 상영시간, 남은좌석 ,상영관 위치가 필요함
+		
+		return null;
+	}
 	
 	
 }
