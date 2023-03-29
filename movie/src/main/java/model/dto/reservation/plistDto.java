@@ -13,29 +13,19 @@ public class plistDto {
 	private int mno;			//영화(FK)
     private int sno;			//영화관번호(FK)
     
-    private ArrayList<MovieDto> mlist; //영화 리스트
-    
-    
-    
-    
-    
-    //전체생성자
-	public plistDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno,
-			ArrayList<MovieDto> mlist) {
-		super();
-		this.pno = pno;
-		this.pstate = pstate;
-		this.pseat = pseat;
-		this.pprice = pprice;
-		this.playtime = playtime;
-		this.mno = mno;
-		this.sno = sno;
+    public ArrayList<MovieDto> getMlist() {
+		return mlist;
+	}
+
+
+
+	public void setMlist(ArrayList<MovieDto> mlist) {
 		this.mlist = mlist;
 	}
-	
-	
-	
-	
+	private ArrayList<MovieDto> mlist;
+    
+    
+   //상영중인 영화 생성자
 	public plistDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno) {
 		super();
 		this.pno = pno;
@@ -46,16 +36,26 @@ public class plistDto {
 		this.mno = mno;
 		this.sno = sno;
 	}
+	
+	
+
+	//상영중인 영화 정보 리스트
+	public plistDto(ArrayList<MovieDto> mlist) {
+		super();
+		this.mlist = mlist;
+		System.out.println(mlist.toString());
+	}
 
 
 
+
+	
 
 	@Override
 	public String toString() {
 		return "plistDto [pno=" + pno + ", pstate=" + pstate + ", pseat=" + pseat + ", pprice=" + pprice + ", playtime="
 				+ playtime + ", mno=" + mno + ", sno=" + sno + ", mlist=" + mlist + "]";
 	}
-
 
 
 

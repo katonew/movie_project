@@ -1,17 +1,42 @@
+let s_movie ; //선택한 영화
+let s_month ; //선택한 월
+let s_day; // 선택한 일
+
+
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 현재 상영중인 영화 제목 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-let pmovie_html = '';
+let pmovie=[];
 $.ajax({
 	url:"/movie/playing/moive",
 	method:"get",
 	success:((r)=>{
 		console.log(r);
-		console.log(r.mlist) //????????
+	 	let html = ``;
+	 	pmovie=r;
+	 	pmovie[pmovie.length-1].mlist.forEach((o)=>{
+			html += `<div onclick="select_Pmovie(${o.mno})">
+						<div class="one_movie_title m_${o.mno} "> ${o.title} </div>
+					 </div>`	 
+		 })
 	 	
+	 	document.querySelector('.movie_title').innerHTML = html;
 	})
 })
 
 
-
+/* -------------------------- 영화선택시 ----------------------*/
+function select_Pmovie(mno){
+	console.log(mno)
+	let one_movie_title = document.querySelectorAll('.one_movie_title');
+	
+	
+	for(let i = 0 ; i < one_movie_title.length ; i++){
+		one_movie_title[i].style.border=""
+	}
+	
+	document.querySelector(`.m_${mno}`).style.border="3px solid black"
+	s_movie = document.querySelector(`.m_${mno}`).innerHTML
+	console.log(s_movie) 
+}
 
 
 
@@ -51,6 +76,7 @@ function dateCalculate(){
 //날짜 출력
 dayPrint()
 function dayPrint(){
+
 	let html = `<div class="carousel-inner">`;
 
 	for(let i = 0 ; i < 3 ; i++){ //총 3주 출력
@@ -66,7 +92,8 @@ function dayPrint(){
 			html+= `<li onclick="select_date(${month}, ${date})"> 
 						 <span class="date_month">${month_kor}</span> 
 						 <span class="date_day D${month}_${date}"> ${date} </span> 
-						 <span class="date_week_day" ${week_day === '토'|| week_day === '일' ? 'style="color:red"' : 'style="color:black"'}> ${week_day} </span> 
+						 <span class="date_week_day" ${week_day === '토'|| week_day === '일' ? 'style="color:red"' : 'style="color:black"'}> 
+						 ${date == new Date().getDate() ? '오늘' : week_day} </span> 
 					</li>`
 			dateCalculate() // 1일씩 증가하는 함수
 		}// for j e	
@@ -90,7 +117,12 @@ function dayPrint(){
 	document.querySelector('#carouselExampleControls').innerHTML = html;
 }
 
+/*---------------- 달력클릭시 배경검은색으로 ---------------------*/
 function select_date(month, date){
+	
+	if(s_movie == null){
+		alert('영화를 먼저 선택해주세요'); return;	
+	}
 	
 	let date_day = document.querySelectorAll('.date_day');
 	
@@ -102,5 +134,15 @@ function select_date(month, date){
 	document.querySelector(`.D${month}_${date}`).style.color="white"
 	document.querySelector(`.D${month}_${date}`).style.backgroundColor="black"
 	document.querySelector(`.D${month}_${date}`).style.borderRadius= "14px";
+	
+	s_day = date ; console.log("일 : "+date)
+	s_month = month+1; // month는 0~11임으로 +1
+	console.log("월 : "+ month);
+	screen(); 
+}
+
+/*----------------------------- 상영관 출력 -------------------------*/
+function screen(){
+	
 }
 
