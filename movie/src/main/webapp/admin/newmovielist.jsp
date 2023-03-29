@@ -14,46 +14,88 @@
 	
 	<%@ include file="/header.jsp" %>
 	<div class="wrap">
-		<div class="selectbox">
-			
-			<div class="playingMovie"><!-- 상영중인 영화 출력창 -->
-				<h3>현재 상영중인 영화</h3>
-				<table style="color : white;" class="table selectMovieTable"></table>
-			</div>
-			<div class="movielist">
-				<!-- 현재 선택 내용 창 -->
-				<h3>선택한 날짜/시간 이후의 상영표</h3>
-				<table style="color : white;" class="table movielisttable"></table>
-				<div class="selectday">
-					<h3> 날짜 선택 </h3>
-					<div class="selectdate"> <!-- 날짜 선택 창 -->
-						<select class="year form-select"></select>
-						<select onchange="monthchange(),setSelectday()" class="month form-select"></select>
-						<select onchange="setSelectday()" class="date form-select"></select>
-					</div>
-					<h3> 시간 선택 </h3>
-					<div class="selecttime"><!-- 시간, 분 선택 창 -->
-						<select onchange="setSelecttime()" class="hour form-select"></select>
-						<select onchange="setSelecttime()" class="minute form-select"></select>
-					</div>
-					
+		<div class="infobox">
+			<div class="selectbox">
+				<div class="playingMovie"><!-- 상영중인 영화 출력창 -->
+					<h3>현재 상영중인 영화</h3>
+					<table class="table selectMovieTable"></table>
 				</div>
-			
+				<div class="selectinfo">
+					<!-- 영화관 선택창 -->
+					<div class="selectScreen">
+						<h3>영화관 선택</h3>
+						<select class="form-select">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+						</select>
+					</div> <!-- selectScreen e -->
+					<!-- 가격 선택창 -->
+					<div class="selectPrice">
+						<h3>가격 선택</h3>
+						<select class="price form-select">
+							<option>10000</option>
+							<option>14000</option>
+							<option>16000</option>
+						</select>
+					</div>
+					<div class="selectday">
+						<h3> 날짜 선택 </h3>
+						<div class="selectdate"> <!-- 날짜 선택 창 -->
+							<select class="year form-select"></select>
+							<select onchange="monthchange(),setSelectday()" class="month form-select"></select>
+							<select onchange="setSelectday()" class="date form-select"></select>
+						</div>
+						<h3> 시간 선택 </h3>
+						<div class="selecttime"><!-- 시간, 분 선택 창 -->
+							<select onchange="setSelecttime()" class="hour form-select"></select>
+							<select onchange="setSelecttime()" class="minute form-select"></select>
+						</div>
+					</div><!-- selectday e -->
+				</div>
+				
+			</div> <!-- selectbox e -->
+			<div class="playlistinfo">
+				<div class="movielist">
+					<!-- 현재 선택 내용 창 -->
+					<h3>선택한 날짜/시간 이후의 상영표</h3>
+					<table class="table movielisttable"></table>
+				</div> <!-- movielist e -->
+				<div class="selectinfo">
+					<h3>입력정보</h3>
+					<table class="table">
+						<tr>
+							<td>영화제목</td>
+							<td>스즈메의 문단속</td>
+						</tr>
+						<tr>
+							<td>상영일시</td>
+							<td>2023-04-03 16:40</td>
+						</tr>
+						<tr>
+							<td>상영관</td>
+							<td>3관</td>
+						</tr>
+						<tr>
+							<td>가격</td>
+							<td>14000원</td>
+						</tr>
+						<tr>
+							<td>상영가능여부</td>
+							<td>상영가능</td>
+						</tr>
+					</table>
+					<button class="btn">상영등록</button>
+				</div>
 			</div>
+			
+		
 		</div>
 		
-		<!-- 영화관 선택창 -->
-		<div class="selectScreen">
-			<h3>영화관 선택</h3>
-			<select class="form-select">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-			</select>
-		</div>
-		<!-- 가격 선택창 -->
-		<div></div>
+		
+		
+		
 		
 		
 	 

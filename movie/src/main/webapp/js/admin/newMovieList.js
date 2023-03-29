@@ -75,9 +75,6 @@ function startweb(){
 	// 현재 상영중인 영화 출력
 	html = `<tr>
 				<th>제목</th>
-				<th>감독</th>
-				<th>개봉일자</th>
-				<th>장르</th>
 			</tr>`;
 	$.ajax({
 		url : "/movie/admin/movie",
@@ -87,9 +84,6 @@ function startweb(){
 			r.forEach((o)=>{
 				html += `<tr>
 							<td onclick="selectMovie(${o.mno})">${o.title}</td>
-							<td>${o.directors}</td>
-							<td>${o.openDt}</td>
-							<td>${o.genre}</td>
 						</tr>`
 			})
 			document.querySelector('.selectMovieTable').innerHTML = html;

@@ -1,10 +1,19 @@
 @charset "UTF-8";
 
-
-.selectbox{
-	width: 100%;
+table{
+	color : white !important;
+}
+.selectMovieTable{
+	font-size: 16px;
+}
+.infobox{
 	display: flex;
 	justify-content: space-between;
+}
+.selectbox{
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
 }
 .selectdate{
 	display: flex;
@@ -28,13 +37,23 @@
 }
 
 .playingMovie{
-	width: 55%;
-}
-
-.movielist{
 	width: 40%;
 }
-
+.playlistinfo{
+	width: 49%;
+}
+.movielist{
+	width: 100%;
+}
+.selectinfo{
+	width: 50%;
+}
 .selecttime{
 	display: flex;
 }
+.btn{
+	color : #B3FF00 !important;
+	background-color: #00B4DE;
+	
+}
+

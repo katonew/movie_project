@@ -1,6 +1,5 @@
 package model.dto.admin;
 
-import model.dao.admin.MovieDao;
 
 public class MovieListDto {
 	
