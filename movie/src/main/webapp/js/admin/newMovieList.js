@@ -1,5 +1,6 @@
 console.log('newMovieList js 열림')
 
+
 let today = new Date()
 let year = today.getFullYear() // 이번 년도
 let month = today.getMonth()+1 // 이번 달 (표시할때는 +1 해야함)
@@ -82,11 +83,11 @@ function startweb(){
 		success : (r)=>{
 			console.log(r)
 			r.forEach((o)=>{
-				html += `<tr>
-							<td onclick="selectMovie(${o.mno})">${o.title}</td>
-						</tr>`
+				html += `<option value="${o.mno},${o.title}">
+							${o.title}
+						 </option>`
 			})
-			document.querySelector('.selectMovieTable').innerHTML = html;
+			document.querySelector('.selectMovie').innerHTML = html;
 		}
 	})
 	
@@ -147,7 +148,11 @@ function getMovieList(){
 		$.ajax({
 			url : "/movie/admin/movieList",
 			method : "get",
-			data : { "type" : 2, "selectday" : selectday},
+			data : { 
+				"type" : 2, 
+				"selectday" : selectday,
+				"selecttime" : selecttime
+			},
 			success : (r)=>{
 				console.log(r)
 				result(r)
@@ -165,6 +170,7 @@ function setSelectday(){
 				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
 			+`${selectdate<10? "0"+selectdate : selectdate}`;
 	console.log(selectday);
+	document.querySelector('.receivedate').innerHTML = selectday
 	getMovieList()
 }
 // 시간 선택버튼을 눌렀을때
@@ -173,14 +179,20 @@ function setSelecttime(){
 	let selectminute = document.querySelector('.minute').value
 	selecttime = selecthour +":"+selectminute
 	if(selectday!=null){
-		selectday = selectday+" "+selecttime
 		console.log(selecttime)
+		document.querySelector('.receivedate').innerHTML = selectday+" "+selecttime
 		getMovieList()
 	}else{
 		alert('날짜를 먼저 선택해주세요');
 		return;
 	}
-	
+}
+
+//가격을 선택했을때
+function setPrice(){
+	let price = parseInt(document.querySelector('.price').value) 
+	console.log(typeof(price))
+	document.querySelector('.receiveprice').innerHTML = price.toLocaleString()+"원"
 }
 
 // 검색결과 출력
@@ -189,8 +201,8 @@ function result(r){
 					<th>영화제목</th>
 					<th>상영관</th>
 					<th>상영시간</th>
-					<th>예약좌석수</th>
-					<th>만석상태</th>
+					<th>예약</th>
+					<th>잔여</th>
 					<th>비고</th>
 				</tr>`;
 	r.forEach((o)=>{
@@ -199,12 +211,56 @@ function result(r){
 					<td>${o.sno}관</td>
 					<td>${o.playtime}</td>
 					<td>${o.pseat}</td>
-					<td>${o.pstate ? "00석남음" : "만석"}</td>
+					<td>${o.pstate ? o.rseat+"석" : "만석"}</td>
 					<td>비고</td>
 				</tr>`
 	})
 	document.querySelector('.movielisttable').innerHTML = html
-			
+	
+}
+// 영화 선택시
+function selectMovie(){
+	let movieinfo = document.querySelector('.selectMovie').value
+	let mno = movieinfo.split(",")[0]
+	let title = movieinfo.split(",")[1]
+	console.log(mno)
+	console.log(title)
+	let html = `<span class="selectTitle" value="${mno}">${title}</span>`
+	document.querySelector('.receivetitle').innerHTML = html;
 }
 
+function setScreen(){
+	let screen = document.querySelector('.screen').value
+	document.querySelector('.receivescreen').innerHTML = screen+"관"
+}
+
+
+function newplayinglist(){
+	let pprice = document.querySelector('.price').value
+	let playtime = selectday+" "+selecttime+":00"
+	let mno = document.querySelector('.selectMovie').value.split(",")[0]
+	let sno = document.querySelector('.screen').value
+	console.log(pprice)
+	console.log(playtime)
+	console.log(mno)
+	console.log(sno)
+	
+	$.ajax({
+		url : "/admin/movieList",
+		method : "post",
+		data : {
+			"pprice" : pprice,
+			"playtime" : playtime,
+			"mno" : mno,
+			"sno" : sno
+		},
+		success : (r)=>{
+			console.log(r)
+			if(r=='true'){
+				//startweb()
+			}
+		}
+	})
+	
+}
 

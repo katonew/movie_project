@@ -11,8 +11,8 @@ public class MovieListDto {
 	private int mno ;				// 영화(FK)
 	private int sno ;				// 영화관번호(FK)
 	// 추가정보
-	private String title;
-	
+	private String title;			// 영화제목
+	private int rseat;				// 잔여좌석수
 	
 	public MovieListDto() {}
 
@@ -30,6 +30,16 @@ public class MovieListDto {
 		this.title = title;
 	}
 
+	
+
+	public int getRseat() {
+		return rseat;
+	}
+
+
+	public void setRseat(int rseat) {
+		this.rseat = rseat;
+	}
 
 
 	public int getPno() {

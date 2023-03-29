@@ -16,28 +16,26 @@
 	<div class="wrap">
 		<div class="infobox">
 			<div class="selectbox">
-				<div class="playingMovie"><!-- 상영중인 영화 출력창 -->
-					<h3>현재 상영중인 영화</h3>
-					<table class="table selectMovieTable"></table>
-				</div>
 				<div class="selectinfo">
+					<h3>현재 상영중인 영화</h3>
+					<select onchange="selectMovie()" class="selectMovie form-select"></select>
 					<!-- 영화관 선택창 -->
 					<div class="selectScreen">
 						<h3>영화관 선택</h3>
-						<select class="form-select">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
+						<select onchange="setScreen()" class="screen form-select">
+							<option value=1>1관</option>
+							<option value=2>2관</option>
+							<option value=3>3관</option>
+							<option value=4>4관</option>
 						</select>
 					</div> <!-- selectScreen e -->
 					<!-- 가격 선택창 -->
 					<div class="selectPrice">
 						<h3>가격 선택</h3>
-						<select class="price form-select">
-							<option>10000</option>
-							<option>14000</option>
-							<option>16000</option>
+						<select onchange="setPrice()" class="price form-select">
+							<option value=10000>10,000</option>
+							<option value=14000>14,000</option>
+							<option value=16000>16,000</option>
 						</select>
 					</div>
 					<div class="selectday">
@@ -56,39 +54,40 @@
 				</div>
 				
 			</div> <!-- selectbox e -->
+			<div class="selectedinfo">
+				<h3>입력정보</h3>
+				<table class="table">
+					<tr>
+						<td>영화제목</td>
+						<td class="receivetitle"></td>
+					</tr>
+					<tr>
+						<td>상영일시</td>
+						<td class="receivedate"></td>
+					</tr>
+					<tr>
+						<td>상영관</td>
+						<td class="receivescreen"></td>
+					</tr>
+					<tr>
+						<td>가격</td>
+						<td class="receiveprice"></td>
+					</tr>
+					<tr>
+						<td>등록여부</td>
+						<td class="possible">상영가능</td>
+					</tr>
+				</table>
+				<button onclick="newplayinglist()" class="btn">상영등록</button>
+			</div>
 			<div class="playlistinfo">
 				<div class="movielist">
 					<!-- 현재 선택 내용 창 -->
 					<h3>선택한 날짜/시간 이후의 상영표</h3>
 					<table class="table movielisttable"></table>
 				</div> <!-- movielist e -->
-				<div class="selectinfo">
-					<h3>입력정보</h3>
-					<table class="table">
-						<tr>
-							<td>영화제목</td>
-							<td>스즈메의 문단속</td>
-						</tr>
-						<tr>
-							<td>상영일시</td>
-							<td>2023-04-03 16:40</td>
-						</tr>
-						<tr>
-							<td>상영관</td>
-							<td>3관</td>
-						</tr>
-						<tr>
-							<td>가격</td>
-							<td>14000원</td>
-						</tr>
-						<tr>
-							<td>상영가능여부</td>
-							<td>상영가능</td>
-						</tr>
-					</table>
-					<button class="btn">상영등록</button>
-				</div>
 			</div>
+			
 			
 		
 		</div>
