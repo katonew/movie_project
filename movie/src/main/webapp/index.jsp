@@ -14,7 +14,7 @@
 		<div class="boxoffice">
 			<div class="boxoffice_title">박스오피스</div>
 			<div class="boxofficeinfobox">
-			
+			 
 				<div class="onemovie">
 					<div class="mposter">
 						<img alt="" src="/movie/img/indextest/poster/poster1.jpg">
