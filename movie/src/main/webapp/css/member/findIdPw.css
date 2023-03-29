@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.findidpwdiv{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.findidpwmenu{
+	border: 1px solid white;
+	width: 1000px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.findidmenu , .findpwmenu{
+	width: 50%;
+	text-align: center;
+}
+
+.finddiv{
+	border: 1px solid white;
+	width: 1000px;
+	display: flex;
+	
+}
+
+.findiddiv , .findpwdiv{
+	width: 50%;
+	border: 1px solid white;
+	padding: 50px;
+}

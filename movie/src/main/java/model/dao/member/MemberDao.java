@@ -73,36 +73,36 @@ public class MemberDao extends Dao {
 	   }
 	   
 	   // 아이디찾기
-	   public String fineid( String memail ) {
-	      String sql = "select mid from member where memail = "+memail;
+	   public String findid( String memail ) {
+	      String sql = "select mid from member where memail = '"+memail+"'";
 	      try {
 	         ps = con.prepareStatement(sql);
 	         rs = ps.executeQuery();
 	         if (rs.next()) { return rs.getString(1); }
 	      } catch (Exception e) {System.out.println(e);   }
-	      return null;
+	      return "false";
 	   }
 	   
 	   // 비밀번호찾기
-	//   public boolean findpwd( String mid , String memail , String updatePwd ) {
-//	      String sql = "select mno from member where mid = "+mid+" and memail = "+memail;
-//	      try {
-//	         ps = con.prepareStatement(sql);
-//	         ps.setString(1, mid);
-//	         ps.setString(2, memail);
-//	         rs = ps.executeQuery();
-//	         if ( rs.next() ) {
-//	            
-//	            sql = "update member set mpwd = "+updatePwd+" where mno = "+rs.getInt(1);
-//	            ps = con.prepareStatement(sql);
-//	            int result = ps.executeUpdate();
-//	               if ( result == 1 ) {
-//	                  new MemberDto().sendEmail( )
-//	                  return true;
-//	               }
-//	         }
-//	      } catch (Exception e) { System.out.println(e);   }
-//	      return false;
-	//   }
+	   public String findpwd( String mid , String memail , String updatePwd ) {
+	      String sql = "select mno from member where mid = "+mid+" and memail = "+memail;
+	      try {
+	         ps = con.prepareStatement(sql);
+	         ps.setString(1, mid);
+	         ps.setString(2, memail);
+	         rs = ps.executeQuery();
+	         if ( rs.next() ) {
+	            
+	            sql = "update member set mpwd = "+updatePwd+" where mno = "+rs.getInt(1);
+	            ps = con.prepareStatement(sql);
+	            int result = ps.executeUpdate();
+	               if ( result == 1 ) {
+	                  new MemberDto().sendEmail( memail , updatePwd );
+	                  return "true";
+	               }
+	         }
+	      } catch (Exception e) { System.out.println(e);   }
+	      return "false";
+	   }
 
 }
