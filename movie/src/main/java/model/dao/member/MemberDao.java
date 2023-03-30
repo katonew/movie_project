@@ -26,13 +26,14 @@ public class MemberDao extends Dao {
 	   
 	   // 중복 아이디 검사
 	   public boolean idCheck( String mid ) {
-	      String sql = "select mid from member where mid = "+mid;
+	      String sql = "select mid from member where mid = ?";
 	      try {
 	         ps = con.prepareStatement(sql);
+	         ps.setString(1, mid);
 	         rs = ps.executeQuery();
-	         if ( rs.next() ) { return true; }
+	         if ( rs.next() ) { return true; } // 중복
 	      } catch (Exception e) {System.out.println(e); }
-	      return false;
+	      return false; // 중복아님
 	      
 	   }
 	   
@@ -105,6 +106,36 @@ public class MemberDao extends Dao {
 	         }
 	      } catch (Exception e) { System.out.println(e);   }
 	      return "false";
+	   }
+	   
+	   // 회원정보 업데이트
+	   public boolean updateMember( MemberDto dto , int mno ) {
+		   String sql = "update member set mpwd = ? , memail = ? , mimg = ? where mno = ?";
+		   try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getMpwd());
+			ps.setString(2, dto.getMemail());
+			ps.setString(3, dto.getMimg());
+			ps.setInt(4, mno);
+			int count = ps.executeUpdate();
+			if ( count == 1 ) { return true; }
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+		}return false;
+	   }
+	   
+	   // 회원탈퇴
+	   public boolean deleteMember( String mpwd , int mno ) {
+		   String sql = "delete from member where mpwd = ? and mno = ?";
+		   try {
+			   ps = con.prepareStatement(sql);
+			   ps.setString(1, mpwd);
+			   ps.setInt(2, mno);
+			   int count = ps.executeUpdate();
+			   if ( count == 1 ) {return true;}
+		   } catch (Exception e) { 	System.out.println(e);   }
+		   return false;
 	   }
 
 }

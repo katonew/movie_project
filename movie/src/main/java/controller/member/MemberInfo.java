@@ -16,7 +16,7 @@ import model.dto.member.MemberDto;
 /**
  * Servlet implementation class MemberInfo
  */
-@WebServlet("/memberinfo")
+@WebServlet("/member/info")
 public class MemberInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -67,14 +67,40 @@ public class MemberInfo extends HttpServlet {
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("MemberInfo서블릿 put 실행");
+		String path = request.getSession().getServletContext().getRealPath("/member/img");
+		System.out.println(path);
+		
+		MultipartRequest multi = new MultipartRequest(
+				request, 
+				path ,
+				1024*1024*10 ,
+				"UTF-8" ,
+				new DefaultFileRenamePolicy()
+			);
+		
+		
+	    String mpwd = multi.getParameter("mpwd"); System.out.println("mpwd : "+mpwd);
+	    String memail = multi.getParameter("memail"); System.out.println("memail : "+memail);
+	    String mimg = multi.getFilesystemName("mimg"); System.out.println("mimg : "+mimg);
+	      
+	    MemberDto dto = new MemberDto(mpwd, memail, mimg);
+	    //String mno = (String)request.getSession().getAttribute("login");
+	    int mno = (int)request.getSession().getAttribute("login");
+	    boolean result =  MemberDao.getInstance().updateMember(dto, mno);
+	    response.getWriter().print(result);
+		
 	}
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String mpwd = request.getParameter("mpwd");
+		int mno = (int)request.getSession().getAttribute("login");
+		
+		boolean result = MemberDao.getInstance().deleteMember(mpwd, mno);
+		response.getWriter().print(result);
 	}
 
 }

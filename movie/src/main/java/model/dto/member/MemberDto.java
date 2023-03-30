@@ -82,7 +82,16 @@ public class MemberDto {
       this.mimg = mimg;
    }
    
-   @Override
+   
+   // 회원정보수정 생성자
+   public MemberDto(String mpwd, String memail, String mimg) {
+	super();
+	this.mpwd = mpwd;
+	this.memail = memail;
+	this.mimg = mimg;
+}
+
+@Override
    public String toString() {
       return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpwd=" + mpwd + ", memail=" + memail + ", mimg=" + mimg
             + "]";
