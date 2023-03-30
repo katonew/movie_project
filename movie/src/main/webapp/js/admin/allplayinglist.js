@@ -45,11 +45,11 @@ function startweb(){
 	for(let i=1;i<=lastDay;i++){
 		
 		if(i==date){
-			html += `<div class="date dateinfo(${i<0? "0"+i : i}) selectedDate">
+			html += `<div class="date dateinfo${i<10? "0"+i : i} selectedDate">
 					${i}
 					</div>`
 		}else{
-			html += `<div class="date dateinfo(${i<0? "0"+i : i})">
+			html += `<div class="date dateinfo${i<10? "0"+i : i}">
 					${i}
 					</div>`
 		}
@@ -58,11 +58,11 @@ function startweb(){
 		}
 	}
 	document.querySelector('.selectdate').innerHTML = html;
+	getallmovielist()
 }
 
 
 // 영화 상영정보 가져오기
-getallmovielist()
 function getallmovielist(){
 	$.ajax({
 		url : "/movie/admin/movieList",
@@ -76,6 +76,7 @@ function getallmovielist(){
 				let getyear = o.playtime.split("-")[0]
 				let getmonth = o.playtime.split("-")[1]
 				let getdate = o.playtime.split("-")[2].split(" ")[0]
+				console.log('dddd'+getdate)
 				if(getyear==year&&(getmonth-1)==month){
 					console.log(o)
 					console.log(i)
@@ -83,7 +84,7 @@ function getallmovielist(){
 								${o.title}
 							</div>`
 				}
-				document.querySelector('.test').innerHTML += html
+				document.querySelector('.dateinfo'+(getdate) ).innerHTML += html
 				
 			})
 		}// success e
