@@ -2,7 +2,6 @@ package controller.board;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,12 +36,28 @@ public class SearchServlet extends HttpServlet {
 		
 		
 		ArrayList<SearchDto> list = new ArrayList<>();
-		list = Search.search();
 		
+		// js에서 보낸 데이터 받기
+		int type = Integer.parseInt(request.getParameter("type")); // 실행할 타입
+		String search =  request.getParameter("search");	// 검색한 값
+		String select = request.getParameter("select");		// 선택한 영화의 링크주소
+		
+		
+		if(type == 1) { // 메인화면 출력(박스오피스 탑10 / 넷플릭스 탑10
+			list = Search.search();
+			
+		}
+		else if(type == 2) { // 검색한 영화 출력
+			list = Search.search_m(search);
+			
+		}
+		else if(type == 3) { // 선택한 영화의 상세페이지 출력
+			list = Search.select(select);
+		}
 		
 		// java 형식 ---> js형식 
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonArray =  mapper.writeValueAsString( list );
+		String jsonArray = mapper.writeValueAsString( list );
 		// 응답
 		System.out.println("jsonArray : " + jsonArray);
 		response.setContentType("applcation/json");

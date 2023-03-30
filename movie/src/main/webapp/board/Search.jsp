@@ -12,15 +12,48 @@
 
 	<div class="container">
 		<div class="m_list">
+			<div>
+				<input class="search_m" type="text" placeholder="영화검색">
+				<button onclick="search_m()" type="button">검색</button>
+			</div>
+			
+			<div class="searchresult">
+				
+			</div>
+			
 			<div class="m_title">
 				<h3>박스오피스 탑 10</h3>
 			</div>
-			<div class="m_p">
-				
-						
-					
+			<div class="m_p css_m_p">
+			</div>
+		
+			<div class="m_title">
+				<h3>넷플릭스 영화 순위</h3>
+			</div>
+			<div class="m_p2 css_m_p">
+			</div>
+		
+		</div>
+		
+		
+		
+		<!-- 모달 HTML -->
+		<div class="modal_wrap">
+		<div class="modal_box">
+			<h3 class="modal_title">
+				<!-- 제목이 들어가는 자리  -->
+			</h3>
+			<div class="modal_content">
+				<!-- 내용이 들어가는 자리  -->
+			</div>
+			<div class="modal_btns">
+				<button onclick="del()" class="modal_check" 	type="button">확인</button>
+				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
 			</div>
 		</div>
+	</div>
+		
+		
 	</div>
 	
 	
