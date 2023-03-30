@@ -1,0 +1,1 @@
+console.log('update.js 실행')

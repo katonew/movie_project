@@ -85,7 +85,7 @@ public class MemberDao extends Dao {
 	   
 	   // 비밀번호찾기
 	   public String findpwd( String mid , String memail , String updatePwd ) {
-	      String sql = "select mno from member where mid = '"+mid+"' and memail = '"+memail+"'";
+	      String sql = "select mno from member where mid = ? and memail = ? ";
 	      try {
 	         ps = con.prepareStatement(sql);
 	         ps.setString(1, mid);
@@ -94,7 +94,7 @@ public class MemberDao extends Dao {
 	         System.out.println("첫번째 rs에 받음 완료");
 	         if ( rs.next() ) {
 	            System.out.println("첫번째 sql 완료");
-	            sql = "update member set mpwd = "+updatePwd+" where mno = "+rs.getInt(1);
+	            sql = "update member set mpwd = '"+updatePwd+"' where mno = "+rs.getInt(1);
 	            ps = con.prepareStatement(sql);
 	            int result = ps.executeUpdate();
 	               if ( result == 1 ) {
