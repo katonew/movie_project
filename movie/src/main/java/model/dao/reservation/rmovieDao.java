@@ -62,10 +62,28 @@ public class rmovieDao extends Dao{
 		return null;
 	}
 	
-	public ArrayList<plistDto> screen_print(){
-		ArrayList<plistDto> plist;
+	
+	public ArrayList<plistDto> screen_print(int mno, String s_date){
+		ArrayList<plistDto> plist = new ArrayList<>();
 		
-		//선택한 영화의 상영시간, 남은좌석 ,상영관 위치가 필요함
+		System.out.println("mno : "+mno); System.out.println("s_date : "+s_date);
+		String sql ="select p.playtime , p.pseat , s.sno ,s.seat"
+				+ " from movie m natural join playinglist "
+				+ " p natural join screen s "
+				+ " where mno = "+mno +" and playtime like '%"+s_date+"%'";
+		
+		try {
+			ps=con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				plist.add( new plistDto(
+				rs.getString(1), rs.getInt(2), rs.getInt(3)
+				,rs.getInt(4)));
+			}
+			
+			return plist;
+			
+		}catch(Exception e) {System.err.println(e);}
 		
 		return null;
 	}
