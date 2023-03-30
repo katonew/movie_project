@@ -67,7 +67,7 @@ public class rmovieDao extends Dao{
 		ArrayList<plistDto> plist = new ArrayList<>();
 		
 		System.out.println("mno : "+mno); System.out.println("s_date : "+s_date);
-		String sql ="select p.playtime , p.pseat , s.sno ,s.seat"
+		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat"
 				+ " from movie m natural join playinglist "
 				+ " p natural join screen s "
 				+ " where mno = "+mno +" and playtime like '%"+s_date+"%'";

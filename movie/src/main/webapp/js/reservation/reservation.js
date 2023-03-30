@@ -193,7 +193,7 @@ function screen(){
 						<div class="date_time">${o.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
 								
 							<div class="date_text">
-								<span class="date_seat"> <span class="available">${o.pseat} </span>/${o.s_seat}</span>	<!-- 남은좌석 -->
+								<span class="date_seat"> <span class="available">${o.aseat} </span>/${o.s_seat}</span>	<!-- 남은좌석 -->
 								<span class="date_sno">${o.sno}관</span>	<!-- 상영관 위치 -->
 							</div>
 						</div>
