@@ -1,15 +1,30 @@
 console.log('newMovieList js 열림')
 
+/*
+	// Date에 두 date 사이의 날짜 가격을 찾아주는 함수추가
+	Date.prototype.getInterval = function (otherDate) {
+	    var interval;
+	 
+	    if(this > otherDate)
+	        interval = this.getTime() - otherDate.getTime();
+	    else
+	        interval = otherDate.getTime() - this.getTime();
+	 
+	    return Math.floor(interval / (1000*60*60*24));
+	}
 
+*/
+
+// 사용하는 전역변수
 let today = new Date()
 let year = today.getFullYear() // 이번 년도
 let month = today.getMonth()+1 // 이번 달 (표시할때는 +1 해야함)
 let date = today.getDate()	// 오늘 날짜
 let day = today.getDay() //  오늘 요일 ( 0: 일요일~~6:토요일)
-
 let selectday = null;
 let selecttime = null;
 
+// 웹페이지가 열렸을때 실행 될 함수
 startweb()
 function startweb(){
 	// 특정 날짜의 마지막 날 가져오기
@@ -106,13 +121,61 @@ function monthchange(){
 	document.querySelector('.date').innerHTML = html;
 }
 
-// 영화 선택했을때 실행될 함수
-function selectMovie(mno){
-	console.log(mno+"번째 영화 선택")
+
+
+//날짜선택버튼을 눌렀을때
+function setSelectday(){
+	let selectyear = document.querySelector('.year').value
+	let selectmonth = document.querySelector('.month').value
+	let selectdate = document.querySelector('.date').value
+	selectday = selectyear+ "-"+
+				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
+			+`${selectdate<10? "0"+selectdate : selectdate}`;
+	console.log(selectday);
+	document.querySelector('.receivedate').innerHTML = selectday
+	getMovieList()
+}
+// 시간 선택버튼을 눌렀을때
+function setSelecttime(){
+	let selecthour = document.querySelector('.hour').value
+	let selectminute = document.querySelector('.minute').value
+	selecttime = selecthour +":"+selectminute
+	if(selectday!=null){
+		console.log(selecttime)
+		document.querySelector('.receivedate').innerHTML = selectday+" "+selecttime
+		getMovieList()
+	}else{
+		alert('날짜를 먼저 선택해주세요');
+		return;
+	}
 }
 
-getMovieList()
+//가격을 선택했을때
+function setPrice(){
+	let price = parseInt(document.querySelector('.price').value) 
+	console.log(typeof(price))
+	document.querySelector('.receiveprice').innerHTML = price.toLocaleString()+"원"
+}
+
+
+// 영화 선택 함수
+function selectMovie(){
+	let movieinfo = document.querySelector('.selectMovie').value
+	let mno = movieinfo.split(",")[0]
+	let title = movieinfo.split(",")[1]
+	console.log(mno)
+	console.log(title)
+	let html = `<span class="selectTitle" value="${mno}">${title}</span>`
+	document.querySelector('.receivetitle').innerHTML = html;
+}
+
+// 영화관 선택 함수
+function setScreen(){
+	let screen = document.querySelector('.screen').value
+	document.querySelector('.receivescreen').innerHTML = screen+"관"
+}
 // 상영정보 가져오기
+getMovieList()
 function getMovieList(){
 	console.log('getmovielist 시작')
 	// 아직 선택한게 아무것도 없을때
@@ -161,40 +224,6 @@ function getMovieList(){
 	}
 } // getMovieList e
 
-//날짜선택버튼을 눌렀을때
-function setSelectday(){
-	let selectyear = document.querySelector('.year').value
-	let selectmonth = document.querySelector('.month').value
-	let selectdate = document.querySelector('.date').value
-	selectday = selectyear+ "-"+
-				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
-			+`${selectdate<10? "0"+selectdate : selectdate}`;
-	console.log(selectday);
-	document.querySelector('.receivedate').innerHTML = selectday
-	getMovieList()
-}
-// 시간 선택버튼을 눌렀을때
-function setSelecttime(){
-	let selecthour = document.querySelector('.hour').value
-	let selectminute = document.querySelector('.minute').value
-	selecttime = selecthour +":"+selectminute
-	if(selectday!=null){
-		console.log(selecttime)
-		document.querySelector('.receivedate').innerHTML = selectday+" "+selecttime
-		getMovieList()
-	}else{
-		alert('날짜를 먼저 선택해주세요');
-		return;
-	}
-}
-
-//가격을 선택했을때
-function setPrice(){
-	let price = parseInt(document.querySelector('.price').value) 
-	console.log(typeof(price))
-	document.querySelector('.receiveprice').innerHTML = price.toLocaleString()+"원"
-}
-
 // 검색결과 출력
 function result(r){
 	let html = `<tr>
@@ -218,23 +247,8 @@ function result(r){
 	document.querySelector('.movielisttable').innerHTML = html
 	
 }
-// 영화 선택시
-function selectMovie(){
-	let movieinfo = document.querySelector('.selectMovie').value
-	let mno = movieinfo.split(",")[0]
-	let title = movieinfo.split(",")[1]
-	console.log(mno)
-	console.log(title)
-	let html = `<span class="selectTitle" value="${mno}">${title}</span>`
-	document.querySelector('.receivetitle').innerHTML = html;
-}
 
-function setScreen(){
-	let screen = document.querySelector('.screen').value
-	document.querySelector('.receivescreen').innerHTML = screen+"관"
-}
-
-
+// 영화등록 함수
 function newplayinglist(){
 	let pprice = document.querySelector('.price').value
 	let playtime = selectday+" "+selecttime+":00"
@@ -246,7 +260,7 @@ function newplayinglist(){
 	console.log(sno)
 	
 	$.ajax({
-		url : "/admin/movieList",
+		url : "/movie/admin/movieList",
 		method : "post",
 		data : {
 			"pprice" : pprice,
@@ -257,7 +271,7 @@ function newplayinglist(){
 		success : (r)=>{
 			console.log(r)
 			if(r=='true'){
-				//startweb()
+				startweb()
 			}
 		}
 	})
