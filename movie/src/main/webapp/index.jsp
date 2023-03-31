@@ -80,6 +80,6 @@
 		</div>  
 	</div>
 	    
-
+	<script src="/movie/js/index.js" type="text/javascript"></script>
 </body>
 </html>
