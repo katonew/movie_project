@@ -6,7 +6,10 @@ let s_date; // 선택한 년-월-일
 
 let s_mno ; //선택한 영화의 번호
 
+let a_seat; // 남은 좌석(이용가능좌석)
+let seat; // 전체좌석
 
+let s_sno // 선택한 상영관
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 현재 상영중인 영화 제목 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 let pmovie=[];
 $.ajax({
@@ -170,11 +173,11 @@ function select_date(year, month, date){
 	
 	s_date = s_year+'-'+s_month+ '-'+s_day // 선택한 년-월-일
 	
-	screen(); //상영관 출력
+	 screen_print(); //상영관 출력
 }
 
 /*----------------------------- 상영관 출력 -------------------------*/
-function screen(){
+function screen_print(){
 	let html = ``;
 	
 	document.querySelector('.s_movie_title').innerHTML = s_movie
@@ -189,7 +192,7 @@ function screen(){
 			html += ' <div class="none_date"> 다른 날짜를 확인해주세요! </div>'
 		}
 		r.forEach((o)=>{
-			html += `<div class="date_box">	<!-- 상영관 박스 -->
+			html += `<div class="date_box" onclick="select_screen()">	<!-- 상영관 박스 -->
 						<div class="date_time">${o.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
 								
 							<div class="date_text">
@@ -198,13 +201,27 @@ function screen(){
 							</div>
 						</div>
 					</div>`
+			a_seat = o.aseat; seat =o.s_seat;  s_sno = o.sno;
 			})
 		 document.querySelector('.date_form').innerHTML = html
 		 
 		 })//success e
 	 	
 	})
-	
-	
 }
 
+/* --------------------- 모달 출력 -------------------- */
+function select_screen(){
+	document.querySelector('.modal_wrap').style.display = 'flex';
+	document.querySelector('.modal_title').innerHTML = s_movie;
+	document.querySelector('.a_seat').innerHTML = a_seat;
+	document.querySelector('.all_seat').innerHTML = seat;
+}
+
+function closeModal(){
+	document.querySelector('.modal_wrap').style.display = 'none';
+}
+
+function reservation_screen(){
+	location.href=`/movie/reservation/ticket.jsp?sno=${s_sno}`
+}
