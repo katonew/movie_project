@@ -16,7 +16,7 @@ public class BoxOffice {
 		Document doc = Jsoup.connect("https://pedia.watcha.com/ko-KR").get();
 		System.out.println(doc);
 		
-		for(int i = 0 ; i < 4 ; i++ ) {
+		for(int i = 0 ; i < 10 ; i++ ) {
 			// [data-rowindex='0'] = 박스오피스인덱스
 			// [attr=value]: 속성 값이 있는 요소 [width=500](예: 와 같이 인용 가능 [data-name='launch sequence'])
 			// .css-5yuqaa : 영화이름
