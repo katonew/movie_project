@@ -60,7 +60,7 @@
 			</div>
 			<div class="review_container">
 				
-				<form class="writeForm">
+				<form class="writeForm">   
 				<div>
 					평점 : <input type="text" class="bscore" id="bscore">/10
 				</div>
