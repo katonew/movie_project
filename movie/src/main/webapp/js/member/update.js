@@ -6,6 +6,10 @@ if ( memberInfo == null ){
 }
 
 document.querySelector('.memail').value = memberInfo.memail;
+console.log('memberInfo.mimg : '+memberInfo.mimg)
+console.log(memberInfo.mimg==null)
+document.querySelector('.mimgimg').src = `/movie/member/img/${memberInfo.mimg==null?'default.webp':memberInfo.mimg}` ;
+
 
 function update(){
 	console.log('update 함수 실행')
@@ -23,9 +27,9 @@ function update(){
 			console.log(r)
 			if ( r == 'true'){
 				alert('회원정보 수정성공')
-				location.href="/movie/index.jsp"
+				location.href="/movie/member/update.jsp"
 			}else{
-				alert('회원정보 수정실패')
+				alert('현재비밀번호가 맞지 않습니다.')
 			}
 		}
 	})
@@ -50,3 +54,14 @@ function deleteMember(){
 	})
 }
 	
+// 프로필이미지 미리보기
+function premimg( object ){
+	
+	let file = new FileReader();
+	file.readAsDataURL( object.files[0])
+	file.onload = (e)=>{
+		//console.log(e.target.result)
+		document.querySelector('.mimgimg').src = e.target.result;
+	}
+	
+}

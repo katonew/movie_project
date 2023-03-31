@@ -14,13 +14,13 @@
 		<h3>회원정보수정</h3>
 		<br>
 		<form class="signupForm">
-
-			비밀번호 <input name="mpwd" type="text">  <br>
-
-			비밀번호확인 <input name="mpwdcheck" type="text">  <br>
+			<div><img class="mimgimg" style="width:100px" alt="" src=""> </div>
+			현재비밀번호 <input name="mpwd" type="text">  <br>
+			비밀번호 <input name="newmpwd" type="text">  <br>
+			비밀번호확인 <input name="newmpwdcheck" type="text">  <br>
 
 			이메일 <input class="memail" name="memail" type="text">  <br>
-			프로필 <input name="mimg" type="file">  <br>
+			프로필 <input onchange="premimg(this)" class="newmimg" name="newmimg" type="file">  <br>
 
 			<button class="updatebtn" type="button" onclick="update()"> 수정 </button>
 			<button onclick="onpenModal()" type="button">회원탈퇴</button>

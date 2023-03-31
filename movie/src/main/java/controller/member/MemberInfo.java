@@ -79,15 +79,23 @@ public class MemberInfo extends HttpServlet {
 				new DefaultFileRenamePolicy()
 			);
 		
-		
+		// 현재비밀번호
 	    String mpwd = multi.getParameter("mpwd"); System.out.println("mpwd : "+mpwd);
+	    // 새비밀번호
+	    String newmpwd = multi.getParameter("newmpwd"); System.out.println("newmpwd : "+newmpwd);
 	    String memail = multi.getParameter("memail"); System.out.println("memail : "+memail);
-	    String mimg = multi.getFilesystemName("mimg"); System.out.println("mimg : "+mimg);
-	      
-	    MemberDto dto = new MemberDto(mpwd, memail, mimg);
+	    String newmimg = multi.getFilesystemName("newmimg"); System.out.println("newmimg : "+newmimg);
+	    
+	    if ( newmimg == null ) {
+	    	newmimg = MemberDao.getInstance().getMemberDto(request.getSession().getAttribute("login")).getMimg();
+	    }
+	    if ( newmpwd == null) {
+	    	newmpwd = mpwd;
+	    }
+	    MemberDto dto = new MemberDto(newmpwd, memail, newmimg);
 	    //String mno = (String)request.getSession().getAttribute("login");
 	    int mno = (int)request.getSession().getAttribute("login");
-	    boolean result =  MemberDao.getInstance().updateMember(dto, mno);
+	    boolean result =  MemberDao.getInstance().updateMember(dto, mno , mpwd);
 	    response.getWriter().print(result);
 		
 	}
