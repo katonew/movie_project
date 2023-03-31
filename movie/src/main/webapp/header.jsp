@@ -31,7 +31,7 @@
 				<div class="mainmenu">
 					<a href="#"> 예매 </a>
 					<span class="verticalBar">|</span>
-					<a href="#"> 영화검색 </a>
+					<a href="/movie/board/Search.jsp"> 영화검색 </a>
 					<span class="verticalBar">|</span>
 					<a href="#"> 개봉예정작 </a>
 					<span class="verticalBar">|</span>

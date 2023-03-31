@@ -38,7 +38,7 @@
 		
 		
 		<!-- 모달 HTML -->
-		<div class="modal_wrap">
+		<div class="modal_wrap overflow-auto">
 		<div class="modal_box">
 			<h3 class="modal_title">
 				<!-- 제목이 들어가는 자리  -->
@@ -46,8 +46,34 @@
 			<div class="modal_content">
 				<!-- 내용이 들어가는 자리  -->
 			</div>
+			
+			<!-- 리뷰 출력 자리 -->
+			<h3> 리뷰 </h3>
+			<div class="review_print">
+				
+		</div>
+			
+		
+			<!-- 댓글 작성자리 -->
+			<div>
+				<h3> 리뷰 작성 </h3>
+			</div>
+			<div class="review_container">
+				
+				<form class="writeForm">
+				<div>
+					평점 : <input type="text" class="bscore" id="bscore">/10
+				</div>
+				<div>
+					<textarea class="bcontent" rows="" cols="" id="bcontent"></textarea>
+					<button class="bwrite" onclick="bwrite()" type="button">작성</button>
+				</div>
+				</form>
+			</div>
+			
+			
+			
 			<div class="modal_btns">
-				<button onclick="del()" class="modal_check" 	type="button">확인</button>
 				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
 			</div>
 		</div>
@@ -56,6 +82,23 @@
 		
 	</div>
 	
+	
+	<!-- 모달 HTML2 -->
+		<div class="modal_wrap2 overflow-auto">
+		<div class="modal_box2">
+			<h3 class="modal_title2">
+				모달2
+			</h3>
+			<div class="modal_content2">
+				<!-- 내용이 들어가는 자리  -->
+			</div>
+			<div class="modal_btns">
+				<button onclick="closeModal2()" class="modal_cencel" type="button">닫기</button>
+			</div>
+		</div>
+	
+			
+		</div>
 	
 
 

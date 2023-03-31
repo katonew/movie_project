@@ -1,7 +1,14 @@
 console.log('search 확인')
+console.log('회원아이디 확인' + memberInfo.mid)
+console.log('회원번호 확인' + memberInfo.mno)
+if(memberInfo.mno==null){
+	alert('로그인해주세요.')
+	location.href="/movie/member/join.jsp"
+}
+
+
+
 Search();
-
-
 
 // 영화검색페이지 시작시 박스오피스탑10 / 넷플릭스 영화 순위 불러오기
 function Search(){
@@ -100,11 +107,16 @@ function search_m(){
 	
 }
 
+// 영화 정보 저장
+let bmovie = '';
 // 모달 오픈/클로즈
 function openModal(e){ // e = link주소
 	console.log(e);	// 들어왔는지 확인
+	// 영화정보 저장
+	bmovie = e;
 	document.querySelector('.modal_wrap').style.display = 'flex';
 	modal_select(e); // 모달 열리면 modal_select()함수에 e값을 보내주고 실행
+	bprint();
 	
 }
 function closeModal(){
@@ -112,8 +124,16 @@ function closeModal(){
 	// 모달 닫을시 내용 초기화
 	document.querySelector('.modal_title').innerHTML ='';
 	document.querySelector('.modal_content').innerHTML ='';
+	bmovie = '';
 }
 
+function openModal2(){ // e = link주소
+	document.querySelector('.modal_wrap2').style.display = 'flex';
+	console.log('모달2 인수 확인' )
+}
+function closeModal2(){
+	document.querySelector('.modal_wrap2').style.display = 'none';
+}
 // 선택한 영화 상세보기
 function modal_select(select){
 	console.log('modal : ' + select); // 넘겨받은 인수 확인
@@ -160,9 +180,71 @@ function modal_select(select){
 
 
 
+// 작성
+function bwrite() {
+	
+	let bscore = document.getElementById("bscore").value;
+	let bcontent = document.getElementById("bcontent").value;
+	
+	let info = {
+		
+		bmovie : bmovie ,
+		bcontent : bcontent,
+		bscore : bscore,
+		mno : memberInfo.mno,
+		type : 1
+	}
+	console.log(info)
+	
+	
+	$.ajax({
+		url : "/movie/Board/Bwrite",
+		method : "post" ,
+		data : info,
+		success : (r)=>{
+			console.log('bwrite리턴값 : ' + r)
+			alert('작성 성공')
+			
+			document.querySelector('.bscore').innerHTML = '';
+			document.querySelector('.bcontent').innerHTML = '';
+			bprint();
+		}
+	})
+}
 
 
-
+// 출력
+function bprint(){
+	console.log(bmovie)
+	$.ajax({
+		url : "/movie/Board/Bwrite",
+		method : "get" ,
+		data : {"bmovie" : bmovie },
+		success : (r)=>{
+			console.log('bprint리턴값 : ' + r)
+			let list = JSON.parse(JSON.stringify( r)); // 형변환
+			console.log(list)
+			
+			let html = '';
+			
+			list.forEach((o,i)=>{
+				
+				html += `<div>
+							<div class="review_list">
+								<div class="b_mid">ID:${o.mid}</div>
+								<div class="b_bscore">별점:${o.bscore}</div>
+								<div class="b_bdate">${o.bdate}</div>
+							</div>
+							<div class="b_bcontent">${o.bcontent}</div>
+							<button type="button" onclick="openModal2()">댓글달기</button>
+						</div>
+						`
+			})
+			document.querySelector('.review_print').innerHTML = html;
+			
+		}
+	})
+}
 
 
 
