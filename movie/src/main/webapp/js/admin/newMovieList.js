@@ -23,6 +23,7 @@ let date = today.getDate()	// 오늘 날짜
 let day = today.getDay() //  오늘 요일 ( 0: 일요일~~6:토요일)
 let selectday = null;
 let selecttime = null;
+let tomorrow = null;
 
 // 웹페이지가 열렸을때 실행 될 함수
 startweb()
@@ -127,10 +128,14 @@ function monthchange(){
 function setSelectday(){
 	let selectyear = document.querySelector('.year').value
 	let selectmonth = document.querySelector('.month').value
-	let selectdate = document.querySelector('.date').value
+	let selectdate = (document.querySelector('.date').value)*1
+	console.log(typeof(selectdate))
 	selectday = selectyear+ "-"+
 				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
 			+`${selectdate<10? "0"+selectdate : selectdate}`;
+	tomorrow = selectyear+ "-"+
+				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
+			+`${(selectdate+1)<10? "0"+(selectdate+1) : (selectdate+1)}`;
 	console.log(selectday);
 	document.querySelector('.receivedate').innerHTML = selectday
 	getMovieList()
@@ -197,10 +202,12 @@ function getMovieList(){
 		return;
 	}// else if e
 	else if(selecttime==null){ // 날짜는 선택하고 시간은 선택 안했을때
+	console.log(selectday)
+	console.log(tomorrow)
 		$.ajax({
 			url : "/movie/admin/movieList",
 			method : "get",
-			data : { "type" : 2, "selectday" : selectday},
+			data : { "type" : 3, "selectday" : selectday , "tomorrow" : tomorrow},
 			success : (r)=>{
 				console.log(r)
 				result(r)

@@ -83,7 +83,7 @@
 			<div class="playlistinfo">
 				<div class="movielist">
 					<!-- 현재 선택 내용 창 -->
-					<h3>선택한 날짜/시간 이후의 상영표</h3>
+					<h3>선택한 날짜의 상영표</h3>
 					<table class="table movielisttable"></table>
 				</div> <!-- movielist e -->
 			</div>

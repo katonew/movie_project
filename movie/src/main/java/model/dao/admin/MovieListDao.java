@@ -85,5 +85,27 @@ public class MovieListDao extends Dao{
 		return false;
 	}
 	
+	//하루치의 상영정보 가져오기
+	public ArrayList<MovieListDto> getdaylist(String selectday,String tomorrow){
+		ArrayList<MovieListDto> list = new ArrayList<>();
+		try {
+			String sql = "select p.*, m.title from playinglist p natural join movie m where playtime  between ? and ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, selectday);
+			ps.setString(2, tomorrow);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				MovieListDto dto = new MovieListDto(
+						rs.getInt(1), rs.getBoolean(2), rs.getInt(3), 
+						rs.getInt(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getString(8));
+				dto.setRseat(getScreenSeat(rs.getInt(7))-rs.getInt(3));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("getdaylist 오류 : "+e);
+		}
+		return list;
+	}
+	
 
 }

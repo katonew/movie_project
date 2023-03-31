@@ -16,13 +16,18 @@ function startweb(){
 	let firstday = new Date(year, month-1, 1).getDay();
 	// 특정 달의 마지막 날 가져오기
 	let lastDay = new Date(year, month, 0).getDate();
-	let lastdate = new Date(year, month, 0).getDay();
 	let html = '';
 	// 년,월,일 셀렉트 출력
-	for(let i=year;i<=year+1;i++){
-		html += `<option>
-				${i}
-				</option>`
+	for(let i=year-1;i<=year+1;i++){
+		if(i==year){
+			html += `<option selected>
+					${i}
+					</option>`
+		}else{
+			html += `<option>
+					${i}
+					</option>`
+		}
 	}
 	document.querySelector('.year').innerHTML = html;
 	html = '';
@@ -38,23 +43,28 @@ function startweb(){
 		}
 	}
 	document.querySelector('.month').innerHTML = html;
-	html = ''
+	html = `
+		<div class="day sunday">일</div>
+		<div class="day">월</div>
+		<div class="day">화</div>
+		<div class="day">수</div>
+		<div class="day">목</div>
+		<div class="day">금</div>
+		<div class="day saturday">토</div>
+		`
 	for(let i=0;i<firstday;i++){
-		html += `<div class="date test"> </div>`
+		html += `<div class="date"> </div>`
 	}
 	for(let i=1;i<=lastDay;i++){
 		
 		if(i==date){
-			html += `<div class="date dateinfo${i<10? "0"+i : i} selectedDate">
+			html += `<div class="date dateinfo${i<10? "0"+i : i} selectedDate" onclick="dateinfo(${i})">
 					${i}
 					</div>`
 		}else{
-			html += `<div class="date dateinfo${i<10? "0"+i : i}">
+			html += `<div class="date dateinfo${i<10? "0"+i : i}" onclick="dateinfo(${i})">
 					${i}
 					</div>`
-		}
-		if((i+firstday)==8){
-			html += ``
 		}
 	}
 	document.querySelector('.selectdate').innerHTML = html;
@@ -64,6 +74,7 @@ function startweb(){
 
 // 영화 상영정보 가져오기
 function getallmovielist(){
+	console.log('selectday : ' + selectday)
 	$.ajax({
 		url : "/movie/admin/movieList",
 		method : "get",
@@ -76,11 +87,8 @@ function getallmovielist(){
 				let getyear = o.playtime.split("-")[0]
 				let getmonth = o.playtime.split("-")[1]
 				let getdate = o.playtime.split("-")[2].split(" ")[0]
-				console.log('dddd'+getdate)
-				if(getyear==year&&(getmonth-1)==month){
-					console.log(o)
-					console.log(i)
-					html += `<div class="movieinfo" onclick="getplayinginfo(${i})">
+				if(getyear==year&&getmonth==month){
+					html += `<div class="movieinfo no${i}" value="${i}">
 								${o.title}
 							</div>`
 				}
@@ -91,6 +99,53 @@ function getallmovielist(){
 	}) // ajax e
 }
 
+// 선택한 날의 모든 상영정보를 가져오는 함수
+function dateinfo(i){
+	document.querySelector('.modal1').style.display = 'block'
+	document.querySelector('.modal1_title').innerHTML = year+"년 "+month+"월 "+i+"일"
+	// div안에 들어가야 하는 onclick 값 onclick="getplayinginfo(${date})""
+	$.ajax({
+		url : "/movie/admin/movieList",
+		method : "get",
+		data : {
+			"type" : 3,
+			"selectday" : year+"-"+month+"-"+ (i<10?"0"+i:i),
+			"tomorrow" : year+"-"+month+"-"+ ((i+1)<10?"0"+(i+1):(i+1))
+		},
+		success : (r)=>{
+			console.log(r)
+			selectmoviinfo = r
+			let html = `<table class="movietable table table-bordered border-primary">
+							<tr>
+								<th scope="col">영화제목</th>
+								<th scope="col">상영관</th>
+								<th scope="col">상영시간</th>
+								<th scope="col">예약</th>
+								<th scope="col">잔여</th>
+								<th scope="col">비고</th>
+							</tr>`;
+			r.forEach((o,i)=>{
+				html += `<tr>
+							<td>${o.title}</td>
+							<td>${o.sno}관</td>
+							<td>${o.playtime.substr(11, 5)}</td>
+							<td>${o.pseat}</td>
+							<td>${o.pstate ? o.rseat+"석" : "만석"}</td>
+							<td><button class="btn btn-outline-info" onclick="getplayinginfo(${i})" type="button">상세</button></td>
+						</tr>
+						`
+			}) // for e
+			html += `</table>`
+			document.querySelector('.modal1_content').innerHTML = html
+			html = `<button onclick="addplayinglist()" class="btn btn-outline-info" type="button">상영 추가</button>
+					<button onclick="closeModal1()" class="modal_cencel btn btn-outline-info" type="button">닫기</button>
+					`;
+			document.querySelector('.modal1_btns').innerHTML = html;
+		} // success e
+	}) // ajax e
+} // dateinfo e
+
+
 // 선택한 상영정보를 모달에 띄우는 함수
 function getplayinginfo(i){
 	console.log('버튼 눌림')
@@ -100,46 +155,56 @@ function getplayinginfo(i){
 	document.querySelector('.modal2_title').innerHTML = playingmovie.title
 	let html = `<table>
 					<tr>
-						<th>상영시간</th>
+						<th scope="col">상영시간</th>
 						<td>${playingmovie.playtime}</td>
 					</tr>
 					<tr>
-						<th>예약현황</th>
+						<th scope="col">예약현황</th>
 						<td>${playingmovie.pseat}</td>
 					</tr>
 					<tr>
-						<th>잔여좌석</th>
+						<th scope="col">잔여좌석</th>
 						<td>${playingmovie.rseat}</td>
 					</tr>
 					
 				</table>`;
 	document.querySelector('.modal2_content').innerHTML = html
+	
+	
 }
 
-
-function closeModal1(){
-	document.querySelector('.modal1').style.display = 'none'
+// 모달 닫기
+function closeModal1(){	document.querySelector('.modal1').style.display = 'none'}
+function closeModal2(){	document.querySelector('.modal2').style.display = 'none'}
+// 버튼 함수
+function minusYear(){
+	year--; 
+	startweb()
+}
+function plusYear(){
+	year++;	
+	startweb()
+}
+function minusMonth(){
+	month--;
+	if(month<=0){
+		year--;
+		month = 12;
+	}	
+	startweb();}
+	
+function plusMonth(){
+	month++;
+	if(month>12){
+		year++;	
+		month=1;
+	}	
+	startweb()
 }
 
-function closeModal2(){
-	document.querySelector('.modal2').style.display = 'none'
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 셀렉트 함수
+function clickyear(){year = ((document.querySelector('.year').value)*1);	startweb()}
+function clickmonth(){month = ((document.querySelector('.month').value)*1);	startweb();}
+// 상영 추가 버튼 클릭 함수
+function addplayinglist(){location.href="/movie/admin/newmovielist.jsp"}
 
