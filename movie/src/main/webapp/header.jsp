@@ -29,6 +29,7 @@
 			
 			<div class="menu">
 				<div class="mainmenu">
+					<div class="mainmenuleft">
 					<a href="#"> 예매 </a>
 					<span class="verticalBar">|</span>
 					<a href="/movie/board/Search.jsp"> 영화검색 </a>
@@ -36,6 +37,11 @@
 					<a href="#"> 개봉예정작 </a>
 					<span class="verticalBar">|</span>
 					<a href="#"> 커뮤니티 </a>
+					</div>
+					<div class="mainmenuright">
+						<a href="#"> 관리자 </a>
+					</div>
+
 				</div>
 				<div class="submenu"></div>
 			</div>
