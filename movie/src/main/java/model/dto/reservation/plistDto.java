@@ -13,22 +13,34 @@ public class plistDto {
 	private int mno;			//영화(FK)
     private int sno;			//영화관번호(FK)
     
-    //2023-03-29 추가
+    private ArrayList<MovieDto> mlist;
+    
+    //Screen
+    private int s_seat ; 		//상영관 총 좌석수
+    
+    private int aseat;	//남은좌석
+    
+    
+    //2023-03-29 추가 reservation.js 현재 상영중인 영화 제목
     public ArrayList<MovieDto> getMlist() {
 		return mlist;
 	}
     
     
-
-
-
-	public void setMlist(ArrayList<MovieDto> mlist) {
-		this.mlist = mlist;
+    
+    
+   public plistDto(String playtime, int asea, int sno, int s_seat) {
+		super();
+		this.playtime = playtime;
+		this.aseat = asea;
+		this.sno = sno;
+		this.s_seat = s_seat;
 	}
-	private ArrayList<MovieDto> mlist;
-    
-    
-   //상영중인 영화 생성자
+
+
+
+
+	//상영중인 영화 생성자
 	public plistDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno) {
 		super();
 		this.pno = pno;
@@ -104,6 +116,29 @@ public class plistDto {
 	public void setSno(int sno) {
 		this.sno = sno;
 	}
-    
+	public void setMlist(ArrayList<MovieDto> mlist) {
+		this.mlist = mlist;
+	}
+	public int getS_seat() {
+		return s_seat;
+	}
+	public void setS_seat(int s_seat) {
+		this.s_seat = s_seat;
+	}
+
+
+
+
+	public int getAseat() {
+		return aseat;
+	}
+
+
+
+
+	public void setAseat(int aseat) {
+		this.aseat = aseat;
+	}
+	
     
 }

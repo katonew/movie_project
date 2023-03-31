@@ -142,6 +142,7 @@
 /* 상영 정보 전체 */
 .date_form{
 	display: flex;
+	flex-wrap: wrap;
 }
 
 /* 상영박스 */
@@ -150,6 +151,7 @@
     text-align: center;
     padding: 10px;
     border-radius: 12px;
+    margin-top: 15px;
     margin-left: 20px;
     border:2px solid #eeeeee;
     background: #f9f9f945;
@@ -185,3 +187,10 @@
 	color:green;
 	font-weight: bold;
 }
+
+.none_date{
+	text-align: center;
+    width: 70%;
+    font-size: 25px;
+    padding-top: 30px;
+ }

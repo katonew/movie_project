@@ -40,29 +40,10 @@
 					
 					<div class="screen">	<!-- 선택한 영화+날짜의 상영정보(DB) -->
 						
-						<div class="s_movie_title"> 아야 </div> <!-- 선택한 영화제목 --> 
+						<div class="s_movie_title">  </div> <!-- 선택한 영화제목 --> 
 						
 						<div class="date_form"> <!-- 상영정보 -->
-							
-							<div class="date_box">	<!-- 상영관 박스 -->
-								<div class="date_time">10:10</div> <!-- 상영시간 -->
-								
-								<div class="date_text">
-									<span class="date_seat"> <span class="available">96 </span>/100</span>	<!-- 남은좌석 -->
-									<span class="date_sno">2관</span>	<!-- 상영관 위치 -->
-								</div>
-							</div>
-							
-							<div class="date_box">	<!-- 상영관 박스 -->
-								<div class="date_time">10:10</div> <!-- 상영시간 -->
-								
-								<div class="date_text">
-									<span class="date_seat"> <span class="available">96</span> /100</span>	<!-- 남은좌석 -->
-									<span class="date_sno">2관</span>	<!-- 상영관 위치 -->
-								</div>
-							</div>
-							
-						</div>
+						</div>	<!-- date_form e -->
 					</div>
 					
 				</div>	<!-- select_date e -->
