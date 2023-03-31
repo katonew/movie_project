@@ -65,7 +65,9 @@
 			</div> <!-- top_content e -->
 		</div>	 <!-- ticket_top e --> 
 		 
-		 
+		<div class="screen">
+			SCREEN
+		</div>
 	</div>
 	
 	

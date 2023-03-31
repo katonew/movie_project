@@ -2,16 +2,17 @@
 
 *{
 	box-sizing: border-box;
+	margin:0px
 }
 
 .t_wrap{
-	width:100%;
+	width:70%;
+	margin:0px auto;
 }
 
 /* ------------------------상단 ----------------- */
 .ticket_top{
-	width:70%;
-	margin:0px auto;
+	width:100%;
 	color:black;
 }
 
@@ -79,3 +80,15 @@
 	font-size:20px;
     border: 1px solid #c9c9c9;
 }
+
+.screen{
+	width: 100%;
+    text-align: center;
+    padding: 10px;
+    background:  #939393;
+    color: black;
+    margin:0px;
+    letter-spacing: 15px;
+    margin: 20px 0px;
+}
+
