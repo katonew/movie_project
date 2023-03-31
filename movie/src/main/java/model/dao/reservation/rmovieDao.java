@@ -16,7 +16,7 @@ public class rmovieDao extends Dao{
 	public ArrayList<plistDto> Playing_movie(){
 		
 		/* -------------------- 상영중인 영화 리스트 -------------------*/
-		String sql = "select * from  playinglist";
+		String sql = "select  m.mno, m.title  from movie m natural join playinglist p  where pstate =1 group by mno ;";
 		ArrayList<plistDto> plist = new ArrayList<>();
 		
 		try {
@@ -24,45 +24,16 @@ public class rmovieDao extends Dao{
 			rs=ps.executeQuery();
 			
 			while (rs.next()) {
-		
 			// 상영중인 영화 리스트 
-			plist.add( new plistDto(
-						rs.getInt(1), rs.getBoolean(2), rs.getInt(3),
-						rs.getInt(4), rs.getString(5), rs.getInt(6),
-						rs.getInt(7)) 
-						);
-			}
-			
-			/* --------------- 상영중인 영화의 정보 리스트 ---------- */
-			
-			sql = "select * from movie m natural join playinglist  ";
-			ArrayList<MovieDto> mlist = new ArrayList<>();
-			
-			ps=con.prepareStatement(sql);
-			rs=ps.executeQuery();
-			
-			while (rs.next()) {
-			// 영화 리스트 (상영중인) 
-			MovieDto dto = new MovieDto(
-					rs.getInt(1), rs.getString(2), rs.getString(3),
-					rs.getString(4), rs.getString(5), rs.getInt(6),
-					rs.getBoolean(7));
-			 
-			 mlist.add(dto);
-			}
-			
-			System.out.println("mlist : "+ mlist);
-			plistDto plistdto = new plistDto(mlist);
-			System.out.println("plistdto  : "+plistdto);
-			//리스트 맨마지막에는 영화정보가 들어있음
-			plist.add( plistdto );
+			plist.add( new plistDto(rs.getInt(1), rs.getString(2) ));
+			}//while e	
 			
 			return plist;
 		} catch (SQLException e) {System.err.println(e);}
 		return null;
 	}
 	
-	
+	//상영관 정보 출력
 	public ArrayList<plistDto> screen_print(int mno, String s_date){
 		ArrayList<plistDto> plist = new ArrayList<>();
 		
