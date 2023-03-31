@@ -16,9 +16,11 @@
 		<form class="signupForm">
 			<div><img class="mimgimg" style="width:100px" alt="" src=""> </div>
 			현재비밀번호 <input name="mpwd" type="text">  <br>
-			비밀번호 <input name="newmpwd" type="text">  <br>
-			비밀번호확인 <input name="newmpwdcheck" type="text">  <br>
-
+			비밀번호 <input name="newmpwd" class="newmpwd" type="text">  <br>
+			
+			비밀번호확인 <input onkeyup="repwdcheck()"  name="newmpwdcheck" class="newmpwdcheck" type="text">  <br>
+			<div class="confirminput">테스트</div>
+			
 			이메일 <input class="memail" name="memail" type="text">  <br>
 			프로필 <input onchange="premimg(this)" class="newmimg" name="newmimg" type="file">  <br>
 
