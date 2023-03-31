@@ -22,21 +22,27 @@ public class plistDto {
     
     
     
-   public plistDto(String playtime, int asea, int sno, int s_seat) {
+   public plistDto(String playtime, int asea, int sno, int s_seat, int pno) {
 		super();
 		this.playtime = playtime;
 		this.aseat = asea;
 		this.sno = sno;
 		this.s_seat = s_seat;
+		this.pno = pno;
 	}
 
 	public plistDto(int mno, String title) {
 	super();
 	this.mno = mno;
 	this.title = title;
-}
-
-
+	}
+	
+	public plistDto( String title , String playtime, int sno) {
+		super();
+		this.playtime = playtime;
+		this.sno = sno;
+		this.title = title;
+	}
 
 	public int getPno() {
 		return pno;

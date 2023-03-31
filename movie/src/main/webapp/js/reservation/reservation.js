@@ -9,7 +9,7 @@ let s_mno ; //선택한 영화의 번호
 let a_seat; // 남은 좌석(이용가능좌석)
 let seat; // 전체좌석
 
-let s_sno // 선택한 상영관
+let s_pno // 선택한 상영번호
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 현재 상영중인 영화 제목 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 let pmovie=[];
 $.ajax({
@@ -201,7 +201,7 @@ function screen_print(){
 							</div>
 						</div>
 					</div>`
-			a_seat = o.aseat; seat =o.s_seat;  s_sno = o.sno;
+			a_seat = o.aseat; seat =o.s_seat;  s_sno = o.sno; s_pno = o.pno;
 			})
 		 document.querySelector('.date_form').innerHTML = html
 		 
@@ -209,6 +209,7 @@ function screen_print(){
 	 	
 	})
 }
+
 
 /* --------------------- 모달 출력 -------------------- */
 function select_screen(){
@@ -223,5 +224,5 @@ function closeModal(){
 }
 
 function reservation_screen(){
-	location.href=`/movie/reservation/ticket.jsp?sno=${s_sno}`
+	location.href=`/movie/reservation/ticket.jsp?pno=${s_pno}`
 }

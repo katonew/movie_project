@@ -38,7 +38,7 @@ public class rmovieDao extends Dao{
 		ArrayList<plistDto> plist = new ArrayList<>();
 		
 		System.out.println("mno : "+mno); System.out.println("s_date : "+s_date);
-		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat"
+		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat , p.pno"
 				+ " from movie m natural join playinglist "
 				+ " p natural join screen s "
 				+ " where mno = "+mno +" and playtime like '%"+s_date+"%'";
@@ -49,7 +49,7 @@ public class rmovieDao extends Dao{
 			while(rs.next()) {
 				plist.add( new plistDto(
 				rs.getString(1), rs.getInt(2), rs.getInt(3)
-				,rs.getInt(4)));
+				,rs.getInt(4) , rs.getInt(5)));
 			}
 			
 			return plist;
@@ -57,6 +57,23 @@ public class rmovieDao extends Dao{
 		}catch(Exception e) {System.err.println(e);}
 		
 		return null;
+	}
+	
+	//특정 영화만 출력
+	public plistDto plist_print(int pno) {
+		String sql ="select m.title , p.playtime, p.sno from playinglist p "
+				+ " natural join movie m where pno = "+pno;
+		plistDto dto = null;
+		try {
+			ps=con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				//제목, 날짜, 상영관 위치 
+				dto = new plistDto(
+				rs.getString(1), rs.getString(2), rs.getInt(3));
+			}
+		}catch(Exception e) {System.err.println(e);}
+		return dto;
 	}
 	
 	

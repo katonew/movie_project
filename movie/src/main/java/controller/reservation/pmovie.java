@@ -15,10 +15,6 @@ import model.dao.reservation.rmovieDao;
 import model.dto.reservation.plistDto;
 
 
-
-/**
- * Servlet implementation class playingmoive
- */
 @WebServlet("/playing/moive")
 public class pmovie extends HttpServlet {
 	private static final long serialVersionUID = 1L;

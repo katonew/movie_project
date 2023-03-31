@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+*{
+	box-sizing: border-box;
+}
+
+.t_wrap{
+	width:100%;
+}
+
+/* ------------------------상단 ----------------- */
+.ticket_top{
+	width:70%;
+	margin:0px auto;
+	color:black;
+}
+
+/* 상단 제목 */
+.top_title{
+	width: 100%;
+	background-color: #939393;
+	text-align: center;
+	padding: 20px;
+    font-size: 24px;
+}
+
+.top_content{
+	width: 100%;
+	display:flex;
+	background-color: white;
+	align-items: center;
+}
+/* 상단 영화 정보란 */
+.movie_info{
+	padding: 30px;
+	color:black;
+	margin-right: 40px;
+}
+
+/* 영화 제목 */
+.movie_title{
+	font-size: 24px;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+
+/* 날짜,시간 , 상영관 정보 */
+.date, .time, .screen{
+	font-size: 14px;
+	margin: 0px 10px
+}
+
+/* 성인, 청소년, 시니어 */
+.age{
+	width: 50px;
+	font-weight: bold;
+	margin-right: 15px
+}
+
+/* 인원선택란 */
+.movie_people{
+	display:flex;
+	margin-right: 50px;
+	width:150px;
+	align-items: center;
+}
+
+/* 인원선택 버튼 */
+.people button{
+	border:0px;
+	background-color: white;
+	font-size:20px;
+	padding:  10px;
+	cursor: pointer;
+}
+
+.people{
+	width:120px;
+	font-size:20px;
+    border: 1px solid #c9c9c9;
+}
