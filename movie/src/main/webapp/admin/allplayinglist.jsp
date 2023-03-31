@@ -23,7 +23,7 @@
 				<button onclick="closeModal1()" class="modal_cencel" type="button">닫기</button>
 			</div>
 		</div>
-	</div>
+	</div> 
 	
 	<div class="modal2">
 		<div class="modal2_box">
