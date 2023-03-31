@@ -32,15 +32,15 @@ public class Search {
             String titleStr = title.text();
             String countStr = counts.text();
             String yearStr = year.text();
-            System.out.println("title : "+titleStr);
-            System.out.println("count : " + countStr);
+           // System.out.println("title : "+titleStr);
+          //  System.out.println("count : " + countStr);
            
             // 연결한doc에서 data-rowindex='0'이고 class="css-8y23cj"인 데이터중에서 a태그의 href를 웹주소형식으로 가져오기 
             String link = doc.select("[data-rowindex='0']").select(".css-8y23cj a").get(i).attr("abs:href");
             System.out.println("link : "+link);
             // 연결한doc에서 data-rowindex='0'이고 class="ezcopuc0"인 데이터중에서 img태그의 src를 웹주소형식으로 가져오기
             String pimg = doc.select("[data-rowindex='0']").select(".ezcopuc0 img").get(i).attr("abs:src");
-            System.out.println("pimg : "+ pimg);
+           // System.out.println("pimg : "+ pimg);
             
             // 크롤링한 값을 모아서 list에 넣기
             SearchDto dto = new SearchDto(titleStr, pimg, countStr, link, yearStr);
@@ -60,13 +60,13 @@ public class Search {
           
             
             String link = doc.select("[data-rowindex=2]").select(".css-8y23cj a").get(i).attr("abs:href");
-            System.out.println("link : "+link);
+          //  System.out.println("link : "+link);
             String pimg = doc.select("[data-rowindex=2]").select(".ezcopuc0 img").get(i).attr("abs:src");
-            System.out.println("pimg : "+ pimg);
+          //  System.out.println("pimg : "+ pimg);
             SearchDto dto =	new SearchDto(titleStr, pimg, null, link, yearStr);
             list.add(dto);
          }
-        System.out.println(list.toString());
+      //  System.out.println(list.toString());
         return list;
 	}
 	
@@ -113,7 +113,7 @@ public class Search {
 			list.add(dto);
 			
         }
-		System.out.println("searchlist : " + list.toString());
+		//System.out.println("searchlist : " + list.toString());
 		return list;
 	}
 
@@ -180,7 +180,7 @@ public class Search {
 		String pimg = doc.select(".ezcopuc0 img").first().attr("abs:src");
 		
 		// 메인페이지에서 가져온 값 확인
-		System.out.println(titleStr + " - " +yearStr + " - " +countStr + " - " +pimg);
+		//System.out.println(titleStr + " - " +yearStr + " - " +countStr + " - " +pimg);
 		
 		// dto로 모아서 list에 담아 리턴
 		SearchDto dto = new SearchDto(titleStr, pimg, countStr, null, yearStr, pimg, infotitle, infoyear, infotime, infogenre, infocountry, infoold, infoconetent);

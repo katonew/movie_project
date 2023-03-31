@@ -59,7 +59,7 @@ public class SearchServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonArray = mapper.writeValueAsString( list );
 		// 응답
-		System.out.println("jsonArray : " + jsonArray);
+		//System.out.println("jsonArray : " + jsonArray);
 		response.setContentType("applcation/json");
 		response.getWriter().print( jsonArray );
 	}
