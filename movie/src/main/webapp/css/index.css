@@ -6,6 +6,25 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
+}
+
+.sliderleftbtn{
+	position: absolute;
+	left:20px;
+	top: 125px;
+	z-index: 999;
+	color: gray;
+	font-size: 80px;
+}
+
+.sliderrightbtn{
+	position: absolute;
+	right:20px;
+	top: 125px;
+	z-index: 999;
+	color: gray;
+	font-size: 80px;
 }
 
 .boxoffice_title{
@@ -18,14 +37,19 @@
 
 .boxofficeSlider{
 	width: 1000px;
+	height : 340px;
 	overflow: hidden;
-
+	position: relative;
 }
+
+
 .boxofficeinfobox{
 	width:2,050px;
 	display: flex;
 	justify-content: space-between;
-
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .onemovie{
