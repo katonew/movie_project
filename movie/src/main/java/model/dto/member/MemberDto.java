@@ -2,6 +2,7 @@ package model.dto.member;
 
 import java.util.Properties;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -20,50 +21,48 @@ public class MemberDto {
     // 1. 이메일 전송 메소드
     public boolean sendEmail( String toemail , String updatePwd ) {
     	
-    	// 1. 보내는 사람 이메일 정보
-    	final String username = "movieproject2023@gmail.com"; // 이메일
-        final String password = "movieproject1!"; // 비번
-
-        Properties prop = new Properties();
-		prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
-        
-        Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
-
-        try {
-
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress( username )); // 보내는 이메일
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse(toemail) // 수업때는 new InternetAddress( toEmail )
-            );
-            message.setSubject("CINEVERSE 임시 비밀번호");
-            message.setText("임시비밀번호 : "+updatePwd);
-
-            Transport.send(message);
-            System.out.println("Done");
-            return true; // 전송성공
-
-            
-
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }return false; // 전송실패 
-    	
-    	
+    	// 1. 보내는 사람의 정보
+		String fromEmail = "movieproject33@naver.com"; // 아이디
+		String emailPwd = "movieproject1!"; // 비번
+		// 2. 호스팅 설정 [ 네이버기중]
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", "smtp.naver.com");
+		properties.put("mail.smtp.port", 587 );
+		properties.put("mail.smtp.auth", true);
+		properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		
+		// 3. 인증처리 // Session import -> javax.mail
+			// Session.getDefaultInstance( '설정' , new Authenticator() {	}) ;
+			// PasswordAuthentication : import javax.mail
+			// new PasswordAuthentication("인증할계정주소", "비밀번호");
+		Session session = Session.getDefaultInstance(
+				properties , new Authenticator() {	
+					// 오버라이딩
+					@Override
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(fromEmail, emailPwd);
+					}
+				} );
+		// 4. 메일 보내기
+		try {
+			// Mime프로토콜 : smtp가 보낼 수 있는 표준형식[포맷]
+			MimeMessage message = new MimeMessage( session );	// 인증된 세션 대입해서 포맷 객체 생성
+			message.setFrom( new InternetAddress( fromEmail ) ); // 보내는사람
+			message.addRecipient( Message.RecipientType.TO , new InternetAddress( toemail ) ); // 받는 사람
+			// 내용 구성
+			message.setSubject( "[ cineverse 임시 비밀번호 ]" ); // 메일제목
+			message.setText("임시비밀번호 : " + updatePwd ); // 메일 내용
+			// 전송
+			Transport.send(message); // 표준형식[포맷]의 데이터를 SMTP가 전송
+			
+			return true; // 메일 전송 성공
+		}catch (Exception e) {	System.out.println(e); 		}
+		return false; // 메일전송실패
     }
     
-    public MemberDto() {
-      // TODO Auto-generated constructor stub
-   }
+    public MemberDto() {   }
+    
+    
     // 풀생성자
    public MemberDto(int mno, String mid, String mpwd, String memail, String mimg) {
       super();
@@ -83,7 +82,16 @@ public class MemberDto {
       this.mimg = mimg;
    }
    
-   @Override
+   
+   // 회원정보수정 생성자
+   public MemberDto(String mpwd, String memail, String mimg) {
+	super();
+	this.mpwd = mpwd;
+	this.memail = memail;
+	this.mimg = mimg;
+}
+
+@Override
    public String toString() {
       return "MemberDto [mno=" + mno + ", mid=" + mid + ", mpwd=" + mpwd + ", memail=" + memail + ", mimg=" + mimg
             + "]";

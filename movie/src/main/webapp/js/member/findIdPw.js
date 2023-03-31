@@ -35,6 +35,12 @@ function findpw(){
 		success : (r)=>{
 			console.log('통신')
 			console.log(r)
+			if ( r == 'true'){
+				alert('임시 비밀번호가 메일로 발송되었습니다.')
+				location.href = "/movie/member/logout.jsp";
+			}else{
+				alert('비밀번호찾기 오류')
+			}
 		}
 	})
 	

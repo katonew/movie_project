@@ -19,7 +19,7 @@
 					<ul>
 						<li class="dropdown_li">마이페이지</li>
 						<li class="dropdown_li">예약조회</li>
-						<li class="dropdown_li">회원정보수정</li>
+						<li class="dropdown_li"><a href="/movie/member/update.jsp">회원정보수정</a></li>
 						<li class="dropdown_li"><a href="/movie/member/logout.jsp">로그아웃</a></li>
 					</ul>
 				</div>
