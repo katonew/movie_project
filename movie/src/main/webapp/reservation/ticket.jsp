@@ -65,9 +65,14 @@
 			</div> <!-- top_content e -->
 		</div>	 <!-- ticket_top e --> 
 		 
+		 
 		<div class="screen">
 			SCREEN
-		</div>
+		</div>	<!-- screen -->
+		
+		<div class="select_seat">
+			
+		</div>	<!-- select_screen e -->
 	</div>
 	
 	

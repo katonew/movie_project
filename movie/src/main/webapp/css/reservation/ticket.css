@@ -75,12 +75,15 @@
 	cursor: pointer;
 }
 
+/* 인원선택 버튼 2 */
 .people{
 	width:120px;
 	font-size:20px;
     border: 1px solid #c9c9c9;
 }
 
+/* ---------------------------중단------------------ */
+/* screen 텍스트 */
 .screen{
 	width: 100%;
     text-align: center;
@@ -92,3 +95,28 @@
     margin: 20px 0px;
 }
 
+/* 좌석선택공간 */
+.select_seat{
+	background-color: black;
+	width:100%;
+	height:1000px;
+	padding:50px;
+}
+
+/* 알파벳 열 */
+.col{
+		margin-right: 30px;
+    padding-bottom: 30px;
+}
+
+/* 좌석전체 */
+.seat_text{
+    margin: 10px 0px;
+    display:flex;
+}
+
+.left{margin-right: 60px;}
+.center{}
+.right{}
+
+.seat{}

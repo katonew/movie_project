@@ -51,10 +51,51 @@ function p_down(human){
 	}
 }
 
-
+/* 인원 유효성 검사 (최대 8명 )*/
 function p_max(){
 	if(a_num+t_num+b_num >= 8){
 		alert('총 8명까지 예매할 수 있습니다!').
 		return;
 	}
+}
+
+
+/*-------------------------좌석 선택란------------------*/
+select_screen();
+function select_screen(){
+	let html = '';
+	for(index = 97; index<=105 ; index++ ){ //아스키코트 a~i
+		html += `<div class="seat_text"> 
+					<span class="col"> ${String.fromCharCode(index)} </span>`;	
+		let i = 1;
+			html += `<div class="left">`
+		for(i =1; i <= 4 ; i++){
+			html += `<span class="s${index}_${i} seat " 
+					 onclick="click_seat(${index}, ${i})"> 
+					 ${String.fromCharCode(index)+i} </span>`
+		}
+			html += `</div>`
+		
+			html += `<div class="center">`
+		for(j =5; j <= 12 ; j++){
+			html += `<span class="s${index}_${j} seat" 
+					 onclick="click_seat(${index}, ${j})"> 
+					 ${String.fromCharCode(index)+j} </span>`
+		}
+			html += `</div>`
+		
+			html += `<div class="right">`
+		for(k =13; k <= 16 ; k++){
+			html += `<span class="s${index}_${k} seat" 
+					 onclick="click_seat(${index}, ${k})"> 
+					 ${String.fromCharCode(index)+k} </span>`
+		}
+			html += `</div>`
+		
+		
+		html += `</div> </div>`
+		
+	}
+	document.querySelector('.select_seat').innerHTML = html;
+	
 }
