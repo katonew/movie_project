@@ -12,8 +12,8 @@
 	
 	<div class="wrap">
 		<div class="boxoffice">
-			<div class="sliderleftbtn"> < </div>
-			<div class="sliderrightbtn"> > </div>
+			<div onclick="slidermove( 205 )" class="sliderleftbtn"> < </div>
+			<div onclick="slidermove( -205 )" class="sliderrightbtn"> > </div>
 			<div class="boxoffice_title">박스오피스</div>
 			<div class="boxofficeSlider">
 				<div class="boxofficeinfobox">				

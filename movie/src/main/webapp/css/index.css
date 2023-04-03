@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-
+/* 박스오피스 구역 */
 .boxoffice{
 	width: 100%;
 	display: flex;
@@ -9,24 +9,28 @@
 	position: relative;
 }
 
-.sliderleftbtn{
+/* 슬라이더 버튼 */
+.sliderleftbtn , .sliderrightbtn{
 	position: absolute;
-	left:20px;
 	top: 125px;
 	z-index: 999;
 	color: gray;
 	font-size: 80px;
+	/*드래그 방지*/
+	-webkit-user-select: none;
+ 	-moz-user-select: none;
+ 	-ms-use-select: none;
+ 	user-select: none;
+}
+.sliderleftbtn{ left:20px; }
+.sliderrightbtn{ right:20px; }
+
+/* 슬라이더 버튼 호버 */
+.sliderleftbtn:hover , .sliderrightbtn:hover{
+	cursor: pointer;	
 }
 
-.sliderrightbtn{
-	position: absolute;
-	right:20px;
-	top: 125px;
-	z-index: 999;
-	color: gray;
-	font-size: 80px;
-}
-
+/* 박스오피스 제목 */
 .boxoffice_title{
 	width: 100%;
 	text-align: center;
@@ -35,6 +39,7 @@
 	margin-bottom: 25px;
 }
 
+/* 박스오피스 슬라이더 내용감싼 div */
 .boxofficeSlider{
 	width: 1000px;
 	height : 340px;
@@ -42,14 +47,15 @@
 	position: relative;
 }
 
-
+/* 박스오피스 슬라이드 안에 구성 */
 .boxofficeinfobox{
 	width:2,050px;
 	display: flex;
 	justify-content: space-between;
 	position: absolute;
 	top: 0px;
-	left: 0px;
+	left: 100px;
+	transition : all 0.4s;
 }
 
 .onemovie{
