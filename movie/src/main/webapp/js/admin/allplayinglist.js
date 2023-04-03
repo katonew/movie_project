@@ -137,7 +137,7 @@ function dateinfo(i){
 			}) // for e
 			html += `</table>`
 			document.querySelector('.modal1_content').innerHTML = html
-			html = `<button onclick="addplayinglist()" class="btn btn-outline-info" type="button">상영 추가</button>
+			html = `<button onclick="addplayinglist(${i})" class="btn btn-outline-info" type="button">상영 추가</button>
 					<button onclick="closeModal1()" class="modal_cencel btn btn-outline-info" type="button">닫기</button>
 					`;
 			document.querySelector('.modal1_btns').innerHTML = html;
@@ -150,13 +150,31 @@ function dateinfo(i){
 function getplayinginfo(i){
 	console.log('버튼 눌림')
 	let playingmovie = selectmoviinfo[i]
-	console.log(playingmovie)
+	let playtime = playingmovie.playtime
+	let movieimg = null;
+	console.log(playingmovie.title)
+	$.ajax({
+		url : "/movie/SearchServlet",
+		method : "get",
+		async : false,
+		data : {"type" : 2, "search" : playingmovie.title},
+		success : (r)=>{
+			console.log(r)
+			movieimg = r[0].pimg;
+		}
+	})
+	console.log(movieimg)
 	document.querySelector('.modal2').style.display = 'block'
 	document.querySelector('.modal2_title').innerHTML = playingmovie.title
-	let html = `<table>
+	let html = `<img class="movieimg" src="${movieimg}">
+				<table class="modaltable">
+					<tr>
+						<th scope="col">상영일자</th>
+						<td>${playtime.substring(0,10)}</td>
+					</tr>
 					<tr>
 						<th scope="col">상영시간</th>
-						<td>${playingmovie.playtime}</td>
+						<td>${playtime.substring(11,16)}</td>
 					</tr>
 					<tr>
 						<th scope="col">예약현황</th>
@@ -206,5 +224,7 @@ function plusMonth(){
 function clickyear(){year = ((document.querySelector('.year').value)*1);	startweb()}
 function clickmonth(){month = ((document.querySelector('.month').value)*1);	startweb();}
 // 상영 추가 버튼 클릭 함수
-function addplayinglist(){location.href="/movie/admin/newmovielist.jsp"}
+function addplayinglist(i){
+	location.href="/movie/admin/newmovielist.jsp?selectday="+year+(month<10? "0"+month : month)+(i<10? "0"+i : i)
+}
 

@@ -13,6 +13,16 @@
 <body>
 	
 	<%@ include file="/header.jsp" %>
+	<%
+		String fromyear = request.getParameter("selectday").substring(0,4);
+		String frommonth = request.getParameter("selectday").substring(4,6);
+		String fromdate = request.getParameter("selectday").substring(6,8);
+	%>
+	
+	<div class="fromyear" hidden="hidden"><%=fromyear %></div>
+	<div class="frommonth" hidden="hidden"><%=frommonth %></div>
+	<div class="fromdate" hidden="hidden"><%=fromdate %></div>
+	
 	<div class="wrap">
 		<div class="infobox">
 			<div class="selectbox">

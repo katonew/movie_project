@@ -17,13 +17,19 @@ console.log('newMovieList js 열림')
 
 // 사용하는 전역변수
 let today = new Date()
-let year = today.getFullYear() // 이번 년도
-let month = today.getMonth()+1 // 이번 달 (표시할때는 +1 해야함)
-let date = today.getDate()	// 오늘 날짜
+let year = document.querySelector('.fromyear').innerHTML == null? today.getFullYear() : (document.querySelector('.fromyear').innerHTML)*1 // 이번 년도
+let month = document.querySelector('.frommonth').innerHTML == null? today.getMonth()+1 : (document.querySelector('.frommonth').innerHTML)*1 // 이번 달 (표시할때는 +1 해야함)
+let date = document.querySelector('.fromdate').innerHTML == null? today.getDate() : (document.querySelector('.fromdate').innerHTML)*1 	// 오늘 날짜
 let day = today.getDay() //  오늘 요일 ( 0: 일요일~~6:토요일)
-let selectday = null;
+let selectday = year==null? null : year+(month<10?"0"+month:month)+(date<10?"0"+date:date);
 let selecttime = null;
-let tomorrow = null;
+let tomorrow = year==null? null : year+(month<10?"0"+month:month)+((date+1)<10?"0"+(date+1):(date+1));
+
+
+if(year!=null){
+	setSelectday()
+}
+
 
 // 웹페이지가 열렸을때 실행 될 함수
 startweb()
@@ -122,6 +128,10 @@ function monthchange(){
 	document.querySelector('.date').innerHTML = html;
 }
 
+
+if(year!=null){
+	setSelectday()
+}
 
 
 //날짜선택버튼을 눌렀을때
@@ -278,7 +288,7 @@ function newplayinglist(){
 		success : (r)=>{
 			console.log(r)
 			if(r=='true'){
-				startweb()
+				getMovieList()
 			}
 		}
 	})

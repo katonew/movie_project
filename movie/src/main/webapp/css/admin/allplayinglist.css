@@ -140,13 +140,16 @@
 /* 모달 상자 만들기 */
 .modal2_box{
 	background-color: white;
-	width: 30%;	padding: 5%;
-	border: 3px solid #1b11de;
-	border-radius: 50px;
-	position: relative;
-	top: 30%;
-	left: 30%;
+    width: 30%;
+    padding: 5%;
+    border: 3px solid #1b11de;
+    border-radius: 50px;
+    position: relative;
+    top: 18%;
+    left: 33%;
 }
+
+
 /* 모달 버튼 꾸미기 */
 .modal2_btns button{
 	border: none;
@@ -161,6 +164,14 @@
     bottom: 0px;
     margin: 20px;
 }
+.modaltable{
+	width: 100%;
+}
+
+.movieimg{
+	width: 50%;
+}
+
 
 /* 달력 칸 안에 들어가는 정보 */
 
