@@ -113,10 +113,18 @@
 .seat_text{
     margin: 10px 0px;
     display:flex;
+    justify-content: space-between;
 }
 
 .left{margin-right: 60px;}
-.center{}
-.right{}
+.center{ margin-right: 60px;}
+.right{margin-right: 60px;}
 
-.seat{}
+.seat{   
+	padding: 3px;
+    border: 1px solid white;
+    margin: 3px;
+    cursor: pointer;
+}
+
+
