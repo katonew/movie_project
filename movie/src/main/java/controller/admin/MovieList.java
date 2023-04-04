@@ -68,7 +68,9 @@ public class MovieList extends HttpServlet {
 
 	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		boolean result = MovieListDao.getInstance().pdelete(pno);
+		response.getWriter().print(result);
 	}
 
 }

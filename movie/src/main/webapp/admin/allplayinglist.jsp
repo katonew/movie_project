@@ -28,7 +28,7 @@
 	<div class="modal2">
 		<div class="modal2_box">
 			<div class="modal2_btns">
-				<button onclick="closeModal2()" class="btn" type="button">닫기</button>
+				<button onclick="closeModal2()" class="btn btn-outline-info" type="button">닫기</button>
 			</div>
 			<h3 class="modal2_title">
 				<!-- 제목이 들어가는 자리  -->
@@ -46,16 +46,19 @@
 	<div class="wrap">
 		<center><h2>상영정보</h2></center>
 		<div class="calender">
-			<div class="selectYear"> <!-- 년도 선택부분 -->
-				<button class="btn" onclick="minusYear()"><</button>
-				<select onchange="clickyear()" class="year form-select"></select>
-				<button class="btn" onclick="plusYear()">></button>
+			<div class="selectbox">
+				<div class="selectYear"> <!-- 년도 선택부분 -->
+					<button class="btn" onclick="minusYear()"><</button>
+					<select onchange="clickyear()" class="year form-select"></select>
+					<button class="btn" onclick="plusYear()">></button>
+				</div>
+				<div class="selectmonth">
+					<button class="btn" onclick="minusMonth()"><</button>
+					<select onchange="clickmonth()" class="month form-select"></select>
+					<button class="btn" onclick="plusMonth()">></button>
+				</div>
 			</div>
-			<div class="selectmonth">
-				<button class="btn" onclick="minusMonth()"><</button>
-				<select onchange="clickmonth()" class="month form-select"></select>
-				<button class="btn" onclick="plusMonth()">></button>
-			</div>
+			
 			<div class="selectdate">
 				
 			</div>

@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+/* 셀렉트 부분 */
+.selectbox{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	
+}
 /* 년도 선택 부분 */
 .selectYear, .selectmonth{
 	justify-content: center;

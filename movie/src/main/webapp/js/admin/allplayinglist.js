@@ -1,12 +1,19 @@
 console.log('allplayinglist js 시작')
-
+if(memberInfo==null){
+	alert('관리자가 아닙니다.')
+	location.href = "/movie/member/login.jsp"
+}
+if(memberInfo.mid!='admin'){
+	alert('관리자가 아닙니다.')
+	location.href = "/movie/member/login.jsp"
+}
 // 사용하는 전역변수
 let today = new Date()
 let year = today.getFullYear() // 이번 년도
 let month = today.getMonth()+1 // 이번 달 (표시할때는 +1 해야함)
 let date = today.getDate()	// 오늘 날짜
 let day = today.getDay() //  오늘 요일 ( 0: 일요일~~6:토요일)
-let selectday = year+"-"+(month<10?"0"+month : month)+"-01";
+let selectday = year+"-"+(month<10 ? "0"+month : month)+"-01";
 let selecttime = null;
 let selectmoviinfo = null;
 
@@ -43,6 +50,7 @@ function startweb(){
 		}
 	}
 	document.querySelector('.month').innerHTML = html;
+	// 달력 첫줄에 요일 출력
 	html = `
 		<div class="day sunday">일</div>
 		<div class="day">월</div>
@@ -52,11 +60,13 @@ function startweb(){
 		<div class="day">금</div>
 		<div class="day saturday">토</div>
 		`
+	// 첫날 전에 빈칸 출력
 	for(let i=0;i<firstday;i++){
 		html += `<div class="date"> </div>`
 	}
+	// 마지막 날까지 출력
 	for(let i=1;i<=lastDay;i++){
-		
+		// 날짜에 맞는 상영정보를 받기 위해 div안에 onclick= dateinfo
 		if(i==date){
 			html += `<div class="date dateinfo${i<10? "0"+i : i} selectedDate" onclick="dateinfo(${i})">
 					${i}
@@ -68,6 +78,7 @@ function startweb(){
 		}
 	}
 	document.querySelector('.selectdate').innerHTML = html;
+	// 달력 출력 후 그 달의 모든 영화 상영정보 가져오기
 	getallmovielist()
 }
 
@@ -84,6 +95,7 @@ function getallmovielist(){
 			selectmoviinfo = r;
 			r.forEach((o,i)=>{
 				let html = ``;
+				// playtime이 2222-01-01 16:30:00 이런식으로 들어오기 때문에 -기준으로 나눈뒤 년 월 일로 나누기
 				let getyear = o.playtime.split("-")[0]
 				let getmonth = o.playtime.split("-")[1]
 				let getdate = o.playtime.split("-")[2].split(" ")[0]
@@ -150,6 +162,7 @@ function dateinfo(i){
 function getplayinginfo(i){
 	console.log('버튼 눌림')
 	let playingmovie = selectmoviinfo[i]
+	console.log(playingmovie)
 	let playtime = playingmovie.playtime
 	let movieimg = null;
 	console.log(playingmovie.title)
@@ -160,9 +173,17 @@ function getplayinginfo(i){
 		data : {"type" : 2, "search" : playingmovie.title},
 		success : (r)=>{
 			console.log(r)
-			movieimg = r[0].pimg;
-		}
-	})
+			let equalslist = [];
+			r.forEach((o)=>{
+				if(o.title==playingmovie.title){
+					console.log('같음')
+					equalslist.push(o.pimg);
+				}
+			}) // for e
+			console.log(equalslist[0])
+			movieimg = equalslist[0]
+		} // success e
+	}) // ajax e
 	console.log(movieimg)
 	document.querySelector('.modal2').style.display = 'block'
 	document.querySelector('.modal2_title').innerHTML = playingmovie.title
@@ -184,8 +205,9 @@ function getplayinginfo(i){
 						<th scope="col">잔여좌석</th>
 						<td>${playingmovie.rseat}</td>
 					</tr>
-					
-				</table>`;
+				</table>
+				<button onclick="pdelete(${playingmovie.pno})" class="btn btn-outline-info" type="button">삭제</button>
+				`;
 	document.querySelector('.modal2_content').innerHTML = html
 	
 	
@@ -225,6 +247,23 @@ function clickyear(){year = ((document.querySelector('.year').value)*1);	startwe
 function clickmonth(){month = ((document.querySelector('.month').value)*1);	startweb();}
 // 상영 추가 버튼 클릭 함수
 function addplayinglist(i){
-	location.href="/movie/admin/newmovielist.jsp?selectday="+year+(month<10? "0"+month : month)+(i<10? "0"+i : i)
+	location.href="/movie/admin/newplayinglist.jsp?year="+year+"&month="+month+"&date="+(i<10? "0"+i : i)
+}
+// 상영정보 삭제함수
+function pdelete(pno){
+	$.ajax({
+		url : "/movie/admin/movieList",
+		method : "delete",
+		data : { "pno" : pno},
+		success : (r)=>{
+			console.log(r)
+			if(r=='true'){
+				alert('삭제되었습니다.');
+				closeModal2();
+				closeModal1();
+				startweb();
+			}
+		}
+	})
 }
 

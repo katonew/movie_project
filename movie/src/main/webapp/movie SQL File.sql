@@ -78,8 +78,8 @@ create table reservation(
 	rno int auto_increment primary key, -- 예약고유번호
     mno int,							-- 예약회원번호(FK)
     pno int,							-- 상영번호(FK)
-	foreign key (mno) references member(mno),
-    foreign key (pno) references playinglist(pno)
+	foreign key (mno) references member(mno) on delete set null,
+    foreign key (pno) references playinglist(pno) on delete set null
 );
 insert into reservation(mno,pno) values (1,2);
 insert into reservation(mno,pno) values (2,3);

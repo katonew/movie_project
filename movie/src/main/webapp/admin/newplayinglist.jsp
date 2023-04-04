@@ -8,15 +8,20 @@
 	<!-- 부트스트랩 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- 사용자 정의 CSS -->
-    <link href="/movie/css/admin/newMovieList.css" rel="stylesheet">
+    <link href="/movie/css/admin/newplayinglist.css" rel="stylesheet">
 </head>
 <body>
 	
 	<%@ include file="/header.jsp" %>
 	<%
-		String fromyear = request.getParameter("selectday").substring(0,4);
-		String frommonth = request.getParameter("selectday").substring(4,6);
-		String fromdate = request.getParameter("selectday").substring(6,8);
+		String fromyear = null;
+		String frommonth = null;
+		String fromdate = null;
+		if(request.getParameter("year")!=null){
+			fromyear = request.getParameter("year");
+			frommonth = request.getParameter("month");
+			fromdate = request.getParameter("date");
+		}
 	%>
 	
 	<div class="fromyear" hidden="hidden"><%=fromyear %></div>
@@ -112,6 +117,6 @@
 	<!-- 부트스트랩 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	<!-- 사용자 정의 JS -->
-	<script src="/movie/js/admin/newMovieList.js" type="text/javascript"></script>
+	<script src="/movie/js/admin/newplayinglist.js" type="text/javascript"></script>
 </body>
 </html>
