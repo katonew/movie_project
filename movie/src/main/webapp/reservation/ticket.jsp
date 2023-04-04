@@ -31,7 +31,7 @@
 					<div class="movie_title"> </div>
 					<span class="date"> </span>    |<!-- 날짜 -->
 					<span class="time"> </span>   <!-- 시간 -->
-					<div class="screen">  </div>	<!-- 상영관 -->
+					<div class="screen_box">  </div>	<!-- 상영관 -->
 				</div>	<!-- movie_info e -->
 				
 			<div class="movie_people">	<!-- 성인 인원선택 -->
@@ -65,14 +65,21 @@
 			</div> <!-- top_content e -->
 		</div>	 <!-- ticket_top e --> 
 		 
-		 
-		<div class="screen">
-			SCREEN
-		</div>	<!-- screen -->
-		
-		<div class="select_seat">
+		<div class="middle"> 
+			<div class="screen">
+				SCREEN
+			</div>	<!-- screen -->
 			
-		</div>	<!-- select_screen e -->
+			<div class="select_seat">
+			</div>	<!-- select_screen e -->
+			
+			
+		</div><!-- middle -->
+		
+		<div class="paybox">	<!-- 결제칸 -->
+				<span class="pay_money">총 합계 50,000원</span>
+		</div>	<!-- paybox -->
+		
 	</div>
 	
 	

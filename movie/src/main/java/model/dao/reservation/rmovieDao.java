@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import model.dao.Dao;
 import model.dto.admin.MovieDto;
 import model.dto.reservation.plistDto;
+import model.dto.reservation.reservationDto;
 
 public class rmovieDao extends Dao{
 	private static rmovieDao rdao = new rmovieDao();
@@ -76,5 +77,22 @@ public class rmovieDao extends Dao{
 		return dto;
 	}
 	
-	
+	//예약된 좌석 확인
+	public ArrayList<reservationDto> seatnumPrint(int pno){
+		String sql =" select r.seatnum , p.pprice  "
+				+ " from reservation r join playinglist p on p.pno = r.pno  "
+				+ " where p.pstate=1 and p.pno="+pno;
+		
+		ArrayList<reservationDto> rlist = new ArrayList<>();
+		
+		try {
+			ps=con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				//예약된 좌석만 뽑아오기
+				rlist.add(new reservationDto(rs.getString(1) , rs.getInt(2)));
+			}
+		}catch(Exception e) {System.err.println(e);}
+		return rlist;
+	}
 }
