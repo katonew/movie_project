@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+*{
+	box-sizing: border-box;
+	margin:0px
+}
+
+.t_wrap{
+	width:70%;
+	margin:0px auto;
+}
+
+/* ------------------------상단 ----------------- */
+.ticket_top{
+	width:100%;
+	color:black;
+}
+
+/* 상단 제목 */
+.top_title{
+	width: 100%;
+	background-color: #939393;
+	text-align: center;
+	padding: 20px;
+    font-size: 20px;
+}
+
+.top_content{
+	width: 100%;
+	display:flex;
+	background-color: white;
+	align-items: center;
+}
+/* 상단 영화 정보란 */
+.movie_info{
+	padding: 30px;
+	color:black;
+}
+
+/* 영화 제목 */
+.movie_title{
+	font-size: 24px;
+    font-weight: bold;
+    margin-bottom:5px;
+}
+
+/* 날짜,시간 , 상영관 정보 */
+.date, .time, .screen{
+	font-size: 14px;
+	margin: 0px 10px
+}
+
+/* 성인, 청소년, 시니어 */
+.age{
+	width: 60px;
+	font-weight: bold;
+	margin-right: 15px
+}
+
+/* 인원선택란 */
+.movie_people{
+	display:flex;
+	margin-right: 50px;
+	width:150px;
+	align-items: center;
+}
+
+/* 인원선택 버튼 */
+.people button{
+	border:0px;
+	background-color: white;
+	font-size:20px;
+	padding:  10px;
+	cursor: pointer;
+}
+
+/* 인원선택 버튼 2 */
+.people{
+	width:120px;
+	font-size:20px;
+    border: 1px solid #c9c9c9;
+}
+
+.screen_box{
+	width: 100%;
+    text-align: center;
+    padding: 10px;
+    background:  #939393;
+    color: black;
+    margin:10px 0px 0px 0px;
+}
+
+
+/* ---------------------------중단------------------ */
+.middle{
+	background-color: black;
+	padding-bottom: 150px;
+}
+
+/* screen 텍스트 */
+.screen{
+	width: 100%;
+    text-align: center;
+    padding: 10px;
+    background:  #939393;
+    color: black;
+    margin:50px 0px 0px 0px;
+    letter-spacing: 15px;
+   
+}
+
+/* 좌석선택공간 */
+.select_seat{
+	background-color: black;
+	width:100%;
+	padding:20px;
+	padding-top:100px;
+}
+
+/* 알파벳 열 */
+.col{
+	margin-right: 20px;
+    padding-bottom: 20px;
+    width: 10px;
+}
+
+/* 좌석전체 */
+.seat_text{
+    margin-top: 10px 0px;
+    display:flex;
+    justify-content: space-between;
+}
+
+/* 왼족 좌석 */
+.left{    
+	margin-right: 60px;
+    width: 150px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* 중앙 좌석 */   
+.center{ 
+	margin-right: 30px;
+	width:450px;
+    display: flex;
+    justify-content: center;
+ }
+ 
+ /* 오른쪽 좌석 */
+.right{
+	width:150px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 전체좌석 */
+.seat{   
+	padding: 3px;
+    text-align: center;
+    margin: 3px;
+    cursor: pointer;
+    width:30px;
+    background-color: #E8E8E8;
+    color:black;
+}
+
+/* 하단 결제 */
+.paybox{
+	width: 100%;
+    background-color: gray;
+    height: 100px;
+    display:flex;
+    align-items: center;
+    font-size: 23px;
+    padding-left: 40px;
+}
+
+.pay_money{
+	font-size: 32px;
+    margin: 0px 5px;
+    font-weight: bold;
+}
+
+

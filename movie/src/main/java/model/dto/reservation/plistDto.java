@@ -13,66 +13,36 @@ public class plistDto {
 	private int mno;			//영화(FK)
     private int sno;			//영화관번호(FK)
     
-    private ArrayList<MovieDto> mlist;
-    
     //Screen
     private int s_seat ; 		//상영관 총 좌석수
-    
     private int aseat;	//남은좌석
     
-    
-    //2023-03-29 추가 reservation.js 현재 상영중인 영화 제목
-    public ArrayList<MovieDto> getMlist() {
-		return mlist;
-	}
+    // movieDto
+    private String title ;		// 영화제목
     
     
     
-    
-   public plistDto(String playtime, int asea, int sno, int s_seat) {
+   public plistDto(String playtime, int asea, int sno, int s_seat, int pno) {
 		super();
 		this.playtime = playtime;
 		this.aseat = asea;
 		this.sno = sno;
 		this.s_seat = s_seat;
-	}
-
-
-
-
-	//상영중인 영화 생성자
-	public plistDto(int pno, boolean pstate, int pseat, int pprice, String playtime, int mno, int sno) {
-		super();
 		this.pno = pno;
-		this.pstate = pstate;
-		this.pseat = pseat;
-		this.pprice = pprice;
-		this.playtime = playtime;
-		this.mno = mno;
-		this.sno = sno;
+	}
+
+	public plistDto(int mno, String title) {
+	super();
+	this.mno = mno;
+	this.title = title;
 	}
 	
-	
-
-	//상영중인 영화 정보 리스트
-	public plistDto(ArrayList<MovieDto> mlist) {
+	public plistDto( String title , String playtime, int sno) {
 		super();
-		this.mlist = mlist;
-		System.out.println(mlist.toString());
+		this.playtime = playtime;
+		this.sno = sno;
+		this.title = title;
 	}
-
-
-
-
-	
-
-	@Override
-	public String toString() {
-		return "plistDto [pno=" + pno + ", pstate=" + pstate + ", pseat=" + pseat + ", pprice=" + pprice + ", playtime="
-				+ playtime + ", mno=" + mno + ", sno=" + sno + ", mlist=" + mlist + "]";
-	}
-
-
 
 	public int getPno() {
 		return pno;
@@ -116,28 +86,32 @@ public class plistDto {
 	public void setSno(int sno) {
 		this.sno = sno;
 	}
-	public void setMlist(ArrayList<MovieDto> mlist) {
-		this.mlist = mlist;
-	}
+
 	public int getS_seat() {
 		return s_seat;
 	}
 	public void setS_seat(int s_seat) {
 		this.s_seat = s_seat;
 	}
-
-
-
-
 	public int getAseat() {
 		return aseat;
 	}
-
-
-
-
 	public void setAseat(int aseat) {
 		this.aseat = aseat;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	@Override
+	public String toString() {
+		return "plistDto [pno=" + pno + ", pstate=" + pstate + ", pseat=" + pseat + ", pprice=" + pprice + ", playtime="
+				+ playtime + ", mno=" + mno + ", sno=" + sno + ", s_seat=" + s_seat + ", aseat=" + aseat + ", title="
+				+ title + "]";
 	}
 	
     

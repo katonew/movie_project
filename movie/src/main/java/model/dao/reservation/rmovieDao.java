@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import model.dao.Dao;
 import model.dto.admin.MovieDto;
 import model.dto.reservation.plistDto;
+import model.dto.reservation.reservationDto;
 
 public class rmovieDao extends Dao{
 	private static rmovieDao rdao = new rmovieDao();
@@ -16,7 +17,7 @@ public class rmovieDao extends Dao{
 	public ArrayList<plistDto> Playing_movie(){
 		
 		/* -------------------- 상영중인 영화 리스트 -------------------*/
-		String sql = "select * from  playinglist";
+		String sql = "select  m.mno, m.title  from movie m natural join playinglist p  where pstate =1 group by mno ;";
 		ArrayList<plistDto> plist = new ArrayList<>();
 		
 		try {
@@ -24,50 +25,21 @@ public class rmovieDao extends Dao{
 			rs=ps.executeQuery();
 			
 			while (rs.next()) {
-		
 			// 상영중인 영화 리스트 
-			plist.add( new plistDto(
-						rs.getInt(1), rs.getBoolean(2), rs.getInt(3),
-						rs.getInt(4), rs.getString(5), rs.getInt(6),
-						rs.getInt(7)) 
-						);
-			}
-			
-			/* --------------- 상영중인 영화의 정보 리스트 ---------- */
-			
-			sql = "select * from movie m natural join playinglist  ";
-			ArrayList<MovieDto> mlist = new ArrayList<>();
-			
-			ps=con.prepareStatement(sql);
-			rs=ps.executeQuery();
-			
-			while (rs.next()) {
-			// 영화 리스트 (상영중인) 
-			MovieDto dto = new MovieDto(
-					rs.getInt(1), rs.getString(2), rs.getString(3),
-					rs.getString(4), rs.getString(5), rs.getInt(6),
-					rs.getBoolean(7));
-			 
-			 mlist.add(dto);
-			}
-			
-			System.out.println("mlist : "+ mlist);
-			plistDto plistdto = new plistDto(mlist);
-			System.out.println("plistdto  : "+plistdto);
-			//리스트 맨마지막에는 영화정보가 들어있음
-			plist.add( plistdto );
+			plist.add( new plistDto(rs.getInt(1), rs.getString(2) ));
+			}//while e	
 			
 			return plist;
 		} catch (SQLException e) {System.err.println(e);}
 		return null;
 	}
 	
-	
+	//상영관 정보 출력
 	public ArrayList<plistDto> screen_print(int mno, String s_date){
 		ArrayList<plistDto> plist = new ArrayList<>();
 		
 		System.out.println("mno : "+mno); System.out.println("s_date : "+s_date);
-		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat"
+		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat , p.pno"
 				+ " from movie m natural join playinglist "
 				+ " p natural join screen s "
 				+ " where mno = "+mno +" and playtime like '%"+s_date+"%'";
@@ -78,7 +50,7 @@ public class rmovieDao extends Dao{
 			while(rs.next()) {
 				plist.add( new plistDto(
 				rs.getString(1), rs.getInt(2), rs.getInt(3)
-				,rs.getInt(4)));
+				,rs.getInt(4) , rs.getInt(5)));
 			}
 			
 			return plist;
@@ -88,5 +60,39 @@ public class rmovieDao extends Dao{
 		return null;
 	}
 	
+	//특정 영화만 출력
+	public plistDto plist_print(int pno) {
+		String sql ="select m.title , p.playtime, p.sno from playinglist p "
+				+ " natural join movie m where pno = "+pno;
+		plistDto dto = null;
+		try {
+			ps=con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				//제목, 날짜, 상영관 위치 
+				dto = new plistDto(
+				rs.getString(1), rs.getString(2), rs.getInt(3));
+			}
+		}catch(Exception e) {System.err.println(e);}
+		return dto;
+	}
 	
+	//예약된 좌석 확인
+	public ArrayList<reservationDto> seatnumPrint(int pno){
+		String sql =" select r.seatnum , p.pprice  "
+				+ " from reservation r join playinglist p on p.pno = r.pno  "
+				+ " where p.pstate=1 and p.pno="+pno;
+		
+		ArrayList<reservationDto> rlist = new ArrayList<>();
+		
+		try {
+			ps=con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				//예약된 좌석만 뽑아오기
+				rlist.add(new reservationDto(rs.getString(1) , rs.getInt(2)));
+			}
+		}catch(Exception e) {System.err.println(e);}
+		return rlist;
+	}
 }
