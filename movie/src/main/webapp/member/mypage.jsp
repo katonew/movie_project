@@ -6,11 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link href="/movie/css/member/modal.css" rel="stylesheet">
+	<link href="/movie/css/member/mypage.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="/header.jsp" %>
 	<div class="wrap">
-		
+		<div class="mypageinfo">
+		</div>
 		<div class="">
 			<h3>예약페이지</h3>
 			<div class="reservationDiv">
@@ -41,7 +43,8 @@
 		</div>
 	</div>
 	
-	
+	<!-- 꾸미기 배경 -->
+	<div class="mypagebackground"></div>
 	
 	<!-- 모달 HTML -->
 	<div class="modal_wrap">
