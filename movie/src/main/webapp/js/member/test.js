@@ -1,10 +1,11 @@
 console.log('test.js연결')
 
+let title = "웅남이"
 $.ajax({
-	url : "/movie/testjsoup",
-	method : "get",
+	url : "/movie/search/poster" ,
+	method : "get" ,
+	data : { "title":title } ,
 	success : (r)=>{
-		console.log('통신')
 		console.log(r)
 	}
 })

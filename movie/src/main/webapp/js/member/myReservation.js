@@ -1,11 +1,53 @@
 console.log('myReservation js 실행')
 
 
+// 포스터저장하기
+//let posterlist = []
+//getposter();
+//function getposter(){
+//		$.ajax({
+//			url : "/movie/boxoffice/servlet" ,
+//			method : "get" ,
+//			async :false ,
+//			success : (r)=>{
+//				console.log(r)
+//				r.forEach((o,i)=>{
+//					let poster = { "title":o.title , "pimg": o.pimg}
+//					posterlist.push(poster)
+//				})
+//				console.log(posterlist)
+//			}
+//		})			
+//}
+
+// 예약조회페이지 예매한 영화타이틀 list (출력순서대로저장)
+let movietitlelist = []
+// 영화타이틀로 영화이미지url 구하기
+function posterprint(){
+	movietitlelist.forEach((title,i)=>{
+		$.ajax({
+			url : "/movie/search/poster" ,
+			method : "get" ,
+			data : { "title":title } ,
+			success : (r)=>{
+				console.log('--------------------------------------------------------------------')
+				console.log(title+' 포스터검색결과 r : '+r)
+				let classname = (title.split(' ').join(''))+i
+				console.log('찾을 클래스명 : '+classname)
+				console.log('--------------------------------------------------------------------')
+				document.querySelector('.'+classname).src = r	
+			}
+		})
+	})
+			
+}
+
 myReservationPrint();
 function myReservationPrint(){
 	$.ajax({
 		url : "/movie/myreservation" ,
 		method : "get" ,
+		async :false ,
 		success : (r)=>{
 			console.log('통신')
 			console.log(r)
@@ -66,9 +108,13 @@ function myReservationPrint(){
 				return pprice;
 			}
 			
+			
+	
+			
 			// html 출력
 			let html = ''
-			rlist.forEach((o)=>{
+			rlist.forEach((o,i)=>{
+				movietitlelist.push((o[0].plistdto.moviedto.title))
 				// o안에는 영화정보별 arraylist , for문을 안에 더 돌려주거나 인덱스로 호출해야함.
 				console.log(o[0].plistdto.moviedto.title)
 				console.log(o[0].plistdto.playtime)
@@ -77,19 +123,26 @@ function myReservationPrint(){
 				console.log(o[0].plistdto.pprice.toLocaleString())  
 				html += `
 						<div class="oneReservation">
-					
-							<div class="title">${o[0].plistdto.moviedto.title}</div>
-							<div class="playtime">${o[0].plistdto.playtime}</div>
-							<div class="sno">${o[0].plistdto.screendto.sno}관</div>
-						
-							<div class="seatnum">${seatnumprint(o)}</div>
-							<div class="pprice">${ppriceprint(o).toLocaleString()}원</div>
-							<div>----------------------------------------------</div>
+						<div style="background-image: "></div>
+							<div class="pimg"><img class="poster , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" src=""></div>
+							<div class="reinfo">
+								<div class="title">${o[0].plistdto.moviedto.title}</div>
+								<div class="rinfotext playtime">상영시작: ${o[0].plistdto.playtime}</div>
+								<div class="rinfotext sno">상영관 : ${o[0].plistdto.screendto.sno}관</div>
+							
+								<div class="rinfotext seatnum">좌석번호 : ${seatnumprint(o)}</div>
+								<div class="rinfotext pprice">결제금액 : ${ppriceprint(o).toLocaleString()}원</div>
+							</div>
 						</div> 
 						`
 			})
 			document.querySelector('.reservationDiv').innerHTML = html
+			console.log('movietitlelist : '+movietitlelist)
+			posterprint();	
+			
+			
 		}
 		
 	})
 }
+

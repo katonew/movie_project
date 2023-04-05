@@ -1,15 +1,85 @@
 @charset "UTF-8";
 
+/* .header{ */
+/* 	margin-bottom: 30px !important; */
+/* } */
 
-.mypagebackground{
-	width:100%;
-	height: 300px;
-	background-color: #00456B;
-	position: fixed;
-	top:180px;
-	z-index: -100;
-}
+
+/* .mypagebackground{ */
+/* 	width:100%; */
+/* 	height: 100%; */
+/* 	background-color: #00456B; */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	padding-top: 50px; */
+/* } */
 
 .mypageinfo{
+	background: linear-gradient(to right, #00456B, #00B4DE);
+	background-color: #00456B;
+	border-radius: 15px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	padding: 30px;
+	margin-bottom: 30px;
+}
+
+/*-------------예약페이지---------------*/
+
+.reservation{
+/* 	background: linear-gradient(to bottom, #022842, #00B4DE); */
+	background-color: #022842;
+	border-radius: 15px;
+	padding: 30px;
+	margin-bottom: 20px;
+}
+
+.mypagesubtitle{
+	font-size : 25px;
+	border-bottom: 1px solid #00B4DE;
+	padding-bottom: 15px;
+	margin-bottom: 30px;
+	color:#00B4DE;
 	
+}
+
+.poster{
+	height:100%;
+}
+
+.oneReservation{
+	display: flex;
+	margin-bottom: 10px;
+	width: 500px;
+	height: 177px;
+	border-radius: 20px;
+	
+}
+
+.pimg{
+	height: 177px;
+	word-break:break-all;
+}
+.reinfo{
+	width:377px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: white;
+	color:black !important;
+	padding-left: 20px;
+	word-break:break-all;
+
+}
+.title{
+	font-size: 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	
+}
+
+.rinfotext{
+	margin-top: 5px;
 }
