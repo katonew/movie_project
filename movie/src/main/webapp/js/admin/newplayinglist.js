@@ -1,4 +1,13 @@
-console.log('newMovieList js 열림')
+console.log('newplayinglist js 열림')
+
+if(memberInfo==null){
+	alert('관리자가 아닙니다.')
+	location.href = "/movie/member/login.jsp"
+}
+if(memberInfo.mid!='admin'){
+	alert('관리자가 아닙니다.')
+	location.href = "/movie/member/login.jsp"
+}
 
 /*
 	// Date에 두 date 사이의 날짜 가격을 찾아주는 함수추가
@@ -16,13 +25,15 @@ console.log('newMovieList js 열림')
 */
 
 // 사용하는 전역변수
-let today = new Date()
-let year = today.getFullYear() // 이번 년도
-let month = today.getMonth()+1 // 이번 달 (표시할때는 +1 해야함)
-let date = today.getDate()	// 오늘 날짜
+let today = new Date();
+let year = document.querySelector('.fromyear').innerHTML == 'null'? today.getFullYear() : (document.querySelector('.fromyear').innerHTML)*1 // 이번 년도
+let month = document.querySelector('.frommonth').innerHTML == 'null'? today.getMonth()+1 : (document.querySelector('.frommonth').innerHTML)*1 // 이번 달 (표시할때는 +1 해야함)
+let date = document.querySelector('.fromdate').innerHTML == 'null'? today.getDate() : (document.querySelector('.fromdate').innerHTML)*1 	// 오늘 날짜
 let day = today.getDay() //  오늘 요일 ( 0: 일요일~~6:토요일)
-let selectday = null;
+let selectday = year==null? null : year+(month<10?"0"+month:month)+(date<10?"0"+date:date);
 let selecttime = null;
+let tomorrow = year==null? null : year+(month<10?"0"+month:month)+((date+1)<10?"0"+(date+1):(date+1));
+
 
 // 웹페이지가 열렸을때 실행 될 함수
 startweb()
@@ -122,15 +133,18 @@ function monthchange(){
 }
 
 
-
 //날짜선택버튼을 눌렀을때
 function setSelectday(){
 	let selectyear = document.querySelector('.year').value
 	let selectmonth = document.querySelector('.month').value
-	let selectdate = document.querySelector('.date').value
+	let selectdate = (document.querySelector('.date').value)*1
+	console.log(typeof(selectdate))
 	selectday = selectyear+ "-"+
 				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
 			+`${selectdate<10? "0"+selectdate : selectdate}`;
+	tomorrow = selectyear+ "-"+
+				`${ selectmonth<10? "0"+selectmonth : selectmonth}`+ "-"
+			+`${(selectdate+1)<10? "0"+(selectdate+1) : (selectdate+1)}`;
 	console.log(selectday);
 	document.querySelector('.receivedate').innerHTML = selectday
 	getMovieList()
@@ -178,29 +192,17 @@ function setScreen(){
 getMovieList()
 function getMovieList(){
 	console.log('getmovielist 시작')
-	// 아직 선택한게 아무것도 없을때
+	if(selecttime==null){ // 날짜는 선택하고 시간은 선택 안했을때
 	console.log(selectday)
-	console.log(selecttime)
-	if(selectday == null&&selecttime==null) {
+	console.log(tomorrow)
 		$.ajax({
 			url : "/movie/admin/movieList",
 			method : "get",
-			data : { "type" : 1},
-			success : (r)=>{
-				console.log(r)
-				result(r)
-			}// success e
-		}) // ajax e
-	} // if e
-	else if(selectday==null){ // 시간은 선택하고 날짜는 선택 안했을때
-		alert('날짜를 먼저 선택해주세요');
-		return;
-	}// else if e
-	else if(selecttime==null){ // 날짜는 선택하고 시간은 선택 안했을때
-		$.ajax({
-			url : "/movie/admin/movieList",
-			method : "get",
-			data : { "type" : 2, "selectday" : selectday},
+			data : { 
+				"type" : 3, 
+				"selectday" : selectday, 
+				"tomorrow" : tomorrow
+			},
 			success : (r)=>{
 				console.log(r)
 				result(r)
@@ -208,13 +210,15 @@ function getMovieList(){
 		}) // ajax e
 	} // else if e
 	else{
+		console.log(selectday)
+		console.log(tomorrow)
 		$.ajax({
 			url : "/movie/admin/movieList",
 			method : "get",
 			data : { 
-				"type" : 2, 
+				"type" : 3,
 				"selectday" : selectday,
-				"selecttime" : selecttime
+				"tomorrow" : tomorrow
 			},
 			success : (r)=>{
 				console.log(r)
@@ -251,13 +255,14 @@ function result(r){
 // 영화등록 함수
 function newplayinglist(){
 	let pprice = document.querySelector('.price').value
-	let playtime = selectday+" "+selecttime+":00"
+	let playtime = document.querySelector('.receivedate').innerHTML==null? null : (document.querySelector('.receivedate').innerHTML)+":00";
 	let mno = document.querySelector('.selectMovie').value.split(",")[0]
 	let sno = document.querySelector('.screen').value
-	console.log(pprice)
-	console.log(playtime)
-	console.log(mno)
-	console.log(sno)
+	if(document.querySelector('.receiveprice').innerHTML==""||selecttime==null
+		||document.querySelector('.receivetitle').innerHTML==""||document.querySelector('.receivescreen').innerHTML==""){
+		alert('정보를 모두 선택해주세요')
+		return;
+	}
 	
 	$.ajax({
 		url : "/movie/admin/movieList",
@@ -271,7 +276,7 @@ function newplayinglist(){
 		success : (r)=>{
 			console.log(r)
 			if(r=='true'){
-				startweb()
+				getMovieList()
 			}
 		}
 	})

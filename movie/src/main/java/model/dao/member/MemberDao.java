@@ -109,14 +109,15 @@ public class MemberDao extends Dao {
 	   }
 	   
 	   // 회원정보 업데이트
-	   public boolean updateMember( MemberDto dto , int mno ) {
-		   String sql = "update member set mpwd = ? , memail = ? , mimg = ? where mno = ?";
+	   public boolean updateMember( MemberDto dto , int mno , String mpwd ) {
+		   String sql = "update member set mpwd = ? , memail = ? , mimg = ? where mno = ? and mpwd = ?";
 		   try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getMpwd());
 			ps.setString(2, dto.getMemail());
 			ps.setString(3, dto.getMimg());
 			ps.setInt(4, mno);
+			ps.setString(5, mpwd);
 			int count = ps.executeUpdate();
 			if ( count == 1 ) { return true; }
 			return true;
