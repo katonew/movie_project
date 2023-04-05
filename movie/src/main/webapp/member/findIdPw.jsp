@@ -26,6 +26,7 @@
 					<div class="findidresult"></div>
 				</div>
 				<div class="findpwdiv">
+					<div>회원정보의 이메일로 임시비밀번호를 발송합니다.</div>
 					아이디 : <input class="idInputFindPw" type="text"> <br>
 					이메일 : <input class="emailInputFindPw" type="text"> <br>
 					<button onclick="findpw()" type="button">비밀번호찾기</button>

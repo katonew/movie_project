@@ -21,11 +21,16 @@ function getLogin(){
 						<span class="submenumargin"> <a href="/movie/member/login.jsp">로그인</a> <span>
 						`
 			}else{ // 로그인 // memberInfo에 mno , mid , memail , mimg 있음
+				if ( r.mid == 'admin' ){
+					document.querySelector('.mainmenuright').style.display = "flex";
+				}
+				
 				html +=`
 						<img src="/movie/member/img/${r.mimg == null ? 'default.webp' : r.mimg }" class="profileimg">
 						`
 			}
 			document.querySelector('.profileimgdiv').innerHTML = html;
+			
 		}
 	})
 }

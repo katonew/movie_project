@@ -17,14 +17,15 @@
 			<div class="formdiv">
 				<form class="signupForm">
 					아이디 <input onkeyup="idcheck()" class="mid" name="mid" type="text"> <br>
-		
+					<div class="confirminput">테스트</div>
 					비밀번호 <input onkeyup="pwdcheck()" class="mpwd" name="mpwd" type="text">  <br>
-		
+					<div class="confirminput">테스트</div>
 					비밀번호확인 <input onkeyup="repwdcheck()" class="rempwd" name="rempwd" type="text">  <br>
-		
+					<div class="confirminput">테스트</div>
 					이메일 <input onkeyup="emailcheck()" class="memail" name="memail" type="text">  <br>
-					프로필 <input class="mimg" name="mimg" type="file">  <br>
-		
+					<div class="confirminput">테스트</div>
+					프로필 <input onchange="premimg(this)" class="mimg" name="mimg" type="file">  <br>
+					<div><img style="width:100px"  class="newmimg" alt="" src="/movie/member/img/default.webp"></div>
 					<button class="signupbtn" type="button" onclick="signup()"> 회원가입 </button>
 		
 				</form>

@@ -67,7 +67,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin-bottom: 50px;
+	margin-bottom: 60px;
 }
 
 
@@ -152,7 +152,7 @@ body{
 .mainmenu{ /*메인메뉴*/	
 	width: 100%; 
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
 	margin: 10px 0 0 0px !important; /* 부트스트랩 여백 제거 */
 	background-color: #022842;
@@ -163,6 +163,19 @@ body{
 	margin: 0 20px;
 	font-size: 17px;
 	font-weight: bold;
+}
+
+.mainmenuleft{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.mainmenuright{
+/* 	display: flex; */
+	display : none;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 .verticalBar{

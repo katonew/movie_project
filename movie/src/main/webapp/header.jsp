@@ -17,9 +17,9 @@
 				<div class="profileimgdiv"></div>
 				<div class="dropdown_menu">
 					<ul>
-						<li class="dropdown_li">마이페이지</li>
-						<li class="dropdown_li">예약조회</li>
-						<li class="dropdown_li"><a href="/movie/member/update.jsp">회원정보수정</a></li>
+						<li class="dropdown_li"><a href="/movie/member/mypage.jsp">마이페이지</a></li>
+						<li class="dropdown_li"><a href="/movie/member/mypage.jsp">예약조회</a></li>
+						<li class="dropdown_li"><a href="/movie/member/mypage.jsp#update">회원정보수정</a></li>
 						<li class="dropdown_li"><a href="/movie/member/logout.jsp">로그아웃</a></li>
 					</ul>
 				</div>
@@ -29,6 +29,7 @@
 			
 			<div class="menu">
 				<div class="mainmenu">
+					<div class="mainmenuleft">
 					<a href="#"> 예매 </a>
 					<span class="verticalBar">|</span>
 					<a href="/movie/board/Search.jsp"> 영화검색 </a>
@@ -36,6 +37,11 @@
 					<a href="#"> 개봉예정작 </a>
 					<span class="verticalBar">|</span>
 					<a href="#"> 커뮤니티 </a>
+					</div>
+					<div class="mainmenuright">
+						<a href="#"> 관리자 </a>
+					</div>
+
 				</div>
 				<div class="submenu"></div>
 			</div>
