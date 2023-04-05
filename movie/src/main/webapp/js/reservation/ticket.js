@@ -41,21 +41,24 @@ function p_up(human){
 /* ----------------------- 영화 인원 감소 ------------------*/
 function p_down(human){
 	
-	if(a_num==0||t_num==0||b_num==0){
-		alert('인원을 다시 확인해주세요!');
-		return;
-	}
-	
-	
 	if(human == 1){
+		if(a_num == 0 ){
+			alert('0명 이하로 감소할 수 없습니다.'); return;
+		}
 		a_num--
 		document.querySelector('.a_num').innerHTML= a_num;
 	}
 	else if (human == 2){
+		if(t_num == 0 ){
+			alert('0명 이하로 감소할 수 없습니다.'); return;
+		}
 		t_num--;
 		document.querySelector('.t_num').innerHTML= t_num;
 	}
 	else if (human == 3 ){
+		if(b_num == 0 ){
+			alert('0명 이하로 감소할 수 없습니다.'); return;
+		}
 		b_num--;
 		document.querySelector('.b_num').innerHTML= b_num;
 	}
