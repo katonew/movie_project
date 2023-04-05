@@ -62,6 +62,7 @@ function p_down(human){
 		b_num--;
 		document.querySelector('.b_num').innerHTML= b_num;
 	}
+	pay_money() // 결제금액 계산
 }
 
 /* 인원 유효성 검사 (최대 8명 )*/
@@ -148,6 +149,9 @@ function click_seat(eng,num){
 	//선택된 좌석 빨갛게
 	document.querySelector(`#s${eng}_${num}`).style.backgroundColor = "red";
 	document.querySelector(`#s${eng}_${num}`).style.color = "white";
-	
+}
+
+// -------------------------- 결제금액 계산 --------------------
+function pay_money(){
 	
 }
