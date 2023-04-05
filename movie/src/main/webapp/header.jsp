@@ -30,7 +30,7 @@
 			<div class="menu">
 				<div class="mainmenu">
 					<div class="mainmenuleft">
-					<a href="#"> 예매 </a>
+					<a href="/movie/reservation/reservation.jsp"> 예매 </a>
 					<span class="verticalBar">|</span>
 					<a href="/movie/board/Search.jsp"> 영화검색 </a>
 					<span class="verticalBar">|</span>
@@ -39,7 +39,7 @@
 					<a href="#"> 커뮤니티 </a>
 					</div>
 					<div class="mainmenuright">
-						<a href="#"> 관리자 </a>
+						<a href="/movie/admin/allplayinglist.jsp"> 관리자 </a>
 					</div>
 
 				</div>
