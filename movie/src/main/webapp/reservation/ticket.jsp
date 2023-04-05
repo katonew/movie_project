@@ -77,7 +77,7 @@
 		</div><!-- middle -->
 		
 		<div class="paybox">	<!-- 결제칸 -->
-				총 합계 <span class="pay_money"> 50,000</span>원
+				총 합계 <span class="pay_money"> 0 </span>원
 		</div>	<!-- paybox -->
 		
 	</div>

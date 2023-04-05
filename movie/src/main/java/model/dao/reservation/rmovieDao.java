@@ -62,7 +62,8 @@ public class rmovieDao extends Dao{
 	
 	//특정 영화만 출력
 	public plistDto plist_print(int pno) {
-		String sql ="select m.title , p.playtime, p.sno from playinglist p "
+		String sql ="select m.title , p.playtime, p.sno, p.pprice "
+				+ " from playinglist p "
 				+ " natural join movie m where pno = "+pno;
 		plistDto dto = null;
 		try {
@@ -71,7 +72,7 @@ public class rmovieDao extends Dao{
 			while(rs.next()) {
 				//제목, 날짜, 상영관 위치 
 				dto = new plistDto(
-				rs.getString(1), rs.getString(2), rs.getInt(3));
+				rs.getString(1), rs.getString(2), rs.getInt(3),rs.getInt(4));
 			}
 		}catch(Exception e) {System.err.println(e);}
 		return dto;

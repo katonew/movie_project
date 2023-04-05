@@ -5,6 +5,7 @@ let t_num = 0// teen num 청소년 인원
 let b_num = 0// baby num 시니어 인원
 
 let seat_num=0 // 선택한 좌석
+let pprice = 0 // 총 결제 가격
 //----------------------- 영화 정보 출력 -----------------
 setTimeout( () =>{
 	$.ajax({
@@ -17,6 +18,7 @@ setTimeout( () =>{
 			document.querySelector('.date').innerHTML = r.playtime.split(" ")[0];
 			document.querySelector('.time').innerHTML = r.playtime.split(" ")[1].substr(0, 5);
 			document.querySelector('.screen_box').innerHTML = r.sno +'관'
+			pprice = r.pprice
 		}
 	})
 },1000)
@@ -36,6 +38,7 @@ function p_up(human){
 		b_num++;
 		document.querySelector('.b_num').innerHTML= b_num;
 	}
+	pay_money() // 결제금액 계산
 }
 
 /* ----------------------- 영화 인원 감소 ------------------*/
@@ -62,7 +65,6 @@ function p_down(human){
 		b_num--;
 		document.querySelector('.b_num').innerHTML= b_num;
 	}
-	pay_money() // 결제금액 계산
 }
 
 /* 인원 유효성 검사 (최대 8명 )*/
@@ -153,5 +155,5 @@ function click_seat(eng,num){
 
 // -------------------------- 결제금액 계산 --------------------
 function pay_money(){
-	
+	document.querySelector('.pay_money').innerHTML =  (pprice* (a_num+t_num+b_num)).toLocaleString()	
 }
