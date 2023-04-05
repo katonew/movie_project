@@ -46,14 +46,21 @@ public class ticket extends HttpServlet {
 		Object Omno = request.getSession().getAttribute("login");
 		int mno = Integer.parseInt((String.valueOf(Omno)));
 		
-		System.out.println("post data : " + request.getParameter("data") );
+		System.out.println("post");
+		System.out.println(mno);
 		
+		//pno 안됨 JSON.stringify 시 getParameter 아님
+		System.out.println( request.getParameter("pno") );
+		int pno =  Integer.parseInt(request.getParameter("pno") );
 		
-		Enumeration<String> enumeration = request.getParameterNames();
-		System.out.println( enumeration.toString() );
-		System.out.println( enumeration.nextElement() );
+		System.out.println(pno);
 		
-		
+		/*
+		 * Enumeration<String> enumeration = request.getParameterNames();
+		 * System.out.println( enumeration.toString() ); System.out.println(
+		 * enumeration.nextElement() );
+		 * 
+		 */
 	}
 
 

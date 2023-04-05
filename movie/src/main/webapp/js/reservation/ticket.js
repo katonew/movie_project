@@ -232,7 +232,7 @@ function requestPay() {
       } else {
         console.log(s_seat)
         // 현재 배열을 전달이 안됨
-        let data={ "pno":pno , "s_seat":s_seat }
+        let data={ "pno":pno  }
         
         $.ajax({
 			url:"/movie/ticket",
