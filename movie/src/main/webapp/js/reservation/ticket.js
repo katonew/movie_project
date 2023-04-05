@@ -231,10 +231,13 @@ function requestPay() {
         
       } else {
         console.log(s_seat)
+        // 현재 배열을 전달이 안됨
+        let data={ "pno":pno , "s_seat":s_seat }
+        
         $.ajax({
 			url:"/movie/ticket",
 			method:"post",
-			data: JSON.stringify(s_seat),
+			data: JSON.stringify(data),
     		contentType: "application/json",
 			success:(r)=>{
 				console.log(r)

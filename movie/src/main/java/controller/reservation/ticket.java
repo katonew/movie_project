@@ -42,21 +42,18 @@ public class ticket extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//로그인 세션을 int로
+		Object Omno = request.getSession().getAttribute("login");
+		int mno = Integer.parseInt((String.valueOf(Omno)));
+		
+		System.out.println("post data : " + request.getParameter("data") );
+		
 		
 		Enumeration<String> enumeration = request.getParameterNames();
 		System.out.println( enumeration.toString() );
 		System.out.println( enumeration.nextElement() );
 		
-		/*
-		 * int pno = Integer.parseInt( request.getParameter("pno"));
-		 * System.out.println("post pno:"+pno);
-		 * 
-		 * Object mno = request.getSession().getAttribute("login");
-		 * System.out.println("mno : "+mno);
-		 * 
-		 * 
-		 * System.out.println(request.getParameter("seatnum"));
-		 */
+		
 	}
 
 
