@@ -17,16 +17,13 @@ public class Test {
 	public static Test getInstance() {return test;}
 	
 	
-    public ArrayList<SearchDto> test(String search){
+    public ArrayList<SearchDto> test(String search) throws Exception{
 ArrayList<SearchDto> list = new ArrayList<>();
 		
 		// 검색한 단어를 넣은 크롤링 주소값 넣기
 		Document doc = null;
-		try {
-			doc = Jsoup.connect("https://pedia.watcha.com/ko-KR/searches/movies?query="+search).get();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		doc = Jsoup.connect("https://pedia.watcha.com/ko-KR/searches/movies?query="+search).get();
+		
 		Element title = doc.select(".css-ix1flm").select(".css-x62r3q").get(0);
 		String titleStr = title.text();
     	System.out.println("titleStr :" + titleStr);
@@ -44,8 +41,16 @@ ArrayList<SearchDto> list = new ArrayList<>();
         
 		System.out.println(link); 
        
-        //SearchDto dto = new SearchDto(titleStr, pimg, null, null, yearStr);
-		//list.add(dto);
+		try {
+			doc = Jsoup.connect(link).get();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String pimg = doc.select(".ezcopuc0 img").first().attr("abs:src");
+		System.out.println("img : " + pimg);
+        SearchDto dto = new SearchDto(titleStr, pimg, null, null, yearStr);
+		list.add(dto);
 			
 		System.out.println("searchlist : " + list.toString());
 		return list;
