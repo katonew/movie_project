@@ -14,10 +14,15 @@
 	<div class="wrap">
 		<div class="mypagediv">
 			<div class="mypageinfo">
-				<div> admin님 반가워요! </div>
+				<div> admin님 반가워요! </div>				
 			</div>
+			
+					
 			<div class="reservation">
-				<h3 class="mypagesubtitle">예매조회</h3>
+				<div class="mypageinfo">
+					<h3 class="mypagesubtitle">예매조회</h3>				
+				</div>
+				
 				<div class="reservationDiv">
 					<!-- 출력할예약정보 : 영화제목/상영시간/상영관/좌석번호/결제금액 -->
 					

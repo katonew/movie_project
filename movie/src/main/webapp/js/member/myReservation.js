@@ -20,6 +20,12 @@ console.log('myReservation js 실행')
 //		})			
 //}
 
+function test(){
+	document.querySelector('.test').style.backgroundImage= "url(https://an2-img.amz.wtchn.net/image/v2/bHT0I-pIjglxXeylqodk7g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56ZzFNRGt4TkRrM09UZ3dOelUzTmpraWZRLk1TTW1qLWpSaHZLY242N0JHc3o4aFlXSHNFVER1Z092WHhIZlA1cWEtdVE)" 
+	document.querySelector('.test').style.backgroundImage= "url()"
+	
+}
+
 // 예약조회페이지 예매한 영화타이틀 list (출력순서대로저장)
 let movietitlelist = []
 // 영화타이틀로 영화이미지url 구하기
@@ -35,7 +41,8 @@ function posterprint(){
 				let classname = (title.split(' ').join(''))+i
 				console.log('찾을 클래스명 : '+classname)
 				console.log('--------------------------------------------------------------------')
-				document.querySelector('.'+classname).src = r	
+				//document.querySelector('.'+classname).src = r
+				document.querySelector('.'+classname).style.backgroundImage= `url(${r})`	
 			}
 		})
 	})
@@ -120,18 +127,20 @@ function myReservationPrint(){
 				console.log(o[0].plistdto.playtime)
 				console.log(o[0].plistdto.screendto.sno)
 				console.log(o[0].seatnum)
-				console.log(o[0].plistdto.pprice.toLocaleString())  
+				console.log(o[0].plistdto.pprice.toLocaleString())
+				//<div class="pimg"><img class="poster , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" src=""></div>  
 				html += `
-						<div class="oneReservation">
-						<div style="background-image: "></div>
-							<div class="pimg"><img class="poster , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" src=""></div>
+						<div class="oneReservation , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" style="background-image: URL();">
+							<img class="reinfogradient" src="/movie/member/img/mypage/gradientblack.png">
 							<div class="reinfo">
 								<div class="title">${o[0].plistdto.moviedto.title}</div>
-								<div class="rinfotext playtime">상영시작: ${o[0].plistdto.playtime}</div>
-								<div class="rinfotext sno">상영관 : ${o[0].plistdto.screendto.sno}관</div>
-							
-								<div class="rinfotext seatnum">좌석번호 : ${seatnumprint(o)}</div>
-								<div class="rinfotext pprice">결제금액 : ${ppriceprint(o).toLocaleString()}원</div>
+								<div class="rinfotext playtime">${o[0].plistdto.playtime}</div>
+								<div class="screeninfo">
+									<div class="rinfotext sno">${o[0].plistdto.screendto.sno}관&nbsp;·&nbsp;</div>
+									
+									<div class="rinfotext seatnum">${seatnumprint(o)}</div>
+								</div>
+								<div class="rinfotext pprice">${ppriceprint(o).toLocaleString()}원</div>
 							</div>
 						</div> 
 						`
