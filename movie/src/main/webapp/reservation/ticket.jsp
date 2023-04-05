@@ -77,13 +77,51 @@
 		</div><!-- middle -->
 		
 		<div class="paybox">	<!-- 결제칸 -->
+			<div class="pay_text">
 				총 합계 <span class="pay_money"> 0 </span>원
+			</div>
+				<button onclick="pay_modal()" type="button" class="paybtn">결제하기</button>
 		</div>	<!-- paybox -->
 		
 	</div>
 	
+	<!-- 결제모달 -->
+	<div class="modal_wrap">
+		<div class="modal_box">
+			
+			<div class="modal_content">
+				<div class="movie_info2"> <!-- 영화 정보 -->
+					<div class="movie_title modal_title"> </div>
+					<span class="date modal_date"> </span>    |<!-- 날짜 -->
+					<span class="time  modal_time"> </span>   <!-- 시간 -->
+					<div class="screen_box modal_screen">  </div>	<!-- 상영관 -->
+				</div>	<!-- movie_info e -->
+				
+				<div class="movie_info2">	<!-- 인원, 결제금액 -->
+					<div class="pay_people"> 인원  <span class="pay_people2"></span></div>
+					<div class="s_seat"> 시트  <span class="s_seat2"></span></div>
+					<div class="pay_money3"> 금액  <span class="pay_money2"></span></div>
+				</div>
+			
+			</div>	<!-- modal_content e -->
+
+			<div class="modal_btns">
+				<button onclick="requestPay()" class="modal_check" 	type="button"> 결제하기 </button>
+				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
+			</div>
+		</div>
+	</div>
+	
 	
 	<%@include file="/footer.jsp" %>
+	
+	<!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+	<!-- 포트원 -->
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+	<!-- 사용자 js -->
 	<script src="/movie/js/reservation/ticket.js"></script>
 </body>
 </html>

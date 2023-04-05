@@ -2,6 +2,7 @@ package controller.reservation;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,10 +42,25 @@ public class ticket extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Enumeration<String> enumeration = request.getParameterNames();
+		System.out.println( enumeration.toString() );
+		System.out.println( enumeration.nextElement() );
+		
+		/*
+		 * int pno = Integer.parseInt( request.getParameter("pno"));
+		 * System.out.println("post pno:"+pno);
+		 * 
+		 * Object mno = request.getSession().getAttribute("login");
+		 * System.out.println("mno : "+mno);
+		 * 
+		 * 
+		 * System.out.println(request.getParameter("seatnum"));
+		 */
 	}
 
 
-	//예약된 좌석 호출
+	//예약된 좌석 호출 put과 안어울림
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int pno = Integer.parseInt( request.getParameter("pno"));
 		System.out.println("put pno :" + pno);

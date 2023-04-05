@@ -96,4 +96,23 @@ public class rmovieDao extends Dao{
 		}catch(Exception e) {System.err.println(e);}
 		return rlist;
 	}
+	
+	//결제하기
+	public boolean reservation_ticket(String seatnum[],  int mno, int pno) {
+		//좌석을 2개이상 예약할 수 있으므로 같은 멤버, 같은 상영관에 다른좌석만 insert
+		String sql = "";
+		
+		for(int i = 0 ; i <= seatnum.length ; i++) {
+			sql += " insert into reservation(seatnum,mno,pno) "
+				   + " values ('"+seatnum[i] +"', "+mno+", "+pno+")"; 
+		};
+		
+		try {
+			ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.err.println(e);}
+		
+		return false;
+	}
 }
