@@ -10,6 +10,20 @@
 </head>
 <body>
 	<%@ include file="/header.jsp" %>
+	
+	<div class="modal">
+		<div class="modal_box">
+			<h1 class="modal_title"></h1>
+			<div class="modal_content">
+				<div class="modalimgbox"></div>
+				<div class="modaloverview"></div>
+			</div>
+			<div class="modal_btns">
+				<button class="btn btn-outline-info" type="button" onclick="closeModal()">닫기</button>
+			</div>
+		</div>
+	</div> 
+	
 	<div class="wrap">
 		<center><h2>개봉예정영화</h2></center>
 		<div class="movielist"></div>

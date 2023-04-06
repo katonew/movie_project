@@ -1,1 +1,96 @@
 @charset "UTF-8";
+
+.moviebox{
+	width: 18%;
+	margin: 1%;
+	height: 400px;
+}
+.dday{
+	position: absolute;
+    z-index: 999;
+    top: 15px;
+    right: 15px;
+    font-size: 14px;
+    line-height: 2;
+    color: red;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 60%;
+    background-color: white;
+}
+.mimg{
+	position: relative;
+    left: 50%;
+    width: 100px;
+    min-width: 100%;
+    height: 300px;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+}
+.overview{
+	overflow: hidden;
+	height: 75px;
+}
+
+.movielist{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 5%;
+	justify-content: center;
+}
+.imgbox{
+	position: relative;
+}
+
+
+
+.modal{
+	background-color: rgba(196 ,188 ,188,50%);
+	position: fixed;	/* fixed 고정위치 */
+	top : 0; left: 0;	/* 왼쪽 상단 위치 설정 */
+	width: 100%; height: 100%;	/* 모든 화면 감싸기 */
+	/* 내용물 정 가운데 배치*/
+	display: flex;
+	justify-content: center; align-items: center;
+	/* 모달 열기/닫기 -> js */
+	display: none;
+	color : black;
+}
+
+.modal_box{
+	background-color: white;
+    width: 40%;
+    height: 80;
+    padding: 5%;
+    border: 3px solid #1b11de;
+    border-radius: 50px;
+    position: relative;
+    top: 20%;
+    left: 29%;
+}
+
+.modal_btns button{
+	border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color : black;
+}
+.modal_content{
+	display: flex;
+	justify-content: space-between;
+}
+.modaloverview{
+	width: 50%;
+}
+.modalimg{
+	width: auto;
+    height: 300px;
+}
+.modal_btns {
+	position: absolute;
+    right: 0px;
+    bottom: 0px;
+    margin: 20px;
+}
