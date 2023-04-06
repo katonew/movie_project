@@ -189,6 +189,9 @@
     font-size: 15px;
     text-align: center;
     border-radius: 10px;
+    background: linear-gradient(to right, #00456B, #00B4DE );
+    color : white;
+    font-family: 'SUIT-Regular';
 }
 
 

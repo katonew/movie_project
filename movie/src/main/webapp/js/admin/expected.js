@@ -32,6 +32,10 @@ function start(){
 function print(){
 	let html = '';
 	console.log(movielist)
+	list = movielist.sort(function(a,b) {
+		return parseFloat(a.order) - parseFloat(b.order);
+	});
+	console.log(list)
 	movielist.forEach((o,i)=>{
 		let getday = new Date(o.release_date)
 		let today = new Date()
