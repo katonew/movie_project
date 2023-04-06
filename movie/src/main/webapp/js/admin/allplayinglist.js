@@ -171,7 +171,6 @@ function getplayinginfo(i){
 		method : "get",
 		async : false,
 		data : {
-			"type" : 2, 
 			"query" : playingmovie.title,
 			"language" : "ko-KR"
 		},
