@@ -35,6 +35,7 @@
 .movie_info{
 	padding: 30px;
 	color:black;
+
 }
 
 /* 영화 제목 */
@@ -48,6 +49,11 @@
 .date, .time, .screen{
 	font-size: 14px;
 	margin: 0px 10px
+}
+
+/* 날짜 */
+.date{
+	margin-left:0px;
 }
 
 /* 성인, 청소년, 시니어 */
@@ -82,7 +88,7 @@
 }
 
 .screen_box{
-	width: 100%;
+	width: 50px;
     text-align: center;
     padding: 10px;
     background:  #939393;
@@ -174,12 +180,84 @@
     align-items: center;
     font-size: 23px;
     padding-left: 40px;
+    justify-content: space-between;
 }
 
+/* 결제금액 */
 .pay_money{
 	font-size: 32px;
     margin: 0px 5px;
     font-weight: bold;
+    margin-left: 30px;
+}
+
+/* 결제버튼 */
+.paybtn{
+	width: 15%;
+    height: 100%;
+    font-size: 23px;
+    background-color: red;
+    color: white;
+    border: none;
 }
 
 
+/*------------------------결제 창--------------------  */
+/*모달 배경*/
+.modal_wrap{
+	background-color:rgba(196,188,188,50%);
+	position: fixed;
+	top : 0; left: 0;
+	width: 100%; height: 100%;
+	justify-content: center; align-items: center;
+	display: none;
+	color:black;
+}
+
+/*모달 상자*/
+.modal_box{
+	background-color: white;
+	width: 50%;
+	padding: 5%;
+	border: 3px solid black;
+	border-radius: 30px;
+}
+
+.modal_content{
+	display:flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+.modal_btns{
+	text-align: right;
+	padding-right: 60px;
+}
+
+
+/*모달 버튼*/
+.modal_btns button{
+	border: none;
+	background-color: #F44336;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.pay_people, .s_seat, .pay_money3 {
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.pay_people2, .s_seat2 , .pay_money2{
+	margin-left:10px;
+}
+
+
+.movie_info2{
+	padding: 30px;
+	color:black;
+	border: 1px solid black;
+    margin-right: 12px;
+    margin-bottom: 20px;
+}
