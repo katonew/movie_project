@@ -65,30 +65,27 @@ create table playinglist(
     foreign key (mno) references movie(mno),
     foreign key (sno) references screen(sno)
 );
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-01 14:00',1,1);
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-02 22:00',2,2);
-insert into playinglist(pprice,playtime,mno,sno) values (11000,'2023-04-03 09:30',2,3);
-insert into playinglist(pprice,playtime,mno,sno) values (12000,'2023-04-04 08:40',2,4);
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-05 19:20',2,5);
+insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 14:00',1,1);
+insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 22:00',1,2);
+insert into playinglist(pprice,playtime,mno,sno) values (16000,'2023-04-06 09:30',1,3);
+insert into playinglist(pprice,playtime,mno,sno) values (12000,'2023-04-06 08:40',1,4);
+insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 19:20',1,5);
 
 
 -- 예약 테이블
 drop table if exists reservation;
 create table reservation(
-	rno int auto_increment primary key, -- 예약고유번호
-    mno int,							-- 예약회원번호(FK)
-    pno int,							-- 상영번호(FK)
-	foreign key (mno) references member(mno) on delete set null,
-    foreign key (pno) references playinglist(pno) on delete set null
+   rno int auto_increment primary key, -- 예약고유번호
+   seatnum varchar(10),            -- 선택한 좌석
+    mno int,                     -- 예약회원번호(FK)
+    pno int,                     -- 상영번호(FK)
+   foreign key (mno) references member(mno),   
+    foreign key (pno) references playinglist(pno)
 );
 insert into reservation(mno,pno) values (1,2);
 insert into reservation(mno,pno) values (2,3);
 insert into reservation(mno,pno) values (3,4);
 insert into reservation(mno,pno) values (4,5);
 
-select *from member;
-select *from movie;
-select *from screen;
-select *from playinglist;
-select *from reservation;
+select * from reservation;
 
