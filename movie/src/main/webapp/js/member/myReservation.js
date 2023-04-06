@@ -20,11 +20,7 @@ console.log('myReservation js 실행')
 //		})			
 //}
 
-function test(){
-	document.querySelector('.test').style.backgroundImage= "url(https://an2-img.amz.wtchn.net/image/v2/bHT0I-pIjglxXeylqodk7g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56ZzFNRGt4TkRrM09UZ3dOelUzTmpraWZRLk1TTW1qLWpSaHZLY242N0JHc3o4aFlXSHNFVER1Z092WHhIZlA1cWEtdVE)" 
-	document.querySelector('.test').style.backgroundImage= "url()"
-	
-}
+
 
 // 예약조회페이지 예매한 영화타이틀 list (출력순서대로저장)
 let movietitlelist = []
@@ -49,6 +45,7 @@ function posterprint(){
 			
 }
 
+// 예매출력
 myReservationPrint();
 function myReservationPrint(){
 	$.ajax({
@@ -144,9 +141,11 @@ function myReservationPrint(){
 							</div>
 						</div> 
 						`
+				
 			})
 			document.querySelector('.reservationDiv').innerHTML = html
 			console.log('movietitlelist : '+movietitlelist)
+			console.log('movietitlelist.length : '+movietitlelist.length)
 			posterprint();	
 			
 			
@@ -154,4 +153,85 @@ function myReservationPrint(){
 		
 	})
 }
+
+
+// 슬라이더움직이기
+// 슬라이더 position 값 설정
+// position absolute 구역 가져오기
+let reservationDiv = document.querySelector('.reservationDiv')
+// position 위치 전역변수 선언
+let positionleft = 0;
+//let positiontop = 0;
+
+// position 위치 슬라이더에 적용
+reservationDiv.style.left = positionleft+"px";
+//boxofficeinfobox.style.top = positiontop+"px";
+
+//버튼출력유무체크
+btncheck()
+// left 값에 따라서 left버튼 생김,숨김
+function btncheck(){
+	if ( positionleft == 0 ){
+		document.querySelector('.sliderleftbtn').style.display = 'none'
+		document.querySelector('.leftmouseover').style.display = 'none'
+		
+	}else{
+		document.querySelector('.sliderleftbtn').style.display = 'block'
+		document.querySelector('.leftmouseover').style.display = 'block'
+	}
+	
+	if ( positionleft == (-((movietitlelist.length-4)*305)) ){
+		document.querySelector('.sliderrightbtn').style.display = 'none'
+		document.querySelector('.rightmouseover').style.display = 'none'
+	}else{
+		document.querySelector('.sliderrightbtn').style.display = 'block'
+		document.querySelector('.rightmouseover').style.display = 'block'
+	}
+}
+
+// 왼쪽,오른쪽버튼
+// -1025px씩 옮기면 됨
+//rightmove( -1025 )
+// left값 오른쪽으로 옮기는 함수
+// 전역변수 left값 저장 , 실제 left값 변경
+function slidermove( px ){
+	// 현재위치 + 매개변수값
+	positionleft = positionleft + px
+	// 변경된 위치값으로 left값 변경
+	reservationDiv.style.left = positionleft+"px";
+	// 변경된 위치에 따른 버튼출력유무체크
+	btncheck()
+	// 변경된 현재 left 위치
+	console.log( '현재 left값 : '+ positionleft+"px");
+}
+
+
+/* 마우스오버div에 마우스오버했을때 */
+let leftmouseover = document.querySelector('.leftmouseover')
+leftmouseover.addEventListener('mouseover',()=>{
+	console.log("mouseover실행")
+	document.querySelector('.leftshadow').style.display = 'block'
+	document.querySelector('.sliderleftbtn').style.opacity = '100%'
+})
+
+leftmouseover.addEventListener('mouseout',()=>{
+	console.log("mouseover실행")
+	document.querySelector('.leftshadow').style.display = 'none'
+	document.querySelector('.sliderleftbtn').style.opacity = '50%'
+})
+
+let rightmouseover = document.querySelector('.rightmouseover')
+rightmouseover.addEventListener('mouseover',()=>{
+	console.log("mouseover실행")
+	document.querySelector('.rightshadow').style.display = 'block'
+	document.querySelector('.sliderrightbtn').style.opacity = '100%'
+})
+
+rightmouseover.addEventListener('mouseout',()=>{
+	console.log("mouseover실행")
+	document.querySelector('.rightshadow').style.display = 'none'
+	document.querySelector('.sliderrightbtn').style.opacity = '50%'
+})
+
+
 

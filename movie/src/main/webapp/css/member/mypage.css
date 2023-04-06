@@ -29,10 +29,78 @@
 
 /*-------------예약페이지---------------*/
 
+.reservation{
+	width: 100%;
+	height: 405px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* 슬라이더 버튼 */
+.sliderleftbtn , .sliderrightbtn{
+	position: absolute;
+	top: 125px;
+	z-index: 999;
+	color: white;
+	font-size: 80px;
+	opacity:50%;
+	/*드래그 방지*/
+	-webkit-user-select: none;
+ 	-moz-user-select: none;
+ 	-ms-use-select: none;
+ 	user-select: none;
+}
+.sliderleftbtn{ left:20px; }
+.sliderrightbtn{ right:20px; }
+
+/* 슬라이더 버튼 호버 */
+.sliderleftbtn:hover , .sliderrightbtn:hover{
+	cursor: pointer;	
+}
+
+.rightshadow , .leftshadow{
+	position: absolute;
+	bottom: 0px;
+	border-radius: 9px;
+/* 	opacity: 80%; */
+	z-index: 998;
+}
+.rightshadow{
+	right:0px;
+	display: none;
+}
+.leftshadow{
+	left:0px;
+	display: none;
+}
+
+.rightmouseover , .leftmouseover{
+	width: 100px;
+	height: 405px;
+/* 	border: 1px solid white; */
+	position: absolute;
+	z-index: 1500;
+}
+
+.rightmouseover{
+	right: 0px;
+}
+
+.leftmouseover{
+	left: 0px;
+}
+
+/* 마우스오버div 호버 */
+.rightmouseover:hover , .leftmouseover:hover{
+	cursor: pointer;	
+}
+
 .reservationDiv{
 	display: flex;
 	overflow: hidden;
-	
+	position:absolute;
+	left:0px;
+	transition : all 0.4s;
 }
 
 .oneReservation{
@@ -47,6 +115,7 @@
 	position: relative;
 	margin-right: 20px;
 }
+
 
 .reinfo{
 /* 	color: black !important; */

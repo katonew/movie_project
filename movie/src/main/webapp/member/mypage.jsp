@@ -17,11 +17,17 @@
 				<div> admin님 반가워요! </div>				
 			</div>
 			
-					
-			<div class="reservation">
-				<div class="mypageinfo">
+			<div class="mypageinfo">
 					<h3 class="mypagesubtitle">예매조회</h3>				
-				</div>
+				</div>	
+			<div class="reservation">
+				
+				<div  class="sliderleftbtn"> < </div>
+				<div  class="sliderrightbtn"> > </div>
+				<img class="leftshadow" src="/movie/member/img/mypage/leftshadow.png">
+				<img class="rightshadow" src="/movie/member/img/mypage/rightshadow.png">
+				<div onclick="slidermove(305)" class="leftmouseover"></div>
+				<div onclick="slidermove(-305)" class="rightmouseover"></div>
 				
 				<div class="reservationDiv">
 					<!-- 출력할예약정보 : 영화제목/상영시간/상영관/좌석번호/결제금액 -->
