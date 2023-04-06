@@ -34,7 +34,7 @@
 					<span class="verticalBar">|</span>
 					<a href="/movie/board/Search.jsp"> 영화검색 </a>
 					<span class="verticalBar">|</span>
-					<a href="#"> 개봉예정작 </a>
+					<a href="/movie/admin/expected.jsp"> 개봉예정작 </a>
 					<span class="verticalBar">|</span>
 					<a href="#"> 커뮤니티 </a>
 					</div>

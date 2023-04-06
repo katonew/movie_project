@@ -37,6 +37,7 @@ let tomorrow = year==null? null : year+(month<10?"0"+month:month)+((date+1)<10?"
 
 // 웹페이지가 열렸을때 실행 될 함수
 startweb()
+setSelectday()
 function startweb(){
 	// 특정 날짜의 마지막 날 가져오기
 	let lastDay = new Date(year, month, 0).getDate();
@@ -165,6 +166,7 @@ function setSelecttime(){
 }
 
 //가격을 선택했을때
+setPrice()
 function setPrice(){
 	let price = parseInt(document.querySelector('.price').value) 
 	console.log(typeof(price))
@@ -184,6 +186,7 @@ function selectMovie(){
 }
 
 // 영화관 선택 함수
+setScreen()
 function setScreen(){
 	let screen = document.querySelector('.screen').value
 	document.querySelector('.receivescreen').innerHTML = screen+"관"

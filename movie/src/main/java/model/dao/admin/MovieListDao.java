@@ -91,7 +91,7 @@ public class MovieListDao extends Dao{
 		System.out.println("selectday : " + selectday);
 		System.out.println("tomorrow : " + tomorrow);
 		try {
-			String sql = "select p.*, m.title from playinglist p natural join movie m where playtime  between ? and ?";
+			String sql = "select p.*, m.title from playinglist p natural join movie m where playtime  between ? and ? ";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, selectday);
 			ps.setString(2, tomorrow);
