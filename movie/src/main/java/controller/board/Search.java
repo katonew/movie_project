@@ -180,10 +180,10 @@ public class Search {
 		String pimg = doc.select(".ezcopuc0 img").first().attr("abs:src");
 		
 		// 메인페이지에서 가져온 값 확인
-		//System.out.println(titleStr + " - " +yearStr + " - " +countStr + " - " +pimg);
+		System.out.println(titleStr + " - " +yearStr + " - " +countStr + " - " +pimg);
 		
 		// dto로 모아서 list에 담아 리턴
-		SearchDto dto = new SearchDto(titleStr, pimg, countStr, null, yearStr, pimg, infotitle, infoyear, infotime, infogenre, infocountry, infoold, infoconetent);
+		SearchDto dto = new SearchDto(titleStr, pimg, countStr, null, yearStr, pimg , infotitle, infoyear, infotime, infogenre, infocountry, infoold, infoconetent);
 		list.add(dto);
 		return list;
 	}

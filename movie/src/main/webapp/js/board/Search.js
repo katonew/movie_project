@@ -1,7 +1,8 @@
 console.log('search 확인')
+
 console.log('회원아이디 확인' + memberInfo.mid)
 console.log('회원번호 확인' + memberInfo.mno)
-if(memberInfo.mno==null){
+if(memberInfo.mid==null){
 	alert('로그인해주세요.')
 	location.href="/movie/member/join.jsp"
 }
@@ -127,13 +128,7 @@ function closeModal(){
 	bmovie = '';
 }
 
-function openModal2(){ // e = link주소
-	document.querySelector('.modal_wrap2').style.display = 'flex';
-	console.log('모달2 인수 확인' )
-}
-function closeModal2(){
-	document.querySelector('.modal_wrap2').style.display = 'none';
-}
+
 // 선택한 영화 상세보기
 function modal_select(select){
 	console.log('modal : ' + select); // 넘겨받은 인수 확인
@@ -219,11 +214,13 @@ function bprint(){
 	$.ajax({
 		url : "/movie/Board/Bwrite",
 		method : "get" ,
-		data : {"bmovie" : bmovie },
+		data : {"bmovie" : bmovie,
+				"type" : 1 },
 		success : (r)=>{
 			console.log('bprint리턴값 : ' + r)
 			let list = JSON.parse(JSON.stringify( r)); // 형변환
 			console.log(list)
+			
 			
 			let html = '';
 			
@@ -236,15 +233,133 @@ function bprint(){
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">${o.bcontent}</div>
-							<button type="button" onclick="openModal2()">댓글달기</button>
+							<div class="reply${o.bno}"></div>
+							<button type="button" onclick="openModal2(${o.bno})">댓글달기</button>
 						</div>
 						`
+			reply_print(o.bmovie , o.bno);
 			})
 			document.querySelector('.review_print').innerHTML = html;
 			
 		}
 	})
 }
+
+
+
+function openModal2(bno){ // e = link주소
+	document.querySelector('.modal_wrap2').style.display = 'flex';
+	console.log("bno : " + bno)
+	reply_view(bno)
+	
+}
+
+function closeModal2(){
+	document.querySelector('.modal_wrap2').style.display = 'none';
+}
+
+function reply_view(bno){
+	$.ajax({
+		url : "/movie/Board/Bwrite",
+		method : "get" ,
+		data : {"type" : 2 , 
+				"bno" : bno},
+		success : (r)=>{
+			console.log('replyview리턴값 : ' + r)
+			let list = JSON.parse(JSON.stringify(r));
+			console.log(list)
+			
+			let html = ``;
+			
+			list.forEach((o,i)=>{
+				
+				html+=`<div>
+							<input type="hidden" class="r_bno" value="${o.bno}">
+							<input type="hidden" class="rmovie" value="${o.bmovie}">
+							<div class="review_list">
+								<div class="b_mid">ID:${o.mid}</div>
+								<div class="b_bscore">별점:${o.bscore}</div>
+								<div class="b_bdate">${o.bdate}</div>
+							</div>
+							<div class="b_bcontent">내용 : ${o.bcontent}</div>
+						</div>
+						<div>
+							<textarea rows="10" cols="55" id="rcontent"></textarea>
+						</div>
+						`
+						;
+				
+			})
+			document.querySelector('.modal_content2').innerHTML = html;
+		}
+	})
+	
+}
+
+
+function reply_write(){
+	let rcontent = document.getElementById("rcontent").value;
+	
+	let info = {
+		bno : document.querySelector('.r_bno').value,
+		rmovie : document.querySelector('.rmovie').value,
+		rcontent : rcontent,
+		mno : memberInfo.mno,
+		type : 2
+	}
+	console.log(info)
+	
+	$.ajax({
+		url : "/movie/Board/Bwrite",
+		method : "post" ,
+		data : info,
+		success : (r)=>{
+			alert('작성 성공')
+			
+		}
+	})
+	
+}
+
+
+function reply_print(movie , bno){
+	$.ajax({
+		url : "/movie/Board/Bwrite",
+		method : "get" ,
+		data : {"type" : 3,
+				"movie" : movie,
+				"bno" : bno},
+		success : (r)=>{
+			console.log('reply_print리턴값 : ' + r)
+			console.log(JSON.parse(JSON.stringify( r)));
+		
+		}
+	})
+			
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

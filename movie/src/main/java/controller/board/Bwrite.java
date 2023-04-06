@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.dao.board.BwriteDao;
 import model.dto.board.BoardDto;
+import model.dto.board.ReplyDto;
 
 /**
  * Servlet implementation class Bwrite
@@ -36,19 +37,62 @@ public class Bwrite extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		String bmovie = request.getParameter("bmovie");
-		System.out.println("bmovie : " + bmovie);
+		int type = Integer.parseInt(request.getParameter("type"));
+		ArrayList<BoardDto> list = new ArrayList<>();
 		
-		ArrayList<BoardDto> list =  BwriteDao.getInstane().bprint(bmovie);
-		System.out.println(list);
+		if(type==1) {
+			String movie = request.getParameter("bmovie");
+			//System.out.println("bmovie : " + bmovie);
+			
+			String[] smovie = movie.split("/");
+			
+			String bmovie = smovie[5];
+			
+			
+			list =  BwriteDao.getInstane().bprint(bmovie);
+			//System.out.println(list);
+			// java 형식 ---> js형식 
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArray = mapper.writeValueAsString( list );
+			// 응답
+			//System.out.println("jsonArray : " + jsonArray);
+			response.setContentType("applcation/json");
+			response.getWriter().print( jsonArray );
+		}
 		
-		// java 형식 ---> js형식 
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonArray = mapper.writeValueAsString( list );
-		// 응답
-		System.out.println("jsonArray : " + jsonArray);
-		response.setContentType("applcation/json");
-		response.getWriter().print( jsonArray );
+		if(type==2) {
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			list = BwriteDao.getInstane().reply_view(bno);
+			//System.out.println("reply : " + list);
+			// java 형식 ---> js형식 
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArray = mapper.writeValueAsString( list );
+			// 응답
+			//System.out.println("jsonArray : " + jsonArray);
+			response.setContentType("applcation/json");
+			response.getWriter().print( jsonArray );
+		}
+		if(type==3) {
+			String movie = request.getParameter("movie");
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			System.out.println("reply_print movie : " + movie);
+			
+			
+			ArrayList<ReplyDto> list2 = new ArrayList<>();
+			
+			list2 = BwriteDao.getInstane().reply_print(movie , bno);
+			System.out.println("list2 : " + list2);
+			
+			// java 형식 ---> js형식 
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArray = mapper.writeValueAsString( list2 );
+			// 응답
+			System.out.println("jsonArray : " + jsonArray);
+			response.setContentType("applcation/json");
+			response.getWriter().print( jsonArray );
+		}
+		
+		
 		
 		
 	}
@@ -59,19 +103,46 @@ public class Bwrite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		int type = Integer.parseInt(request.getParameter("type"));
+		
+		// 리뷰작성
+		if(type == 1) {
+			int mno = Integer.parseInt(request.getParameter("mno"));
+			String movie = request.getParameter("bmovie");
+			String bcontent = request.getParameter("bcontent");
+			int bscore = Integer.parseInt(request.getParameter("bscore"));
+			String[] smovie = movie.split("/");
+			
+			String bmovie = smovie[5];
+			
+			
+			
+			System.out.println(mno + bcontent + bscore + "||"+ bmovie);
+			BoardDto dto = new BoardDto(bmovie, bcontent, bscore, mno);
+			System.out.println(dto);
+			boolean result = BwriteDao.getInstane().bwrite(dto);
+			
+			response.getWriter().print(result);
+		}
+		// 댓글작성
+		else if(type == 2) {
+			int bno = Integer.parseInt(request.getParameter("bno"));
+			String rmovie = request.getParameter("rmovie");
+			int rindex = bno;
+			System.out.println(rindex);
+			String rcontent = request.getParameter("rcontent");
+			int mno = Integer.parseInt(request.getParameter("mno"));
+			
+			System.out.println("댓글작성 : " + bno +"||"+ rmovie +"||" + rcontent +"||" + mno);
+			
+			
+			
+			ReplyDto dto = new ReplyDto(rcontent, rmovie, rindex, mno, bno);
+			boolean result = BwriteDao.getInstane().reply_write(dto);
+			response.getWriter().print(result);
+		}
 		
 		
-		int mno = Integer.parseInt(request.getParameter("mno"));
-		String bmovie = request.getParameter("bmovie");
-		String bcontent = request.getParameter("bcontent");
-		int bscore = Integer.parseInt(request.getParameter("bscore"));
-		
-		System.out.println(mno + bcontent + bscore + "||"+ bmovie);
-		BoardDto dto = new BoardDto(bmovie, bcontent, bscore, mno);
-		System.out.println(dto);
-		boolean result = BwriteDao.getInstane().bwrite(dto);
-		
-		response.getWriter().print(result);
 		
 		
 		

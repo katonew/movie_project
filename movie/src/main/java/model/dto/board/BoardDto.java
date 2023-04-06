@@ -1,5 +1,7 @@
 package model.dto.board;
 
+import java.util.ArrayList;
+
 public class BoardDto {
 	
 	private int bno;
@@ -9,18 +11,68 @@ public class BoardDto {
 	private int bscore;
 	private int mno;
 	private String mid;
+	private ArrayList<ReplyDto> reList;
+
+
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public BoardDto(int bno, String bmovie, String bcontent, String bdate, int bscore, int mno, String mid,
+			ArrayList<ReplyDto> reList) {
+		super();
+		this.bno = bno;
+		this.bmovie = bmovie;
+		this.bcontent = bcontent;
+		this.bdate = bdate;
+		this.bscore = bscore;
+		this.mno = mno;
+		this.mid = mid;
+		this.reList = reList;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public ArrayList<ReplyDto> getReList() {
+		return reList;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public void setReList(ArrayList<ReplyDto> reList) {
+		this.reList = reList;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public BoardDto(int bno, String bmovie, String bcontent, String bdate, int bscore, int mno, String mid) {
 		super();
 		this.bno = bno;

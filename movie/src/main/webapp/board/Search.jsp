@@ -87,16 +87,16 @@
 		<div class="modal_wrap2 overflow-auto">
 		<div class="modal_box2">
 			<h3 class="modal_title2">
-				모달2
+				댓글작성하기
 			</h3>
 			<div class="modal_content2">
 				<!-- 내용이 들어가는 자리  -->
 			</div>
-			<div class="modal_btns">
-				<button onclick="closeModal2()" class="modal_cencel" type="button">닫기</button>
+			<div class="modal_btns2">
+			<button class="bwrite" onclick="reply_write()" type="button">작성</button>	
+			<button onclick="closeModal2()" class="modal_cencel" type="button">닫기</button>
 			</div>
 		</div>
-	
 			
 		</div>
 	
