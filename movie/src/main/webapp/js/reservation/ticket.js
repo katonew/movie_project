@@ -230,18 +230,25 @@ function requestPay() {
       if (rsp.success) {
         
       } else {
-        console.log(s_seat)
        
-        let info= JSON.stringify({ "s_seat" : s_seat , "pno" : pno })
-         console.log(info) 
-        // 현재 배열을 전달이 안됨
+        
+        let seatString = ''
+        s_seat.forEach( (s,i) =>{
+			console.log("좌색: "+s + " 인덱스: "+ i)
+			seatString += s ;
+			if( i == ( s_seat.length-1) ){
+			} else{
+				seatString += "," ;
+			}
+			
+		})
+        
         $.ajax({
 			url:"/movie/ticket",
 			method:"post",
-			data: info,
-			contentType:"application/json",
+			data: { "pno" : pno , "s_seat" : seatString },
 			success:(r)=>{
-				console.log(r)
+				if(r=='true'){alert('예약되었습니다! ')}
 			}//success	
 		})//$.ajax e
 		}//else e

@@ -46,14 +46,16 @@ public class ticket extends HttpServlet {
 		Object Omno = request.getSession().getAttribute("login");
 		int mno = Integer.parseInt((String.valueOf(Omno)));
 		
-		System.out.println("------- post ---------");
-		System.out.println(mno);
+		//상영번호
+		int pno = Integer.parseInt( request.getParameter("pno") );
 		
-		//전달받은 pno s_seat 필요함
-		Object ob = request.getParameter("info");
-
-
-		System.out.println(ob);
+		//좌석
+		String s_seat = request.getParameter("s_seat");
+		String[] seat = s_seat.split(",");
+		
+		boolean result = rmovieDao.getInstance().reservation_ticket(seat, mno, pno);
+		
+		response.getWriter().print(result);
 		
 	}
 
