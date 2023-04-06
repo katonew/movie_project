@@ -109,7 +109,7 @@ public class rmovieDao extends Dao{
 			ps=con.prepareStatement(sql);
 			ps.executeUpdate();
 			};
-			return true;
+			return true; 
 		}catch(Exception e) {System.err.println(e);}
 		return false;
 	}
