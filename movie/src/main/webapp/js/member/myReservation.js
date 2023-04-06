@@ -159,6 +159,8 @@ function myReservationPrint(){
 		
 	})
 }
+
+
 // if 예매내역없으면
 function recountcheck(){
 	if ( movietitlelist.length == 0 ){
@@ -169,6 +171,8 @@ function recountcheck(){
 		document.querySelector('.reservation').style.display = 'block';
 	}
 }
+
+///////////////////////////////////////////////////////////////////
 
 // 슬라이더움직이기
 // 슬라이더 position 값 설정
@@ -270,4 +274,15 @@ function updatememberpagebtn(){
 		document.querySelector('.signupForm').style.display = 'none';		
 	}
 	
+}
+
+
+// 회원정보페이지 요청시 회원정보 펼치기
+mypageOpen();
+function mypageOpen(){
+	let mypage = document.querySelector('.mypage').value
+	if ( mypage == 2 ){
+		document.querySelector('.signupForm').style.display = 'block';
+		document.querySelector('.reservation').style.display = 'none';				
+	}	
 }

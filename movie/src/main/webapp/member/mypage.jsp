@@ -10,7 +10,10 @@
 </head>
 <body>
 	<%@include file="/header.jsp" %>
-
+	<%
+		int mypage = Integer.parseInt(request.getParameter("page"));
+	%>
+	<input type="hidden" class="mypage" value="<%=mypage%>">
 	<div class="wrap">
 		<div class="mypagediv">
 			<div class="mypageinfo">
