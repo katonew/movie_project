@@ -9,6 +9,13 @@ let pprice = 0 //영화 1인 결제 가격
 
 let s_seat=[]; // 선택한 좌석 select_seat
 let title ; //선택한영화 제목
+
+/* ---------------- 로그인 유효성 검사 ------------------ */
+if( memberInfo ==  null ){
+		alert('로그인후 이용 가능합니다.')
+		location.href= `/movie/index.jsp`;
+}
+
 //----------------------- 영화 정보 출력 -----------------
 setTimeout( () =>{
 	$.ajax({

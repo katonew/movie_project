@@ -4,12 +4,20 @@ let s_month ; 	//선택한 월
 let s_day; 		// 선택한 일
 let s_date; // 선택한 년-월-일
 
-let s_mno ; //선택한 영화의 번호
+let s_mno;  //선택한 영화의 번호
 
 let a_seat; // 남은 좌석(이용가능좌석)
 let seat; // 전체좌석
 
 let s_pno // 선택한 상영번호
+
+// 좌석 중복 검사, 업데이트전까지 클릭못하게 (로딩창), 메인화면 영화클릭시 선택된채로 이동
+
+/* ---------------- 로그인 유효성 검사 ------------------ */
+if( memberInfo ==  null ){
+		alert('로그인후 이용 가능합니다.')
+		location.href= `/movie/index.jsp`;
+}
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 현재 상영중인 영화 제목 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 let pmovie=[];
 $.ajax({
@@ -224,5 +232,7 @@ function closeModal(){
 }
 
 function reservation_screen(){
+	
+	
 	location.href=`/movie/reservation/ticket.jsp?pno=${s_pno}`
 }
