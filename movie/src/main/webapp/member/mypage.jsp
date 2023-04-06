@@ -14,12 +14,13 @@
 	<div class="wrap">
 		<div class="mypagediv">
 			<div class="mypageinfo">
-				<div> admin님 반가워요! </div>				
+				<div> <span class="mypagemid">admin</span>님 반가워요! </div>				
 			</div>
 			
-			<div class="mypageinfo">
-					<h3 class="mypagesubtitle">예매조회</h3>				
-				</div>	
+			<div class="mypageinfo mypagesubbanner">
+				<h3 class="mypagesubtitle">예매조회</h3>
+				<div class="" onclick="reservationpagebtn()">▼</div>				
+			</div>	
 			<div class="reservation">
 				
 				<div  class="sliderleftbtn"> < </div>
@@ -39,7 +40,10 @@
 			
 			<div>
 				<a name="update"></a>
-				<h3>회원정보수정</h3>
+				<div class="mypageinfo mypagesubbanner">
+					<h3 class="mypagesubtitle">회원정보수정</h3>
+					<div onclick="updatememberpagebtn()">▼</div>				
+				</div>
 				<br>
 				<form class="signupForm">
 					<div><img class="mimgimg" style="width:100px" alt="" src=""> </div>

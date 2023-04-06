@@ -20,7 +20,14 @@ console.log('myReservation js 실행')
 //		})			
 //}
 
+//아이디출력
+midprint();
+function midprint(){
+	document.querySelector('.mypagemid').innerHTML = memberInfo.mid;
+}
 
+
+// 예매조회//////////////////////////////////////////////////////////
 
 // 예약조회페이지 예매한 영화타이틀 list (출력순서대로저장)
 let movietitlelist = []
@@ -55,8 +62,7 @@ function myReservationPrint(){
 		success : (r)=>{
 			console.log('통신')
 			console.log(r)
-			
-			
+						
 			
 			// o.rno / o.seatnum / o.mno / o.plistdto
 		
@@ -147,13 +153,22 @@ function myReservationPrint(){
 			console.log('movietitlelist : '+movietitlelist)
 			console.log('movietitlelist.length : '+movietitlelist.length)
 			posterprint();	
-			
+			recountcheck(); // 예매내역없으면 	
 			
 		}
 		
 	})
 }
-
+// if 예매내역없으면
+function recountcheck(){
+	if ( movietitlelist.length == 0 ){
+		document.querySelector('.reservation').style.display = 'none'
+		document.querySelector('.reservation').style.height = '100px'
+		document.querySelector('.reservation').innerHTML = '예매내역이 없습니다.'
+	}else{
+		document.querySelector('.reservation').style.display = 'block';
+	}
+}
 
 // 슬라이더움직이기
 // 슬라이더 position 값 설정
@@ -180,7 +195,9 @@ function btncheck(){
 		document.querySelector('.leftmouseover').style.display = 'block'
 	}
 	
-	if ( positionleft == (-((movietitlelist.length-4)*305)) ){
+
+	
+	if ( positionleft == (-((movietitlelist.length-4)*305)) || movietitlelist.length <= 4){
 		document.querySelector('.sliderrightbtn').style.display = 'none'
 		document.querySelector('.rightmouseover').style.display = 'none'
 	}else{
@@ -234,4 +251,23 @@ rightmouseover.addEventListener('mouseout',()=>{
 })
 
 
+function reservationpagebtn(){
+	console.log('reservationpagebtn 함수실행')
+	if ( document.querySelector('.reservation').style.display == 'none' ){
+		document.querySelector('.reservation').style.display = 'block';	
+	}else{
+		document.querySelector('.reservation').style.display = 'none';		
+	}
+	
+}
 
+// 회원정보조회 //////////////////////////////////////////////////
+document.querySelector('.signupForm').style.display = 'none';
+function updatememberpagebtn(){
+	if ( document.querySelector('.signupForm').style.display == 'none' ){
+		document.querySelector('.signupForm').style.display = 'block';	
+	}else{
+		document.querySelector('.signupForm').style.display = 'none';		
+	}
+	
+}
