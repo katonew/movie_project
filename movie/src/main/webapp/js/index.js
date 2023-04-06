@@ -11,7 +11,7 @@ boxofficeinfobox.style.left = positionleft+"px";
 boxofficeinfobox.style.top = positiontop+"px";
 
 //버튼출력유무체크
-btncheck()
+//btncheck()
 // left 값에 따라서 left버튼 생김,숨김
 function btncheck(){
 	if ( positionleft == 0 ){
@@ -20,7 +20,7 @@ function btncheck(){
 		document.querySelector('.sliderleftbtn').style.display = 'block'
 	}
 	
-	if ( positionleft == -1025 ){
+	if ( positionleft == -1215 ){
 		document.querySelector('.sliderrightbtn').style.display = 'none'
 	}else{
 		document.querySelector('.sliderrightbtn').style.display = 'block'
@@ -38,12 +38,44 @@ function slidermove( px ){
 	// 변경된 위치값으로 left값 변경
 	boxofficeinfobox.style.left = positionleft+"px";
 	// 변경된 위치에 따른 버튼출력유무체크
-	btncheck()
+	// btncheck()
 	// 변경된 현재 left 위치
 	console.log( '현재 left값 : '+ positionleft+"px");
 }
 
+/* */
+slidermovebar( 0 )
+function slidermovebar( no ){
+	positionleft = (no*(-243))
+	if( positionleft >= (-1215) ){
+		boxofficeinfobox.style.left = positionleft+"px";
+		let boxofficebar = document.querySelectorAll('.boxofficebar');
+		console.log(boxofficebar)
+		boxofficebar.forEach((o)=>{
+			o.style.opacity = "0.3";
+		})
+		document.querySelector('.boxofficebar'+no).style.opacity = "1";
+	}
+		
+	console.log( '현재 left값 : '+ positionleft+"px");
+}
 
+/////////3초마다 박스오피스 슬라이드 넘기기
+let barcount = 0;
+function changebar(){
+	if ( barcount == 0 ){
+		barcount = 5;
+	}else{
+		barcount = 0;
+	}
+	slidermovebar(barcount)
+}
+
+setInterval(()=>{
+	changebar();	
+},4000)
+
+/////////////////////////////////////
 
 // 박스오피스 영화정보 출력
 BoxOfficePrint();
@@ -58,6 +90,7 @@ function BoxOfficePrint(){
 				html += `
 					<div class="onemovie">
 						<div class="mposter">
+							<img class="boxofficegradient" src="/movie/member/img/mypage/boxofficeshadow.png">
 							<img alt="" src="${o.pimg}">
 							<div class="mrank">${i+1}</div>
 						</div>   
