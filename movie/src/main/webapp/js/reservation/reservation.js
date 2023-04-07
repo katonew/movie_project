@@ -12,7 +12,6 @@ let seat; // 전체좌석
 let s_pno // 선택한 상영번호
 
 let p_mno = parseInt( document.querySelector('.hid').value); //다른페이지로 접속시 가져온 값
-console.log(p_mno)
 /* ---------------- 로그인 유효성 검사 ------------------ */
 if( memberInfo ==  null ){
 		alert('로그인후 이용 가능합니다.')
@@ -26,7 +25,6 @@ $.ajax({
 	success:((r)=>{
 	 	let html = ``;
 	 	pmovie=r; //모든 상영중 영화를 저장후 출력
-	 	console.log(pmovie) 
 	 	pmovie.forEach((o)=>{
 			html += `<div onclick="select_Pmovie(${o.mno})" class="movie_select_${o.mno} movie_select_one">
 						<div class="movie_img_${o.mno} movie_img"></div>
@@ -73,11 +71,9 @@ function img_print(){
 /* -------------------------- 영화선택시 ----------------------*/
 
 function select_Pmovie(mno){ //선택한 영화는 검정색 테두리 다른건 원래대로
-	console.log(mno)
 	if(mno == 0){
 		return;
 	}
-	console.log("mno : "+mno)
 	s_mno = mno; 
 	let movie_select_one = document.querySelectorAll('.movie_select_one');
 	
@@ -242,8 +238,8 @@ function screen_print(){
 		if(r.length == 0){
 			html += ' <div class="none_date"> 다른 날짜를 확인해주세요! </div>'
 		}
-		r.forEach((o)=>{
-			html += `<div class="date_box" onclick="select_screen()">	<!-- 상영관 박스 -->
+		r.forEach((o)=>{ //이용가능한 좌석이 0 이면 
+			html += `<div class="date_box" ${ o.aseat>0 ? 'onclick="select_screen()"' : 'onclick="no()"'}>	<!-- 상영관 박스 -->
 						<div class="date_time">${o.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
 								
 							<div class="date_text">
@@ -259,6 +255,10 @@ function screen_print(){
 		 })//success e
 	 	
 	})
+}
+
+function no(){
+	alert('이용가능한 좌석이 없습니다!.')
 }
 
 

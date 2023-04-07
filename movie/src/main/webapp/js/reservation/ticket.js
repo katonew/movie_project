@@ -23,7 +23,6 @@ function movie_print(){
 		url:"/movie/ticket",
 		method:"get",
 		data: {"pno":pno},
-		async:"false",
 		success:(r)=>{
 			console.log(r)
 			title = r.title
