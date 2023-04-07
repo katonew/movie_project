@@ -14,7 +14,8 @@
 	<link href="/movie/css/reservation/reservation.css" rel="stylesheet">
 </head>
 <body>
-	
+	<%  int mno = Integer.parseInt( request.getParameter("mno")); %>
+	<input type="hidden" value=<%=mno%> class="hid"> 
 		<%@include file="/header.jsp" %>
 		<div class="wrap"> 
 		<div class="reservation_wrap">	<!-- 영화 선택란 -->
@@ -23,9 +24,6 @@
 				<div class="movie_select">	<!-- 영화선택 -->
 					<div class="movie_select_font">  영화 선택  </div>	<!-- 클릭시 클릭한 글자로 변경 -->
 					<div class="movie_title">	<!-- 상영중인 영화 제목 (DB)-->
-							
-							
-						
 					</div> <!-- movie_title e -->
 				</div>	<!-- movie_select e -->
 				
@@ -82,7 +80,6 @@
 		
 		</div>	<!-- wrap -->		
 		<%@include file="/footer.jsp" %>
-
 
 <!-- 부트스트랩 -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

@@ -70,7 +70,7 @@
 				SCREEN
 			</div>	<!-- screen -->
 			
-			<div class="select_seat">
+			<div class="select_seat" id="select_seat">
 			</div>	<!-- select_screen e -->
 			
 			
