@@ -8,17 +8,17 @@
 .dday{
 	position: absolute;
     z-index: 999;
-    top: 15px;
-    right: 15px;
-    font-size: 14px;
-    line-height: 2;
-    color: red;
-    height: 30px;
-    width: 50px;
+    top: 9px;
+    left: 121px;
+    font-size: 17px;
+    line-height: 2.4;
+    color: #ff0000;
+    height: 40px;
+    width: 86px;
     text-align: center;
     font-weight: bold;
-    border-radius: 60%;
-    background-color: white;
+    border-radius: 73%;
+    background-color: transparent;
 }
 .mimg{
 	position: relative;
@@ -35,17 +35,19 @@
 }
 
 .movielist{
-	display: flex;
-	flex-wrap: wrap;
 	margin: 5%;
-	justify-content: center;
 }
 .imgbox{
 	position: relative;
 }
+.dateList{
+	position: relative;
+	border: 3px solid #033252;
+    padding: 10px;
+    margin: 2%;
+}
 
-
-
+/*------------- 모달-------------- */
 .modal{
 	background-color: rgba(196 ,188 ,188,50%);
 	position: fixed;	/* fixed 고정위치 */
@@ -60,22 +62,26 @@
 }
 
 .modal_box{
-	background-color: white;
-    width: 40%;
-    height: 80;
+	background-color: #002338;
+    color: #eeeeee;
+    width: 59%;
     padding: 5%;
     border: 3px solid #1b11de;
     border-radius: 50px;
     position: relative;
-    top: 20%;
-    left: 29%;
+    top: 21%;
+    left: 20%;
 }
 
 .modal_btns button{
 	border: none;
     padding: 10px;
     border-radius: 10px;
-    color : black;
+    color : white;
+}
+.modal_title{
+	text-align: center;
+    margin-bottom: 4%;
 }
 .modal_content{
 	display: flex;
@@ -85,12 +91,18 @@
 	width: 50%;
 }
 .modalimg{
-	width: auto;
-    height: 300px;
+	width: 252px;
+    height: 370px;
 }
 .modal_btns {
 	position: absolute;
     right: 0px;
     bottom: 0px;
     margin: 20px;
+}
+
+.movieblock{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 }

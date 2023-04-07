@@ -269,3 +269,11 @@ function pdelete(pno){
 	})
 }
 
+
+window.addEventListener("keyup",(e)=>{
+	if(e.keyCode=='27'){
+		closeModal1()
+		closeModal2()
+	}
+})
+

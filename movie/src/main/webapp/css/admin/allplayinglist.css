@@ -38,8 +38,8 @@
 	border : 1px solid black;
 	width: 14%;
 	height: 130px;
-	background-color: white;
-	color : black;
+	background-color: #00456B;
+	color : white;
 	font-size: 20px;
 	overflow: scroll;
 	padding: 5px;
@@ -86,7 +86,8 @@
 
 /* 모달1 부분 */
 .modal1_box{
-	background-color: white;
+	background-color: #00456B;
+	color : white;
     width: 70%;
     height: 60%;
     padding: 5%;
@@ -110,6 +111,7 @@
 }
 .movietable{
 	width: 100%;
+	color : white;
 }
 
 .movietable th,td{
