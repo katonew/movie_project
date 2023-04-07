@@ -11,7 +11,9 @@
 	<%@include file="../header.jsp" %>
 
 	<div class="container">
-		<div class="m_list">
+		<div class="css_1">
+			<div class="css_warp">
+			<div class="m_list">
 			<div>
 				<input class="search_m" type="text" placeholder="영화검색">
 				<button onclick="search_m()" type="button">검색</button>
@@ -32,21 +34,27 @@
 			</div>
 			<div class="m_p2 css_m_p">
 			</div>
-		
+			
 		</div>
 		
 		
 		
 		<!-- 모달 HTML -->
 		<div class="modal_wrap overflow-auto">
+		<div class="overflow_modal">
 		<div class="modal_box">
-			<h3 class="modal_title">
+			
+			<div class="movie_info">
+				<h3 class="modal_title">
 				<!-- 제목이 들어가는 자리  -->
 			</h3>
-			<div class="modal_content">
+				<div class="modal_content">
 				<!-- 내용이 들어가는 자리  -->
 			</div>
+			</div>
 			
+			
+			<div class="review_info">
 			<!-- 리뷰 출력 자리 -->
 			<h3> 리뷰 </h3>
 			<div class="review_print">
@@ -71,17 +79,19 @@
 				</form>
 			</div>
 			
+			</div>
 			
 			
 			<div class="modal_btns">
 				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
 			</div>
 		</div>
+		</div>
 	</div>
 		
-		
 	</div>
-	
+	</div>
+	</div>
 	
 	<!-- 모달 HTML2 -->
 		<div class="modal_wrap2 overflow-auto">

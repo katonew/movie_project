@@ -119,6 +119,7 @@ function openModal(e){ // e = link주소
 	modal_select(e); // 모달 열리면 modal_select()함수에 e값을 보내주고 실행
 	bprint();
 	
+	
 }
 function closeModal(){
 	document.querySelector('.modal_wrap').style.display = 'none';
@@ -208,6 +209,7 @@ function bwrite() {
 }
 
 
+let re_bno = 0;
 // 출력
 function bprint(){
 	console.log(bmovie)
@@ -233,13 +235,16 @@ function bprint(){
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">${o.bcontent}</div>
-							<div class="reply${o.bno}"></div>
 							<button type="button" onclick="openModal2(${o.bno})">댓글달기</button>
+							<div class="reply${o.bno}"></div>
+							
 						</div>
 						`
-			reply_print(o.bmovie , o.bno);
+			
+			reply_print(o.bno);
 			})
 			document.querySelector('.review_print').innerHTML = html;
+			
 			
 		}
 	})
@@ -305,6 +310,7 @@ function reply_write(){
 		rmovie : document.querySelector('.rmovie').value,
 		rcontent : rcontent,
 		mno : memberInfo.mno,
+		mid : memberInfo.mid,
 		type : 2
 	}
 	console.log(info)
@@ -315,6 +321,8 @@ function reply_write(){
 		data : info,
 		success : (r)=>{
 			alert('작성 성공')
+			closeModal2();
+			bprint();
 			
 		}
 	})
@@ -322,18 +330,38 @@ function reply_write(){
 }
 
 
-function reply_print(movie , bno){
+function reply_print(bno){
 	$.ajax({
 		url : "/movie/Board/Bwrite",
 		method : "get" ,
 		data : {"type" : 3,
-				"movie" : movie,
-				"bno" : bno},
+				"movie" : bmovie},
 		success : (r)=>{
 			console.log('reply_print리턴값 : ' + r)
 			console.log(JSON.parse(JSON.stringify( r)));
-		
+			
+				
+			let html = ``;
+			
+			r.forEach((o,i)=>{
+					
+					if(bno == o.bno){
+						html += `
+						<div class="css_review_list">
+						<div>-------------------------</div>
+						<div class="review_list">
+								<div class="find_user">유저</div>
+								<div>${o.rdate}</div>
+						</div>
+						<div>${o.rcontent}</div>
+						</div>
+							`;
+					}
+			})
+			document.querySelector(`.reply${bno}`).innerHTML = html;
+			
 		}
+		
 	})
 			
 }
@@ -342,10 +370,10 @@ function reply_print(movie , bno){
 
 
 
+/*
 
-
-
-
+						
+*/
 
 
 
