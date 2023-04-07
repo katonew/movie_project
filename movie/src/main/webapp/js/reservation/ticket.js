@@ -38,10 +38,38 @@ function movie_print(){
 			document.querySelector('.modal_date').innerHTML = r.playtime.split(" ")[0];
 			document.querySelector('.modal_time').innerHTML = r.playtime.split(" ")[1].substr(0, 5);
 			document.querySelector('.modal_screen').innerHTML = r.sno +'관'
-			
+			img_print()
 		}
+		
 	})
 }
+
+/*----------------------------------------------- 영화 이미지 출력----------------------------*/
+function img_print(){ 
+	let html = '';
+			$.ajax({
+			   url : "https://api.themoviedb.org/3/search/movie?api_key=fc5bcf6e9c88d59559fafe20b6032a0e",
+			   method : "get",
+			   async:"false",
+			   data : {
+			      "query" : title ,
+			      "language" : "ko-KR"
+			   },
+			   success : (r)=>{
+			
+			      r.results.forEach((i)=>{
+			         if(i.title== title ){
+
+				         html =	`<img class="movie img" src="https://image.tmdb.org/t/p/w500/${i.poster_path}">`
+						 console.log(html)
+				         document.querySelector(`.movie_img`).innerHTML = html;
+			         }//if e
+			         
+			      }) // for e
+			   } // success e
+			}) // ajax e
+}
+
 
 /* ----------------------- 영화 인원 증가 ------------------*/
 function p_up(human){

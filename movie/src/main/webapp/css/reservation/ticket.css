@@ -30,12 +30,24 @@
 	display:flex;
 	background-color: white;
 	align-items: center;
+	justify-content: space-between;
 }
+
+/* 영화 이미지 */
+
+.movie_img{
+	width:20%;
+	display: flex;
+}
+
+.movie_img img{
+	width:100%;
+}
+
 /* 상단 영화 정보란 */
 .movie_info{
 	padding: 30px;
 	color:black;
-
 }
 
 /* 영화 제목 */
