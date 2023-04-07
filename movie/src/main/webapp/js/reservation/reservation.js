@@ -27,7 +27,7 @@ $.ajax({
 	success:((r)=>{
 	 	let html = ``;
 	 	pmovie=r; //모든 상영중 영화를 저장후 출력
-	 	console.log(pmovie)
+	 	console.log(pmovie) 
 	 	pmovie.forEach((o)=>{
 			html += `<div onclick="select_Pmovie(${o.mno})" class="movie_select_${o.mno} movie_select_one">
 						<div class="movie_img_${o.mno} movie_img"></div>
