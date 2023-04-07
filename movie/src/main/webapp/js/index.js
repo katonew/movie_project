@@ -181,3 +181,36 @@ function netflixtoptenprint(){
 	document.querySelector('.netflixrankname').innerHTML = netflixtopten[0].title;
 	document.querySelector('.netflixrankno').innerHTML = netflixtopten[0].rank;	
 }
+
+
+/* 개봉예정작 출력 */
+upcomingmovie();
+function upcomingmovie(){
+	
+	for(let i=1;i<=2;i++){
+		$.ajax({
+			url : "https://api.themoviedb.org/3/movie/upcoming?api_key=fc5bcf6e9c88d59559fafe20b6032a0e",
+			method : "get",
+			data : {
+				"language" : "ko-KR",
+				"page" : i,
+				"region" : "KR"
+			},
+//			async : false,
+			success : (r)=>{
+				//let list = r.results
+				console.log('expect테스트')
+				console.log(r)
+				
+			} // success e
+		}) // ajax e
+	} // for e
+
+}
+
+
+let upcomingmovie = document.querySelector('.upcomingmovie')
+if (upcomingmovie.classList.contains('appear')) {
+    target.classList.add('disappear');
+    setTimeout(function(){ target.classList.remove('appear')},1001);
+}

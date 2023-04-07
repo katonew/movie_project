@@ -85,12 +85,15 @@ body{
 }
 
 .logo{
-	width: 250px;
+	width: 270px;
 	margin: 2% 1% 0% 1%;
 }
 
 .logo img{
 	width: 100%;
+}
+.profileimgdiv{
+	margin-bottom: 5px;
 }
 
 .profileimg{ /*프로필 이미지*/
@@ -157,7 +160,7 @@ body{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 10px 0 0 0px !important; /* 부트스트랩 여백 제거 */
+	margin: 15px 0 0 0px !important; /* 부트스트랩 여백 제거 */
 	background-color: #033252;
 	padding: 20px;
 	border-radius: 10px;	
