@@ -23,7 +23,6 @@ let pmovie=[]; //상영중인 전체 영화
 $.ajax({
 	url:"/movie/playing/moive",
 	method:"get",
-	async:"false",
 	success:((r)=>{
 	 	let html = ``;
 	 	pmovie=r; //모든 상영중 영화를 저장후 출력
