@@ -28,10 +28,15 @@ public class BoxOfficeServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	// 박스오피스 1~4위 가져오기
+	// 박스오피스 1~10위 가져오기
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ArrayList<SearchDto> list = BoxOffice.search();
+		int type = Integer.parseInt(request.getParameter("type"));
+		ArrayList<SearchDto> list = new ArrayList<>();
+		if ( type == 1 ) {
+			list = BoxOffice.search();
+		}else if ( type == 2 ) {
+			list = BoxOffice.getnetflixtopten();
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonArray = mapper.writeValueAsString(list);
 		System.out.println( "jsonArray : "+jsonArray );

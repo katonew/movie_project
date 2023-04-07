@@ -83,6 +83,7 @@ function BoxOfficePrint(){
 	$.ajax({
 		url : "/movie/boxoffice/servlet" ,
 		method : "get" ,
+		data : {"type":1} ,
 		success : (r)=>{
 			console.log(r)
 			html = ''
@@ -107,4 +108,76 @@ function BoxOfficePrint(){
 			document.querySelector('.boxofficeinfobox').innerHTML = html;
 		}
 	})
+}
+
+
+
+
+// 넷플릭스top10 영화정보 가져오기
+let netflixtopten = null;
+getnetflixtopten();
+function getnetflixtopten(){
+	$.ajax({
+		url : "/movie/boxoffice/servlet" ,
+		method : "get" ,
+		data : {"type":2} ,
+		success : (r)=>{
+			console.log(r)
+			netflixtopten = r;
+			
+			netflixtopten.forEach((o,i)=>{
+				// 객체명.새로운속성명 = 데이터
+				o.rank = i+1;	
+			})
+			console.log(netflixtopten)
+			netflixtoptenprint();
+		}
+	})
+}
+
+
+function netflixslidermove(no){
+	// no=1 왼쪽버튼 / no=2 오른쪽버튼
+	
+	if( no == 1 ){
+		// 마지막 인덱스 구하기
+		// 마지막인덱스 삭제전 보관
+		let lastnetflixmovie = netflixtopten[netflixtopten.length-1]
+		// 마지막인덱스 요소 삭제
+		//배열명.splice(삭제할인덱스 , 1)  : 해당인덱스 1개 삭제
+		netflixtopten.splice(netflixtopten.length-1 , 1)
+		
+		//배열명.splice( 인덱스 , 0 , 새로운요소 )  : 해당 인덱스 위치에 새로운 요소
+		netflixtopten.splice(0,0,lastnetflixmovie)
+		console.log(netflixtopten)
+		// 출력
+		netflixtoptenprint();
+	}
+	if( no == 2 ){
+		let firstnetflixmovie = netflixtopten[0];
+		//배열명.splice(삭제할인덱스 , 1)  : 해당인덱스 1개 삭제
+		netflixtopten.splice(0,1);
+		console.log('테스트')
+		console.log(netflixtopten)
+		
+		//배열명.push(추가할 새로운 요소) : 마지막 인덱스 뒤로추가
+		netflixtopten.push(firstnetflixmovie)
+		// 출력
+		netflixtoptenprint();	
+	}
+	
+}
+
+function netflixtoptenprint(){
+	let html = '';
+	netflixtopten.forEach((o,i)=>{
+		html += `
+				<div class="netflixonemovie netflix${i+1}">
+					<img class="netflixposter" src="${o.pimg}">
+				</div>
+				`
+	})
+	document.querySelector('.netflixtoptendiv').innerHTML = html;
+	document.querySelector('.netflixrankname').innerHTML = netflixtopten[0].title;
+	document.querySelector('.netflixrankno').innerHTML = netflixtopten[0].rank;	
 }

@@ -30,39 +30,18 @@
 <!-- 		<div class="indextitle">박스오피스</div> -->
 		<div class="netflixrankdiv">
 			<div class="netflixtitlediv">
-				<img class="netflixlogo" alt="" src="/movie/img/index/netflixlogo.png">
+				<img class="netflixlogo" src="/movie/img/index/netflixlogo.png">
 				<div class="netflixtitle">넷플릭스 TOP 10</div>
 			</div>
 			<div class="netflixrankoneinfo">
-				<div class="netflixrankno">1</div>
-				<div class="netflixrankname">스즈메의 문단속</div>
+				<div class="netflixrankno"></div>
+				<div class="netflixrankname"></div>
 				
 			</div>
+			<div class="netflixsliderleftbtn" onclick="netflixslidermove(1)"> <div> < </div> </div>
+			<div class="netflixsliderrightbtn" onclick="netflixslidermove(2)"> <div> > </div> </div>
 			<div class="netflixtoptendiv">
-				<div class="netflixonemovie netflix1">
-					<img class="netflixposter" src="/movie/img/index/poster/poster1.jpg">
-				</div>
-				<div class="netflixonemovie netflix2">
-					<img class="netflixposter" src="/movie/img/index/poster/poster2.jpg">
-				</div>
-				<div class="netflixonemovie netflix3">
-					<img class="netflixposter" src="/movie/img/index/poster/poster3.jpg">
-				</div>
-				<div class="netflixonemovie netflix4">
-					<img class="netflixposter" src="/movie/img/index/poster/poster4.jpg">
-				</div>
-				<div class="netflixonemovie netflix5">
-					<img class="netflixposter" src="/movie/img/index/poster/poster5.jpg">
-				</div>
-				<div class="netflixonemovie netflix5">
-					<img class="netflixposter" src="/movie/img/index/poster/poster5.jpg">
-				</div>
-				<div class="netflixonemovie netflix5">
-					<img class="netflixposter" src="/movie/img/index/poster/poster5.jpg">
-				</div>
-				<div class="netflixonemovie netflix5">
-					<img class="netflixposter" src="/movie/img/index/poster/poster5.jpg">
-				</div>
+				<!-- 영화포스터 출력 -->
 			</div>
 			
 		</div>

@@ -141,14 +141,13 @@
 	z-index: -10;
 }
 
-/*넷플릭스 순위*/
-
+/*---------넷플릭스 순위-------------------------------------------*/
 .netflixrankdiv{
 	width: 100%;
-	height: 400px;
+	height: 310px;
 /* 	background: #033252; */
 	background: white;
-	border-radius: 50px;
+	border-radius: 35px;
 /* 	margin-top: 50px; */
 	box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.2);
 	background-color: rgba(0,0,0,0.1);
@@ -158,20 +157,24 @@
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	transition : all 0.4s;
 }
 
-/*넷플릭스top10*/
+/*넷플릭스top10텍스트*/
 .netflixtitlediv{
 	position: absolute;	
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 20px;
-	top: 60px;
-	right: 100px;
+	top: 55px;
+	right: 87px;
+	
 }
 
 .netflixtitle{
 	margin-left: 5px;
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: bold;
 }
 
@@ -183,30 +186,30 @@
 .netflixtoptendiv{
 	display: flex;
 	align-items:flex-end;
-	width: 100%;
-	height: 100%;
+	width: 1050px;
+	height: 206px;
 	justify-content: flex-start;
-	flex-wrap: wrap;
 	align-content: center;
-	padding-left: 150px;
-	
+	overflow: hidden;
+	transition : all 0.4s;
 }
 .netflixrankoneinfo{
 	position: absolute;
-	top: 90px;
-	left: 290px;
+	top: 60px;
+	left: 245px;
 	display: flex;
 	align-items: flex-end;
+	transition : all 0.4s;
 }
 .netflixrankno{
 	font-size: 60px;
-	margin-right: 15px;
+	margin-right: 10px;
 	font-family: '87MMILSANG-Oblique';
 }
 .netflixrankname{
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 .netflixonemovie{
 	width: 100px;
@@ -215,12 +218,34 @@
 
 .netflixposter{
 	width: 100%;
-}
-
-.netflix1{
-
+	border-radius: 5px;
 }
 
 .netflix1{
 	width: 180px;
+}
+
+/*넷플릭스 슬라이더 버튼*/
+.netflixsliderleftbtn , .netflixsliderrightbtn{
+	border-radius: 50px;
+	background-color: transparent;
+	box-shadow: 6px 12px 12px hsl(0deg 0% 0% / 0.2);
+	background-color: rgba(0,0,0,0.1);
+	padding: 8px;
+	position: absolute;
+	top: 150px;
+	font-size: 30px;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.netflixsliderleftbtn{
+	left:15px;
+}
+
+.netflixsliderrightbtn{
+	right: 15px;
 }
