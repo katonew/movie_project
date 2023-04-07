@@ -16,6 +16,21 @@ public class ReplyDto {
 	
 	
 	
+	public ReplyDto(int rno, String rcontent, int rindex, int mno, int bno, String rdate, String mid) {
+		super();
+		this.rno = rno;
+		this.rcontent = rcontent;
+		this.rindex = rindex;
+		this.mno = mno;
+		this.bno = bno;
+		this.rdate = rdate;
+		this.mid = mid;
+	}
+
+
+
+
+
 	public ReplyDto(String rcontent, String rmovie, int rindex, int mno, int bno , String mid) {
 		super();
 		this.rcontent = rcontent;

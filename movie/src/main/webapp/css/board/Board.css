@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+*{
+border: 2px solid red;
+}
+
+.container{
+	display: flex;
+  justify-content: center;
+}
+
+.print_review{
+	display: flex;
+	justify-content: space-around;
+}
+
+.print_list{
+	width: 1200px;
+}
+
+.print_table{
+	width: 100%;
+}
+
+.reply_box{
+	width: 100%;
+}

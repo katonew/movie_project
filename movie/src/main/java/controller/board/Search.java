@@ -188,5 +188,13 @@ public class Search {
 		return list;
 	}
 	
+	public static String img_find(String movie) throws IOException{
+		
+		Document doc = Jsoup.connect("https://pedia.watcha.com/ko-KR/contents/"+movie).get();
+		String img = doc.select(".ezcopuc0 img").first().attr("abs:src");
+		
+		return img;
+	}
+	
 }
 

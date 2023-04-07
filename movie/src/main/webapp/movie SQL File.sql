@@ -92,3 +92,39 @@ select *from screen;
 select *from playinglist;
 select *from reservation;
 
+
+-- 게시물 테이블 [ 번호 , 영화 , 내용 , 작성일 , 작성자 , 카테고리번호 ]
+create table board(
+	bno			int auto_increment primary key , 
+    bmovie 		varchar(1000) not null ,
+    bcontent	longtext	not null ,
+    bdate 		datetime default now() ,
+	bscore		int not null ,
+    mno			int , -- 회원번호 fk 
+    foreign key ( mno ) references member( mno ) on delete set null  	-- [회원]pk가 삭제되면 게시물fk는 null 변경
+);
+
+-- select *from board;
+-- select *from board where bno=2;
+-- select bno , bmovie , bcontent , bdate , bscore , mno , mid from board natural join member;
+-- select bno , bmovie , bcontent , bdate , bscore , mno , mid from board natural join member where bmovie="https://pedia.watcha.com/ko-KR/contents/md7YzgM";
+-- select  b.bno , r.rno , r.rdate , r.rmovie , r.rindex , r.mno , r.rcontent from board b join reply r on b.bmovie="https://pedia.watcha.com/ko-KR/contents/mOgjx80" and b.bno=r.rindex;
+-- select  b.bno , r.rno , r.rdate , r.rmovie , r.rindex , r.mno , r.rcontent from board b join reply r on  r.rindex=b.bno and r.rmovie like '%mOgjx80';
+-- select  r.rno , r.rcontent, r.rmovie ,  r.rindex ,r.mno,  b.bno , r.rdate from board b , reply r where r.rindex=b.bno and r.rmovie='mOgjx80';
+
+-- 댓글 테이블 [ 댓글번호 , 내용 , 작성일 , 인덱스(계층구분) , 작성자 , 게시물번호 ]
+create table reply(
+	rno			int auto_increment primary key , 
+    rcontent	longtext , 
+    rdate		datetime default now(),
+    rmovie		varchar(1000) not null,
+	mid  varchar(100),
+	rindex		int , 
+    mno			int ,
+    bno			int ,
+    foreign key( mno ) references member(mno) on delete set null ,
+    foreign key( bno ) references board(bno) on delete cascade 
+);
+-- select *from reply;
+-- select rno , rcontent , rmovie , rindex , mno , bno , rdate , mid from reply where bno=2;
+
