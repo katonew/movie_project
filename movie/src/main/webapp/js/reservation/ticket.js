@@ -158,16 +158,26 @@ setTimeout( () =>{
 
 //----------------------- 좌석 클릭시  이벤트 ------------------
 function click_seat(eng,num){
-
+		
+	//좌석배열넣기
+	let seat = String.fromCharCode(eng)+num
+	
+	//똑같은 좌석을 두번 클릭시 삭제
+	if(s_seat.includes(seat)){
+		s_seat.splice(s_seat.indexOf(seat),1)
+		document.querySelector(`#s${eng}_${num}`).style.backgroundColor = "#e8e8e8";
+		document.querySelector(`#s${eng}_${num}`).style.color = "black";
+		seat_num--; return;
+	}else{
+		s_seat.push(seat);
+	}
+	
 	//현재 인원과 선택한 좌석 유효성검사
 	if(a_num+t_num+b_num <= seat_num ){
 		alert('인원을 다시 확인해주세요!')
 		return ;
 	}
 	seat_num++;
-	
-	let seat = String.fromCharCode(eng)+num
-	s_seat.push(seat);
 	
 	//선택된 좌석 빨갛게
 	document.querySelector(`#s${eng}_${num}`).style.backgroundColor = "red";
