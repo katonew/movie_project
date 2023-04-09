@@ -12,10 +12,9 @@ function login(){
 			console.log('통신')
 			console.log(r)
 			if( r == 'true'){
-				alert('로그인 성공')
 				location.href="/movie/index.jsp"
 			}else{
-				alert('로그인 실패')
+				alert('아이디 또는 비밀번호가 일치하지 않습니다.')
 			}
 			
 		}
