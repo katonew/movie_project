@@ -182,10 +182,10 @@ function netflixtoptenprint(){
 	document.querySelector('.netflixrankno').innerHTML = netflixtopten[0].rank;	
 }
 
-
+let upcomingmoivelist = []
 /* 개봉예정작 출력 */
-upcomingmovie();
-function upcomingmovie(){
+getupcomingmovie();
+function getupcomingmovie(){
 	
 	for(let i=1;i<=2;i++){
 		$.ajax({
@@ -200,17 +200,77 @@ function upcomingmovie(){
 			success : (r)=>{
 				//let list = r.results
 				console.log('expect테스트')
-				console.log(r)
+				r.results.forEach((o)=>{
+					upcomingmoivelist.push(o)	
+				})
+				console.log(upcomingmoivelist)
+				console.log('i: '+i)
+				if ( i == 1 ){
+					upcomingmovieprint(0)	
+				}
+					
 				
 			} // success e
 		}) // ajax e
+		
 	} // for e
+	
 
 }
 
-
-let upcomingmovie = document.querySelector('.upcomingmovie')
-if (upcomingmovie.classList.contains('appear')) {
-    target.classList.add('disappear');
-    setTimeout(function(){ target.classList.remove('appear')},1001);
+// 개봉예정작 출력
+function upcomingmovieprint(){
+	
+	let today = new Date(); // 오늘날짜
+	console.log(today)
+	let o = upcomingmoivelist[0]
+	
+	
+	 
+	console.log(o)
+	console.log(o.release_date);
+	let upcomingdate = new Date(String(o.release_date))
+	console.log(upcomingdate)
+	
+	let time = upcomingdate.getTime() - today.getTime(); // 개봉일과 오늘을 밀리초단위로 차이계산
+	let dday = Math.ceil( time/(1000*60*60*24)); // 밀리초단위를 1000으로 나누면 1초단위 -> 60초로나누면 1분단위 -> 60분으로 나누면 1시간단위 -> 24시간으로 나누면 하루단위 -> Math.ceil()로 소수점 올림. 두 날짜 간의 일수차이 정수값 
+	
+	let html = `
+					<div class="upcomingmovie appear">
+						<div class="upcomingposterdiv">
+							<img class="upcomingposter" src="https://image.tmdb.org/t/p/w500/${o.poster_path}">
+						</div>
+						<div class="upcominginfo">
+							<div class="upcomingtitlediv">
+								<div class="upcomingtitle">${o.title}</div>
+								<div class="upcomingdday">D-${dday}</div>
+							</div>
+							<div class="upcomingdate">개봉일 | <span>${o.release_date}</span></div>
+							<div class="upcomingtext">
+								${o.overview}					
+							</div>
+							<a href="/movie/admin/expected.jsp"> 
+								<div class="upcomingpagebtn">개봉예정작 보러가기 ></div>
+							</a>
+						</div> <!-- upcominginfo end -->
+					</div> <!-- upcomingmovie end -->
+				`
+	document.querySelector('.upcomingmoviediv').innerHTML = html;
+	
 }
+
+setInterval(()=>{
+	// 첫번재 개봉예정작 따로 저장
+	firstmovie = upcomingmoivelist[0]; 
+	// 첫번째 개봉예정작 삭제
+	upcomingmoivelist.splice(0,1)
+	// 마지막순서로 첫번째개봉예정작 다시 추가
+	upcomingmoivelist.push(firstmovie);
+	// 개봉예정작 출력
+	upcomingmovieprint()
+},10000)
+//let upcomingmovie = document.querySelector('.upcomingmovie')
+//if (upcomingmovie.classList.contains('appear')) {
+//    upcomingmovie.classList.add('disappear');
+//    setTimeout(function(){ upcomingmovie.classList.remove('appear')},1001);
+//}
