@@ -122,6 +122,6 @@ create table reply(
     foreign key( mno ) references member(mno) on delete set null ,
     foreign key( bno ) references board(bno) on delete cascade 
 );
--- select *from reply;
+-- select *from reply; 
 -- select rno , rcontent , rmovie , rindex , mno , bno , rdate , mid from reply where bno=2;
 
