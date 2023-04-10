@@ -27,7 +27,7 @@ function board_print(){
 								<td width="10%"><button type="button" onclick="reply_view(${o.bno})" class="re_btn"> 더보기 </button></td>
 							</tr>
 							</table>
-							<div class="replyviewbox${o.bno}">
+							<div class="replyviewbox${o.bno} css_replybox">
 							</div>
 							`;
 				
@@ -78,7 +78,8 @@ function reply_view(bno){
 			
 			r.forEach((o,i)=>{
 				html += `
-					<tr class="print_table">
+					
+					<tr class="print_table2 css_reply_view">
 						<td width="21%"></td>
 						<td width="40%">${o.rcontent}</td>
 						<td width="10%">${o.mid}</td>
@@ -89,7 +90,8 @@ function reply_view(bno){
 					`
 			})
 			html += `</table>`
-			document.querySelector(`.replyviewbox${bno}`).innerHTML = html;		
+			document.querySelector(`.replyviewbox${bno}`).innerHTML = html;
+			document.getElementsByClassName("css_replybox").style.backgroundColor = "#00456B";
 			}
 			
 	})

@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<div class="fix">
-			<div>
+			<div class="board_title">
 				<h2> 커뮤니티 </h2>
 			</div>
 			<!--  게시글 출력 -->

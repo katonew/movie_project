@@ -231,7 +231,7 @@ function bprint(){
 				html += `<div>
 							<div class="review_list">
 								<div class="b_mid">ID:${o.mid}</div>
-								<div class="b_bscore">별점:${o.bscore}</div>
+								<div class="b_bscore">${o.bscore}/10점</div>
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">${o.bcontent}</div>
@@ -283,7 +283,7 @@ function reply_view(bno){
 							<input type="hidden" class="rmovie" value="${o.bmovie}">
 							<div class="review_list">
 								<div class="b_mid">ID:${o.mid}</div>
-								<div class="b_bscore">별점:${o.bscore}</div>
+								<div class="b_bscore">${o.bscore}/10점</div>
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">내용 : ${o.bcontent}</div>
@@ -348,10 +348,9 @@ function reply_print(bno){
 					if(bno == o.bno){
 						html += `
 						<div class="css_review_list">
-						<div>-------------------------</div>
 						<div class="review_list">
 								<div class="find_user">${o.mid}</div>
-								<div>${o.rdate}</div>
+								<div class="find_rdate">${o.rdate}</div>
 						</div>
 						<div>${o.rcontent}</div>
 						</div>

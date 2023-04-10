@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
 
+.board_title{
+	text-align: center;
+	margin: 2%;
+}
+
 .container{
 	display: flex;
   justify-content: center;
@@ -32,8 +37,39 @@
 }
 
 .print_table{
-	background-color: #022842;
 	border-radius: 10px;
 	padding: 5px;
 	margin: 5px;
+	border: 2px solid silver;
+	
 }
+
+.css_replybox{
+	background-color: #033252;
+	border-radius: 10px;
+	
+	margin: 5px;
+	border: 1px solid silver;
+	
+}
+
+
+.css_reply_view{
+	padding: 5px;
+}
+
+.css_replybox table tr td {border-bottom:1px solid silver;}
+
+
+
+.css_replybox table tr:last-child td {border-bottom:none;}
+
+
+
+
+
+
+
+
+
+
