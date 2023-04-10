@@ -46,6 +46,8 @@
 	<div class="wrap">
 		<div class="container">
 			<h3>상영영화 예매집계</h3>
+			<button onclick="printChart1()" type="button">예매량</button>
+			<button onclick="printChart2()" type="button">예매량</button>
 			<canvas id="myChart"></canvas>
 		</div>
 		<center><h2>상영정보</h2></center>

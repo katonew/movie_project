@@ -235,7 +235,7 @@ function bprint(){
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">${o.bcontent}</div>
-							<button type="button" onclick="openModal2(${o.bno})">댓글달기</button>
+							<button type="button" onclick="openModal2(${o.bno})" class="css_btn">댓글달기</button>
 							<div class="reply${o.bno}"></div>
 							
 						</div>
@@ -289,7 +289,7 @@ function reply_view(bno){
 							<div class="b_bcontent">내용 : ${o.bcontent}</div>
 						</div>
 						<div>
-							<textarea rows="10" cols="55" id="rcontent"></textarea>
+							<textarea rows="10" cols="55" id="rcontent" class="css_textarea"></textarea>
 						</div>
 						`
 						;
@@ -350,7 +350,7 @@ function reply_print(bno){
 						<div class="css_review_list">
 						<div>-------------------------</div>
 						<div class="review_list">
-								<div class="find_user">유저</div>
+								<div class="find_user">${o.mid}</div>
 								<div>${o.rdate}</div>
 						</div>
 						<div>${o.rcontent}</div>
