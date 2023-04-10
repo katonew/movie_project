@@ -10,6 +10,7 @@ let a_seat; // 남은 좌석(이용가능좌석)
 let seat; // 전체좌석
 
 let s_pno // 선택한 상영번호
+let s_sno
 
 let p_mno = parseInt( document.querySelector('.hid').value); //다른페이지로 접속시 가져온 값
 /* ---------------- 로그인 유효성 검사 ------------------ */
@@ -235,24 +236,22 @@ function screen_print(){
 	data: { mno:s_mno , s_date:s_date },
 	success:((r)=>{
 		console.log(r)
-		if(r.length == 0){
-			html += ' <div class="none_date"> 다른 날짜를 확인해주세요! </div>'
-		}
-		r.forEach((o)=>{ //이용가능한 좌석이 0 이면 
-			html += `<div class="date_box" ${ o.aseat>0 ? 'onclick="select_screen()"' : 'onclick="no()"'}>	<!-- 상영관 박스 -->
-						<div class="date_time">${o.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
+		if(r==null){html=`<div class="none_date">다른 날짜를 확인해주세요`}
+		else{ 
+		//이용가능한 좌석이 0 이면 
+			html += `<div class="date_box" ${ r.aseat>0 ? 'onclick="select_screen()"' : 'onclick="no()"'}>	<!-- 상영관 박스 -->
+						<div class="date_time">${r.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
 								
 							<div class="date_text">
-								<span class="date_seat"> <span class="available">${o.aseat} </span>/${o.s_seat}</span>	<!-- 남은좌석 -->
-								<span class="date_sno">${o.sno}관</span>	<!-- 상영관 위치 -->
+								<span class="date_seat"> <span class="available">${r.aseat} </span>/${r.s_seat}</span>	<!-- 남은좌석 -->
+								<span class="date_sno">${r.sno}관</span>	<!-- 상영관 위치 -->
 							</div>
 						</div>
 					</div>`
-			a_seat = o.aseat; seat =o.s_seat;  s_sno = o.sno; s_pno = o.pno;
-			})
-		 document.querySelector('.date_form').innerHTML = html
-		 
-		 })//success e
+			a_seat = r.aseat; seat =r.s_seat;  s_sno = r.sno; s_pno = r.pno;
+		 }
+		document.querySelector('.date_form').innerHTML = html
+	})//success e
 	 	
 	})
 }
