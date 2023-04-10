@@ -48,7 +48,7 @@ public class Admin extends HttpServlet {
 		if(type==1) {
 			result = MovieDao.getInstance().getResult();
 		}else if(type==2) {
-			
+			result = MovieDao.getInstance().getResultprice();
 		}
 		System.out.println("result : " + result.toString());
 		ObjectMapper mapper = new ObjectMapper();

@@ -18,10 +18,13 @@ let selecttime = null;
 let selectmoviinfo = null;
 
 
-const ctx = document.getElementById('myChart');
+
+
 // 영화 예매 차트 출력
 printChart1();
 function printChart1(){
+	document.querySelector('.canvasbox').innerHTML = `<canvas id="myChart1"></canvas>`
+	let ctx1 = document.getElementById('myChart1');
 	$.ajax({
 		url : "/movie/admin/test",
 		method : "post",
@@ -31,12 +34,52 @@ function printChart1(){
 			console.log(Object.keys(r))
 			console.log(Object.values(r))
 		
-			new Chart(ctx, {
+			new Chart(ctx1, {
 				type: 'bar',	// bar : 막대차트 / line : 선 차트
 				data: {
 				  labels: Object.keys(r),
 				  datasets: [{
 				    label: '예매좌석수',
+				    data: Object.values(r),
+				    borderWidth: 1
+				  }]
+				},
+				options: {
+				  scales: {
+				    y: {
+				      beginAtZero: true
+				    },
+		            x: {
+		              beginAtZero: true,
+		              ticks:{ // x축 줄당 표시 값
+                			stepSize:5
+              			}
+		            }
+				  }
+				} // options e
+			}); // chart e
+		} // success e
+	}) // ajax e
+} // printchart1 e
+
+function printChart2(){
+	document.querySelector('.canvasbox').innerHTML = `<canvas id="myChart2"></canvas>`
+	let ctx2 = document.getElementById('myChart2');
+	$.ajax({
+		url : "/movie/admin/test",
+		method : "post",
+		data : {"type" : 2},
+		success : (r)=>{
+			console.log(r)
+			console.log(Object.keys(r))
+			console.log(Object.values(r))
+		
+			new Chart(ctx2, {
+				type: 'bar',	// bar : 막대차트 / line : 선 차트
+				data: {
+				  labels: Object.keys(r),
+				  datasets: [{
+				    label: '영화별 매출',
 				    data: Object.values(r),
 				    borderWidth: 1
 				  }]

@@ -197,6 +197,18 @@
 }
 
 
+/* chart.js를 위한 버튼들 CSS */
+.canvasbtn{
+	padding: 10px;
+}
+
+.canvasbtn button{
+	width : 10%;
+	background-color: #002338;
+	color : white;
+	border-color : white;
+	border-bottom: none;
+}
 
 
 
