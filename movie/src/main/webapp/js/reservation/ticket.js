@@ -22,6 +22,7 @@ function movie_print(){
 	$.ajax({
 		url:"/movie/ticket",
 		method:"get",
+		async : false,
 		data: {"pno":pno},
 		success:(r)=>{
 			console.log(r)

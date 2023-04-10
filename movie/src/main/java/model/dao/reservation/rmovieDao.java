@@ -65,7 +65,6 @@ public class rmovieDao extends Dao{
 		String sql ="select m.title , p.playtime, p.sno, p.pprice "
 				+ " from playinglist p "
 				+ " natural join movie m where pno = "+pno;
-		System.out.println("pno : " + pno);
 		plistDto dto = null;
 		try {
 			ps=con.prepareStatement(sql);
@@ -74,7 +73,6 @@ public class rmovieDao extends Dao{
 				//제목, 날짜, 상영관 위치 
 				dto = new plistDto(
 				rs.getString(1), rs.getString(2), rs.getInt(3),rs.getInt(4));
-				System.out.println("dto :" + dto);
 			}
 		}catch(Exception e) {System.err.println(e);}
 		return dto;
@@ -84,7 +82,7 @@ public class rmovieDao extends Dao{
 	public ArrayList<reservationDto> seatnumPrint(int pno){
 		String sql =" select r.seatnum , p.pprice  "
 				+ " from reservation r join playinglist p on p.pno = r.pno  "
-				+ " where p.pstate=1 and p.pno= "+pno;
+				+ " where p.pstate=1 and p.pno="+pno;
 		
 		ArrayList<reservationDto> rlist = new ArrayList<>();
 		
@@ -104,20 +102,13 @@ public class rmovieDao extends Dao{
 		//좌석을 2개이상 예약할 수 있으므로 같은 멤버, 같은 상영관에 다른좌석만 insert
 		String sql = "";
 		try {
-			//reservation 테이블에서  insert 
+			
 			for(int i = 0 ; i <= seatnum.length-1 ; i++) {
 				sql = " insert into reservation(seatnum,mno,pno) "
 					   + " values ('"+seatnum[i] +"', "+mno+", "+pno+")"; 
 			ps=con.prepareStatement(sql);
 			ps.executeUpdate();
-			}
-			
-			//현재 상영관 좌석 +1
-			sql = "update playinglist set pseat = pseat +"+ seatnum.length +" where pno ="+pno;
-			ps=con.prepareStatement(sql);
-			ps.executeUpdate();
-			
-			
+			};
 			return true; 
 		}catch(Exception e) {System.err.println(e);}
 		return false;
