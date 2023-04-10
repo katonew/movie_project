@@ -48,7 +48,7 @@ public class MovieDao extends Dao{
 		} catch (Exception e) {
 			System.out.println("getMovie 오류 : " + e);
 		}
-		return null;
+		return null; 
 	} // getMovie e
 	
 	// 영화 차트 가져오기
