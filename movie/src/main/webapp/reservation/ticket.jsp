@@ -26,7 +26,9 @@
 			<div class="top_title"> 인원/좌석 선택</div>
 			
 			<div class="top_content"> <!-- 상단 중심 -->
-			
+				<div class="movie_img"></div>	<!-- 영화 이미지 -->
+				
+				
 				<div class="movie_info"> <!-- 영화 정보 -->
 					<div class="movie_title"> </div>
 					<span class="date"> </span>    |<!-- 날짜 -->
@@ -34,14 +36,14 @@
 					<div class="screen_box">  </div>	<!-- 상영관 -->
 				</div>	<!-- movie_info e -->
 				
-			<div class="movie_people">	<!-- 성인 인원선택 -->
-					<div class="age"> 성인 </div>
-					<div class="people">
-						<button type="button" onclick="p_up(1)"> + </button>
-						<span class="a_num"> 0 </span>
-						<button type="button" onclick="p_down(1)"> - </button>
-					</div>
-			</div>	<!-- movie_people e -->
+				<div class="movie_people">	<!-- 성인 인원선택 -->
+						<div class="age"> 성인 </div>
+						<div class="people">
+							<button type="button" onclick="p_up(1)"> + </button>
+							<span class="a_num"> 0 </span>
+							<button type="button" onclick="p_down(1)"> - </button>
+						</div>
+				</div>	<!-- movie_people e -->
 				
 				<div class="movie_people">	<!-- 성인 인원선택 -->
 					<div class="age"> 청소년 </div>
@@ -70,7 +72,7 @@
 				SCREEN
 			</div>	<!-- screen -->
 			
-			<div class="select_seat">
+			<div class="select_seat" id="select_seat">
 			</div>	<!-- select_screen e -->
 			
 			

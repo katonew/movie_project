@@ -11,7 +11,8 @@ function start(){
 			data : {
 				"language" : "ko-KR",
 				"page" : i,
-				"region" : "KR"
+				"region" : "KR",
+				"release_date": "2023-03-00T00:00:00.000Z"
 			},
 			async : false,
 			success : (r)=>{

@@ -16,7 +16,7 @@
 .reservation_wrap{	
 	width:100%;
 }
-
+ 
 /*--------------------- 영화 ------------------------------*/
 
 /* 영화 제목, 날짜 선택 전체*/
@@ -30,9 +30,43 @@
 .movie_select{
 	width:100%;
 	background-color:#F8F8F8;
-	
 }
 
+/* 단일 영화 제목 */
+.movie_select_one{
+	display:flex;
+	width:100%;
+	text-align: center;
+	margin: 10px 0px;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+/* 영화 사진 */
+.movie_img{
+	width:18%
+}
+
+.movie_img img{width:100%}
+
+/* 상영중인 영화 제목 */
+.movie_title{
+	width:100%;
+	text-align: left;
+	padding:10px;
+	color:black;
+	border-right: 2px solid #DDDDDD;
+}
+
+/* 상영중인 각각의 영화 제목*/
+.one_movie_title{
+	width:60%;
+	padding:25px;
+	font-size:23px;
+	color:black;
+	font-weight: bold;
+}
 /* ------------------- 날자 ---------------------------- */
 
 /* 날짜 선택란 */
@@ -55,24 +89,7 @@
     font-size:22px;
 }
 
-/* 상영중인 영화 제목 */
-.movie_title{
-	width:100%;
-	text-align: left;
-	padding:10px;
-	color:black;
-	border-right: 2px solid #DDDDDD;
-}
 
-/* 상영중인 각각의 영화 제목*/
-.one_movie_title{
-	width:100%;
-	padding:25px;
-	font-size:23px;
-	color:black;
-	font-weight: bold;
-	cursor:pointer;
-}
 
 /* 날짜 출력란 */
 .date_week{

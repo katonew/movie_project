@@ -102,13 +102,20 @@ public class rmovieDao extends Dao{
 		//좌석을 2개이상 예약할 수 있으므로 같은 멤버, 같은 상영관에 다른좌석만 insert
 		String sql = "";
 		try {
-			
+			//reservation 테이블에서  insert 
 			for(int i = 0 ; i <= seatnum.length-1 ; i++) {
 				sql = " insert into reservation(seatnum,mno,pno) "
 					   + " values ('"+seatnum[i] +"', "+mno+", "+pno+")"; 
 			ps=con.prepareStatement(sql);
 			ps.executeUpdate();
-			};
+			}
+			
+			//현재 상영관 좌석 +1
+			sql = "update playinglist set pseat = pseat +"+ seatnum.length +" where pno ="+pno;
+			ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+			
+			
 			return true; 
 		}catch(Exception e) {System.err.println(e);}
 		return false;

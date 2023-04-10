@@ -30,7 +30,7 @@
 			<div class="menu">
 				<div class="mainmenu">
 					<div class="mainmenuleft">
-					<a href="/movie/reservation/reservation.jsp"> 예매 </a>
+					<a href="/movie/reservation/reservation.jsp?mno=0"> 예매 </a> <!-- 2023-04-07 링크수정  -->
 					<span class="verticalBar">|</span>
 					<a href="/movie/board/Search.jsp"> 영화검색 </a>
 					<span class="verticalBar">|</span>

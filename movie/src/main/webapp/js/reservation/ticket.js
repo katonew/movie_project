@@ -9,8 +9,16 @@ let pprice = 0 //영화 1인 결제 가격
 
 let s_seat=[]; // 선택한 좌석 select_seat
 let title ; //선택한영화 제목
+
+/* ---------------- 로그인 유효성 검사 ------------------ */
+if( memberInfo ==  null ){
+		alert('로그인후 이용 가능합니다.')
+		location.href= `/movie/index.jsp`;
+}
+
 //----------------------- 영화 정보 출력 -----------------
-setTimeout( () =>{
+movie_print()
+function movie_print(){ 
 	$.ajax({
 		url:"/movie/ticket",
 		method:"get",
@@ -29,10 +37,38 @@ setTimeout( () =>{
 			document.querySelector('.modal_date').innerHTML = r.playtime.split(" ")[0];
 			document.querySelector('.modal_time').innerHTML = r.playtime.split(" ")[1].substr(0, 5);
 			document.querySelector('.modal_screen').innerHTML = r.sno +'관'
-			
+			img_print()
 		}
+		
 	})
-},1500)
+}
+
+/*----------------------------------------------- 영화 이미지 출력----------------------------*/
+function img_print(){ 
+	let html = '';
+			$.ajax({
+			   url : "https://api.themoviedb.org/3/search/movie?api_key=fc5bcf6e9c88d59559fafe20b6032a0e",
+			   method : "get",
+			   async:"false",
+			   data : {
+			      "query" : title ,
+			      "language" : "ko-KR"
+			   },
+			   success : (r)=>{
+			
+			      r.results.forEach((i)=>{
+			         if(i.title== title ){
+
+				         html =	`<img class="movie img" src="https://image.tmdb.org/t/p/w500/${i.poster_path}">`
+						 console.log(html)
+				         document.querySelector(`.movie_img`).innerHTML = html;
+			         }//if e
+			         
+			      }) // for e
+			   } // success e
+			}) // ajax e
+}
+
 
 /* ----------------------- 영화 인원 증가 ------------------*/
 function p_up(human){
@@ -95,9 +131,9 @@ function select_screen(){
 	for(index = 97; index<=105 ; index++ ){ //아스키코트 a~i //fromCharCode(number) 숫자를 아스키코드로
 		html += `<div class="seat_text"> 
 					<span class="col"> ${String.fromCharCode(index)} </span>`;	
-		let i = 1;
+		
 			html += `<div class="left">`
-		for(i =1; i <= 4 ; i++){
+		for(let i =1; i <= 4 ; i++){
 			html += `<span class="seat" id="s${index}_${i}"
 					 onclick="click_seat(${index}, ${i})"> 
 					 ${String.fromCharCode(index)+i} </span>`
@@ -105,7 +141,7 @@ function select_screen(){
 			html += `</div>`
 		
 			html += `<div class="center">`
-		for(j =5; j <= 12 ; j++){
+		for(let j =5; j <= 12 ; j++){
 			html += `<span class="seat"  id="s${index}_${j}"
 					 onclick="click_seat(${index}, ${j})"> 
 					 ${String.fromCharCode(index)+j} </span>`
@@ -113,7 +149,7 @@ function select_screen(){
 			html += `</div>`
 		
 			html += `<div class="right">`
-		for(k =13; k <= 16 ; k++){
+		for(let k =13; k <= 16 ; k++){
 			html += `<span class="seat"  id="s${index}_${k}"
 					 onclick="click_seat(${index}, ${k})"> 
 					 ${String.fromCharCode(index)+k} </span>`
@@ -125,42 +161,57 @@ function select_screen(){
 		
 	}
 	document.querySelector('.select_seat').innerHTML = html;
+	r_seat(); //예약된 좌석 출력
+
+	
+}
+
+//----------------------- 예약된 좌석 출력 -----------------
+
+function r_seat(){ 
+	$.ajax({
+			url:"/movie/ticket",
+			method:"put",
+			data: {"pno":pno},
+			async:"false",
+			success:(r)=>{
+				
+				//예약된 좌석은 비활성화 
+				r.forEach((o,i)=>{ 
+					document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).disabled = true;
+					document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).style.backgroundColor = "#363939";
+					document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).style.cursor = "default";
+					document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).onclick = null;
+					document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).innerHTML = "X";
+				})
+			}
+	})
 	
 }
 
 
-//----------------------- 예약된 좌석 출력 -----------------
-setTimeout( () =>{
-	$.ajax({
-		url:"/movie/ticket",
-		method:"put",
-		data: {"pno":pno},
-		success:(r)=>{
-			
-			//예약된 좌석은 비활성화 
-			r.forEach((o,i)=>{ 
-				document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).disabled = true;
-				document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).style.backgroundColor = "#363939";
-				document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).style.cursor = "default";
-				document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).onclick = null;
-				document.querySelector(`#s${ o.seatnum.substr(0,1).charCodeAt(0)}_${ o.seatnum.substr(1,2)}`).innerHTML = "X";
-			})
-		}
-	})
-},1100)
-
 //----------------------- 좌석 클릭시  이벤트 ------------------
 function click_seat(eng,num){
-
+		
+	//좌석배열넣기
+	let seat = String.fromCharCode(eng)+num
+	
+	//똑같은 좌석을 두번 클릭시 삭제
+	if(s_seat.includes(seat)){
+		s_seat.splice(s_seat.indexOf(seat),1)
+		document.querySelector(`#s${eng}_${num}`).style.backgroundColor = "#e8e8e8";
+		document.querySelector(`#s${eng}_${num}`).style.color = "black";
+		seat_num--; return;
+	}else{
+		s_seat.push(seat);
+	}
+	
 	//현재 인원과 선택한 좌석 유효성검사
 	if(a_num+t_num+b_num <= seat_num ){
 		alert('인원을 다시 확인해주세요!')
 		return ;
 	}
 	seat_num++;
-	
-	let seat = String.fromCharCode(eng)+num
-	s_seat.push(seat);
 	
 	//선택된 좌석 빨갛게
 	document.querySelector(`#s${eng}_${num}`).style.backgroundColor = "red";
@@ -247,8 +298,13 @@ function requestPay() {
 			url:"/movie/ticket",
 			method:"post",
 			data: { "pno" : pno , "s_seat" : seatString },
+			async:"false",
 			success:(r)=>{
-				if(r=='true'){alert('예약되었습니다! ')}
+				if(r=='true'){
+				 alert('예약되었습니다! ') 
+				 select_screen(); // 좌석선택란
+				
+				 }
 			}//success	
 		})//$.ajax e
 		}//else e

@@ -4,42 +4,87 @@ let s_month ; 	//선택한 월
 let s_day; 		// 선택한 일
 let s_date; // 선택한 년-월-일
 
-let s_mno ; //선택한 영화의 번호
+let s_mno;  //선택한 영화의 번호
 
 let a_seat; // 남은 좌석(이용가능좌석)
 let seat; // 전체좌석
 
 let s_pno // 선택한 상영번호
+
+let p_mno = parseInt( document.querySelector('.hid').value); //다른페이지로 접속시 가져온 값
+/* ---------------- 로그인 유효성 검사 ------------------ */
+if( memberInfo ==  null ){
+		alert('로그인후 이용 가능합니다.')
+		location.href= `/movie/index.jsp`;
+}
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 현재 상영중인 영화 제목 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
-let pmovie=[];
+let pmovie=[]; //상영중인 전체 영화
 $.ajax({
 	url:"/movie/playing/moive",
 	method:"get",
 	success:((r)=>{
-		console.log(r);
 	 	let html = ``;
 	 	pmovie=r; //모든 상영중 영화를 저장후 출력
 	 	pmovie.forEach((o)=>{
-			html += `<div onclick="select_Pmovie(${o.mno})">
-						<div class="one_movie_title m_${o.mno} "> ${o.title} </div>
+			html += `<div onclick="select_Pmovie(${o.mno})" class="movie_select_${o.mno} movie_select_one">
+						<div class="movie_img_${o.mno} movie_img"></div>
+						<div class="one_movie_title m_${o.mno}"> ${o.title} </div>
 					 </div>`	 
 		 })
 	 	document.querySelector('.movie_title').innerHTML = html;
+	 	img_print() // 상영중인 영화를 먼저 추출한뒤 영화제목을 뽑아야함
 	})
 })
 
 
+/* -------------------------- 상영중인 영화 이미지 출력 ---------------------- */
+let movieimg = '';
+
+function img_print(){ 
+	let html = '';
+		pmovie.forEach((o)=>{  //현재 상영중인 영화(o)와 api추출한 데이터 이미지(r,i) 뽑기
+			$.ajax({
+			   url : "https://api.themoviedb.org/3/search/movie?api_key=fc5bcf6e9c88d59559fafe20b6032a0e",
+			   method : "get",
+			   async:"false",
+			   data : {
+			      "query" : o.title,
+			      "language" : "ko-KR"
+			   },
+			   success : (r)=>{
+			
+			      r.results.forEach((i)=>{
+			         if(i.title== o.title){
+
+				         html =	`<img class="movie img" src="https://image.tmdb.org/t/p/w500/${i.poster_path}">`
+
+				         document.querySelector(`.movie_img_${o.mno}`).innerHTML = html;
+			         }//if e
+			         
+			      }) // for e
+			      select_Pmovie(p_mno) //영화 선택시
+			   } // success e
+			}) // ajax e
+		 })// forEach
+}
+
 /* -------------------------- 영화선택시 ----------------------*/
+
 function select_Pmovie(mno){ //선택한 영화는 검정색 테두리 다른건 원래대로
+	if(mno == 0){
+		return;
+	}
 	s_mno = mno; 
-	let one_movie_title = document.querySelectorAll('.one_movie_title');
+	let movie_select_one = document.querySelectorAll('.movie_select_one');
 	
+	let title = document.querySelector(`.m_${mno}`).innerHTML
+	document.querySelector(`.movie_select_font`).innerHTML =  title
 	
-	for(let i = 0 ; i < one_movie_title.length ; i++){
-		one_movie_title[i].style.border=""
+	for(let i = 0 ; i < movie_select_one.length ; i++){
+		movie_select_one[i].style.border=""
 	}
 	
-	document.querySelector(`.m_${mno}`).style.border="3px solid black"
+	document.querySelector(`.movie_select_${mno}`).style.border="3px solid black"
 	s_movie = document.querySelector(`.m_${mno}`).innerHTML
 	
 	// 다른영화 클릭시 날짜초기화 + 상영관 초기화
@@ -53,7 +98,7 @@ function select_Pmovie(mno){ //선택한 영화는 검정색 테두리 다른건
 	}
 	
 	 document.querySelector('.date_form').innerHTML = '';
-	  document.querySelector('.s_movie_title').innerHTML = '';
+	 document.querySelector('.s_movie_title').innerHTML = '';
 }
 
 
@@ -173,7 +218,9 @@ function select_date(year, month, date){
 	
 	s_date = s_year+'-'+s_month+ '-'+s_day // 선택한 년-월-일
 	
-	 screen_print(); //상영관 출력
+	document.querySelector('.date_font').innerHTML = s_year+'년 ' + s_month + '월 ' + s_day + '일'
+	
+	screen_print(); //상영관 출력
 }
 
 /*----------------------------- 상영관 출력 -------------------------*/
@@ -191,8 +238,8 @@ function screen_print(){
 		if(r.length == 0){
 			html += ' <div class="none_date"> 다른 날짜를 확인해주세요! </div>'
 		}
-		r.forEach((o)=>{
-			html += `<div class="date_box" onclick="select_screen()">	<!-- 상영관 박스 -->
+		r.forEach((o)=>{ //이용가능한 좌석이 0 이면 
+			html += `<div class="date_box" ${ o.aseat>0 ? 'onclick="select_screen()"' : 'onclick="no()"'}>	<!-- 상영관 박스 -->
 						<div class="date_time">${o.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
 								
 							<div class="date_text">
@@ -208,6 +255,10 @@ function screen_print(){
 		 })//success e
 	 	
 	})
+}
+
+function no(){
+	alert('이용가능한 좌석이 없습니다!.')
 }
 
 
