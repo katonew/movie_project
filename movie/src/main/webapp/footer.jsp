@@ -5,9 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/movie/css/footer.css" rel="stylesheet">
 </head>
 <body>
-	<h3>푸터</h3>
-
+	<div class="footerbackground">
+		<div class="footertext">
+			<div>Copyright 2023. cineverse. All rights reserved.</div>
+		</div>
+	</div>
+	
+	
+	
 </body>
 </html>

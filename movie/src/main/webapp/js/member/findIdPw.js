@@ -16,7 +16,7 @@ function findid(){
 			if ( r == 'false' ){
 				document.querySelector('.findidresult').innerHTML = '일치한 회원정보가 없습니다.'
 			}else{
-				document.querySelector('.findidresult').innerHTML = '회원님의 아이디는 '+r
+				document.querySelector('.findidresult').innerHTML = '회원님의 아이디는 '+r+' 입니다.'
 			}
 		}
 	})
@@ -39,7 +39,7 @@ function findpw(){
 				alert('임시 비밀번호가 메일로 발송되었습니다.')
 				location.href = "/movie/member/logout.jsp";
 			}else{
-				alert('비밀번호찾기 오류')
+				alert('일치하는 회원 정보가 없습니다.')
 			}
 		}
 	})

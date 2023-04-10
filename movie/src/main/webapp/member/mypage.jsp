@@ -7,10 +7,14 @@
 <title>Insert title here</title>
 	<link href="/movie/css/member/modal.css" rel="stylesheet">
 	<link href="/movie/css/member/mypage.css" rel="stylesheet">
+	<link href="/movie/css/member/signup.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="/header.jsp" %>
-
+	<%
+		int mypage = Integer.parseInt(request.getParameter("page"));
+	%>
+	<input type="hidden" class="mypage" value="<%=mypage%>">
 	<div class="wrap">
 		<div class="mypagediv">
 			<div class="mypageinfo">
@@ -44,21 +48,44 @@
 					<h3 class="mypagesubtitle">회원정보수정</h3>
 					<div onclick="updatememberpagebtn()">▼</div>				
 				</div>
-				<br>
-				<form class="signupForm">
-					<div><img class="mimgimg" style="width:100px" alt="" src=""> </div>
-					현재비밀번호 <input name="mpwd" type="text">  <br>
-					비밀번호 <input name="newmpwd" class="newmpwd" type="text">  <br>
-					
-					비밀번호확인 <input onkeyup="repwdcheck()"  name="newmpwdcheck" class="newmpwdcheck" type="text">  <br>
-					<div class="confirminput">테스트</div>
-					
-					이메일 <input class="memail" name="memail" type="text">  <br>
-					프로필 <input onchange="premimg(this)" class="newmimg" name="newmimg" type="file">  <br>
-		
-					<button class="updatebtn" type="button" onclick="update()"> 수정 </button>
-					<button onclick="onpenModal()" type="button">회원탈퇴</button>
-				</form>
+				<div class="updatememberflex">
+					<div class="updatememberdiv">
+						<form class="signupForm">
+						
+							<div class="inputtitle">프로필</div>
+							<div class="inputdiv"> 
+								<input onchange="premimg(this)" class="newmimg inputcss" name="newmimg" type="file">
+								<div><img class="mimgimg newmimg" style="width:100px" alt="" src=""> </div>
+							</div>
+							
+							<div class="inputtitle">현재비밀번호</div>
+							<div class="inputdiv">
+								<input name="mpwd " class="inputcss" type="text">
+							</div>
+							
+							<div class="inputtitle">비밀번호</div>
+							<div class="inputdiv">
+								<input name="newmpwd" class="newmpwd inputcss" type="text">
+							</div>
+							
+							<div class="inputtitle">비밀번호확인</div>
+							<div class="inputdiv"> 
+								<input onkeyup="repwdcheck()"  name="newmpwdcheck" class="newmpwdcheck inputcss" type="text">
+							</div>
+							<div class="confirminput"></div>
+							
+							<div class="inputtitle">이메일</div>
+							<div class="inputdiv">
+								<input class="memail inputcss" name="memail" type="text">
+							</div>
+							
+							
+				
+							<button class="updatebtn btncss" type="button" onclick="update()"> 수정 </button>
+							<button class="btncss" onclick="onpenModal()" type="button">회원탈퇴</button>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div> <!-- mypagediv end -->
 	</div> <!-- wrap end -->
@@ -82,7 +109,7 @@
 		
 	</div> 
 	
-	
+	<%@include file="/footer.jsp" %>
 	<script src="/movie/js/member/update.js" type="text/javascript"></script>
 	<script src="/movie/js/member/modal.js" type="text/javascript"></script>
 	<script src="/movie/js/member/myReservation.js" type="text/javascript"></script>

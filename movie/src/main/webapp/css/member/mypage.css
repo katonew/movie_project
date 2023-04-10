@@ -23,7 +23,7 @@
 	font-size: 18px;
 	display: flex;
 	align-items: center;
-	padding: 25px 30px;
+	padding: 20px 30px;
 	margin-bottom: 25px;
 }
 
@@ -41,6 +41,7 @@
 	position: relative;
 	overflow: hidden;
 	margin-bottom: 60px; 
+	border-radius: 10px;
 }
 
 /* 슬라이더 버튼 */

@@ -17,9 +17,9 @@
 				<div class="profileimgdiv"></div>
 				<div class="dropdown_menu">
 					<ul>
-						<li class="dropdown_li"><a href="/movie/member/mypage.jsp">마이페이지</a></li>
-						<li class="dropdown_li"><a href="/movie/member/mypage.jsp">예약조회</a></li>
-						<li class="dropdown_li"><a href="/movie/member/mypage.jsp#update">회원정보수정</a></li>
+						<li class="dropdown_li"><a href="/movie/member/mypage.jsp?page=0">마이페이지</a></li>
+						<li class="dropdown_li"><a href="/movie/member/mypage.jsp?page=1">예약조회</a></li>
+						<li class="dropdown_li"><a href="/movie/member/mypage.jsp?page=2#update">회원정보수정</a></li>
 						<li class="dropdown_li"><a href="/movie/member/logout.jsp">로그아웃</a></li>
 					</ul>
 				</div>
