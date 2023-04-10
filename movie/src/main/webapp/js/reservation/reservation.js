@@ -260,7 +260,7 @@ function no(){
 	alert('이용가능한 좌석이 없습니다!.')
 }
 
-
+ 
 /* --------------------- 모달 출력 -------------------- */
 function select_screen(){
 	document.querySelector('.modal_wrap').style.display = 'flex';

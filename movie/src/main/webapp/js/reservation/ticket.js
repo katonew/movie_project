@@ -290,8 +290,8 @@ function requestPay() {
 			seatString += s ;
 			if( i == ( s_seat.length-1) ){
 			} else{
-				seatString += "," ;
-			}
+				seatString += "," ; 
+			} 
 			
 		})
         

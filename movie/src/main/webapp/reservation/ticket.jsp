@@ -90,7 +90,7 @@
 	<!-- 결제모달 -->
 	<div class="modal_wrap">
 		<div class="modal_box">
-			
+			  
 			<div class="modal_content">
 				<div class="movie_info2"> <!-- 영화 정보 -->
 					<div class="movie_title modal_title"> </div>

@@ -60,8 +60,8 @@ public class pmovie extends HttpServlet {
 		response.setContentType("application/json"); 
 		response.getWriter().print(jsonArray ); 
 	}
-
-	
+ 
+	 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 

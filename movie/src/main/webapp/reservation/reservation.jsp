@@ -69,7 +69,7 @@
 					<div class="seat_picture">	<!-- 좌석나올 공간 -->
 					</div>
 				</div>
-				
+				 
 				<div class="modal_btns">	<!--  -->
 					<button onclick="reservation_screen()" class="modal_check" 	type="button">좌석/인원 선택하기</button>
 					<button onclick="closeModal()" class="modal_cencel" type="button">취소</button>
