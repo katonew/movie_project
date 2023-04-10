@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+.container{
+	display: flex;
+  justify-content: center;
+}
+
+.print_review{
+	display: flex;
+	justify-content: space-around;
+}
+
+.print_list{
+	width: 1200px;
+}
+
+.print_table{
+	width: 100%;
+}
+
+.reply_box{
+	width: 100%;
+}
+
+.re_btn{
+	border: none;
+	background-color: #002338;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.print_table{
+	background-color: #022842;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
+}

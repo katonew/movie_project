@@ -41,7 +41,7 @@ public class SearchServlet extends HttpServlet {
 		int type = Integer.parseInt(request.getParameter("type")); // 실행할 타입
 		String search =  request.getParameter("search");	// 검색한 값
 		String select = request.getParameter("select");		// 선택한 영화의 링크주소
-		
+		String mimg=null;
 		
 		if(type == 1) { // 메인화면 출력(박스오피스 탑10 / 넷플릭스 탑10
 			list = Search.search();
@@ -54,14 +54,34 @@ public class SearchServlet extends HttpServlet {
 		else if(type == 3) { // 선택한 영화의 상세페이지 출력
 			list = Search.select(select);
 		}
+		else if(type == 4 ) { 
+			String movie = request.getParameter("bmovie");
+			
+			mimg = Search.img_find(movie);
+			
+			
+		}
 		
-		// java 형식 ---> js형식 
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonArray = mapper.writeValueAsString( list );
-		// 응답
-		//System.out.println("jsonArray : " + jsonArray);
-		response.setContentType("applcation/json");
-		response.getWriter().print( jsonArray );
+		
+		if(type == 4) {
+			// java 형식 ---> js형식 
+						ObjectMapper mapper = new ObjectMapper();
+						String jsonArray = mapper.writeValueAsString(mimg );
+						// 응답
+						//System.out.println("jsonArray : " + jsonArray);
+						response.setContentType("applcation/json");
+						response.getWriter().print( jsonArray );
+		}
+		else {
+			// java 형식 ---> js형식 
+			ObjectMapper mapper = new ObjectMapper();
+			String jsonArray = mapper.writeValueAsString( list );
+			// 응답
+			//System.out.println("jsonArray : " + jsonArray);
+			response.setContentType("applcation/json");
+			response.getWriter().print( jsonArray );
+		}
+		
 	}
 
 	/**

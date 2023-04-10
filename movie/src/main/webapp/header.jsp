@@ -36,7 +36,7 @@
 					<span class="verticalBar">|</span>
 					<a href="/movie/admin/expected.jsp"> 개봉예정작 </a>
 					<span class="verticalBar">|</span>
-					<a href="#"> 커뮤니티 </a>
+					<a href="/movie/board/Board.jsp"> 커뮤니티 </a>
 					</div>
 					<div class="mainmenuright">
 						<a href="/movie/admin/allplayinglist.jsp"> 관리자 </a>

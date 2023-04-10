@@ -1,5 +1,6 @@
 package model.dao.board;
 
+
 import java.util.ArrayList;
 
 import model.dao.Dao;
@@ -11,6 +12,7 @@ public class BwriteDao extends Dao{
 	private static BwriteDao dao = new BwriteDao();
 	private BwriteDao() {}
 	public static BwriteDao getInstane() {return dao;};
+
 	
 	
 	public boolean bwrite(BoardDto dto) {
@@ -68,7 +70,7 @@ public class BwriteDao extends Dao{
 	}
 	
 	public boolean reply_write(ReplyDto dto) {
-		String sql = "insert into reply(rcontent, rmovie, rindex, mno, bno) values(?,?,?,?,?)";
+		String sql = "insert into reply(rcontent, rmovie, rindex, mno, bno , mid) values(?,?,?,?,?,?)";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -77,31 +79,35 @@ public class BwriteDao extends Dao{
 			ps.setInt(3, dto.getRindex());
 			ps.setInt(4, dto.getMno());
 			ps.setInt(5, dto.getBno());
+			ps.setString(6, dto.getMid());
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {System.out.println(e);}
 		return false;
 	}
 	
-	public ArrayList<ReplyDto> reply_print(String movie , int bno){
+	public ArrayList<ReplyDto> reply_print(String movie){
 		ArrayList<ReplyDto> list = new ArrayList<>();
 		
-		String sql = "select  b.bno , r.rno , r.rdate , r.rmovie , r.rindex , r.mno , r.rcontent from board b join reply r on  r.rindex="+bno+" and b.bmovie=?";
+		String sql ="select  r.rno , r.rcontent , r.rmovie ,  r.rindex , r.mno, b.bno, r.rdate , r.mid from board b , reply r where r.rindex=b.bno and r.rmovie=?";
+		
+		
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, movie);
 			rs = ps.executeQuery();
-			while(rs.next()){
+			while(rs.next()) {
+				if(true) {ReplyDto dto = new ReplyDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7) , rs.getString(8));
+				list.add(dto);}
 				
-				if(true) {
-					ReplyDto dto = new ReplyDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7));
-					list.add(dto);
-				}
+				
 				
 			}
+			
 		} catch (Exception e) {System.out.println("r_print : " + e);}
 		return list;
 	}
+	
 }
 
 

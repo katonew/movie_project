@@ -9,19 +9,36 @@ public class ReplyDto {
 	private int mno;
 	private int bno;
 	private String rdate;
+	private String mid;
 	
 	
 	
 	
 	
 	
-	public ReplyDto(String rcontent, String rmovie, int rindex, int mno, int bno) {
+	public ReplyDto(int rno, String rcontent, int rindex, int mno, int bno, String rdate, String mid) {
+		super();
+		this.rno = rno;
+		this.rcontent = rcontent;
+		this.rindex = rindex;
+		this.mno = mno;
+		this.bno = bno;
+		this.rdate = rdate;
+		this.mid = mid;
+	}
+
+
+
+
+
+	public ReplyDto(String rcontent, String rmovie, int rindex, int mno, int bno , String mid) {
 		super();
 		this.rcontent = rcontent;
 		this.rmovie = rmovie;
 		this.rindex = rindex;
 		this.mno = mno;
 		this.bno = bno;
+		this.mid = mid;
 	}
 
 
@@ -42,7 +59,7 @@ public class ReplyDto {
 
 
 	// 풀생성자
-	public ReplyDto(int rno, String rcontent, String rmovie, int rindex, int mno, int bno, String rdate) {
+	public ReplyDto(int rno, String rcontent, String rmovie, int rindex, int mno, int bno, String rdate , String mid) {
 		super();
 		this.rno = rno;
 		this.rcontent = rcontent;
@@ -51,6 +68,7 @@ public class ReplyDto {
 		this.mno = mno;
 		this.bno = bno;
 		this.rdate = rdate;
+		this.mid = mid;
 	}
 
 
@@ -72,6 +90,22 @@ public class ReplyDto {
 		return rno;
 	}
 
+
+
+
+
+
+	public String getMid() {
+		return mid;
+	}
+
+
+
+
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
 
 
 

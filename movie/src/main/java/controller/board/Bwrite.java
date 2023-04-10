@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.dao.board.BwriteDao;
 import model.dto.board.BoardDto;
 import model.dto.board.ReplyDto;
+import model.dto.member.MemberDto;
 
 /**
  * Servlet implementation class Bwrite
@@ -73,14 +74,16 @@ public class Bwrite extends HttpServlet {
 			response.getWriter().print( jsonArray );
 		}
 		if(type==3) {
-			String movie = request.getParameter("movie");
-			int bno = Integer.parseInt(request.getParameter("bno"));
-			System.out.println("reply_print movie : " + movie);
+			String bmovie = request.getParameter("movie");
 			
+			String[] smovie = bmovie.split("/");
+			
+			String movie = smovie[5];
+			System.out.println("타입3 인수 movie 확인 : " + movie);
 			
 			ArrayList<ReplyDto> list2 = new ArrayList<>();
 			
-			list2 = BwriteDao.getInstane().reply_print(movie , bno);
+			list2 = BwriteDao.getInstane().reply_print(movie);
 			System.out.println("list2 : " + list2);
 			
 			// java 형식 ---> js형식 
@@ -91,6 +94,7 @@ public class Bwrite extends HttpServlet {
 			response.setContentType("applcation/json");
 			response.getWriter().print( jsonArray );
 		}
+		
 		
 		
 		
@@ -129,6 +133,7 @@ public class Bwrite extends HttpServlet {
 			int bno = Integer.parseInt(request.getParameter("bno"));
 			String rmovie = request.getParameter("rmovie");
 			int rindex = bno;
+			String mid = request.getParameter("mid");
 			System.out.println(rindex);
 			String rcontent = request.getParameter("rcontent");
 			int mno = Integer.parseInt(request.getParameter("mno"));
@@ -137,7 +142,7 @@ public class Bwrite extends HttpServlet {
 			
 			
 			
-			ReplyDto dto = new ReplyDto(rcontent, rmovie, rindex, mno, bno);
+			ReplyDto dto = new ReplyDto(rcontent, rmovie, rindex, mno, bno, mid);
 			boolean result = BwriteDao.getInstane().reply_write(dto);
 			response.getWriter().print(result);
 		}
