@@ -55,13 +55,15 @@ public class BwriteDao extends Dao{
 	
 	public ArrayList<BoardDto> reply_view(int bno){
 		ArrayList<BoardDto> list = new ArrayList<>();
-		String sql = "select * from board where bno="+bno;
+		String sql = "select b.bno , b.bmovie , b.bcontent , b.bdate , b.bscore , b.mno , m.mid from board b , member m where b.mno=m.mno and bno="+bno;
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				BoardDto dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
-			list.add(dto);
+				//BoardDto dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+				BoardDto dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5), rs.getInt(6), rs.getString(7));
+				list.add(dto);
 			}
 		} catch (Exception e) {System.out.println(e);
 			// TODO: handle exception

@@ -303,8 +303,7 @@ function requestPay() {
 			success:(r)=>{
 				if(r=='true'){
 				 alert('예약되었습니다! ') 
-				 select_screen(); // 좌석선택란
-				
+				 location.href=`/movie/member/mypage.jsp?page=0`
 				 }
 			}//success	
 		})//$.ajax e

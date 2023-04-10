@@ -35,26 +35,23 @@ public class rmovieDao extends Dao{
 	}
 	
 	//상영관 정보 출력
-	public ArrayList<plistDto> screen_print(int mno, String s_date){
-		ArrayList<plistDto> plist = new ArrayList<>();
+	public plistDto screen_print(int mno, String s_date){
 		
-		System.out.println("mno : "+mno); System.out.println("s_date : "+s_date);
+		
 		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat , p.pno"
-				+ " from movie m natural join playinglist "
-				+ " p natural join screen s "
+				+ " from movie m natural join playinglist p natural join screen s "
 				+ " where mno = "+mno +" and playtime like '%"+s_date+"%'";
 		
 		try {
 			ps=con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				plist.add( new plistDto(
+				plistDto pDto = new plistDto(
 				rs.getString(1), rs.getInt(2), rs.getInt(3)
-				,rs.getInt(4) , rs.getInt(5)));
+				,rs.getInt(4) , rs.getInt(5));
+				return pDto;
 			}
-			
-			return plist;
-			
+				
 		}catch(Exception e) {System.err.println(e);}
 		
 		return null;
@@ -108,7 +105,13 @@ public class rmovieDao extends Dao{
 					   + " values ('"+seatnum[i] +"', "+mno+", "+pno+")"; 
 			ps=con.prepareStatement(sql);
 			ps.executeUpdate();
-			};
+			}
+			//예약테이블 insert후 상영중인영화 테이블 좌석 업데이트 
+			sql = "update playinglist set pseat=pseat+"+seatnum.length+" where pno = "+pno;
+			
+			ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+			
 			return true; 
 		}catch(Exception e) {System.err.println(e);}
 		return false;

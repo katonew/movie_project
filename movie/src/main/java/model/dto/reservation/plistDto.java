@@ -45,45 +45,62 @@ public class plistDto {
 		this.pprice = pprice;
 	}
 
+
+	
+	
+	
 	public int getPno() {
 		return pno;
 	}
+
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public boolean getPstate() {
+
+	public boolean isPstate() {
 		return pstate;
 	}
+
 	public void setPstate(boolean pstate) {
 		this.pstate = pstate;
 	}
+
 	public int getPseat() {
 		return pseat;
 	}
+
 	public void setPseat(int pseat) {
 		this.pseat = pseat;
 	}
+
 	public int getPprice() {
 		return pprice;
 	}
+
 	public void setPprice(int pprice) {
 		this.pprice = pprice;
 	}
+
 	public String getPlaytime() {
 		return playtime;
 	}
+
 	public void setPlaytime(String playtime) {
 		this.playtime = playtime;
 	}
+
 	public int getMno() {
 		return mno;
 	}
+
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
+
 	public int getSno() {
 		return sno;
 	}
+
 	public void setSno(int sno) {
 		this.sno = sno;
 	}
@@ -91,12 +108,15 @@ public class plistDto {
 	public int getS_seat() {
 		return s_seat;
 	}
+
 	public void setS_seat(int s_seat) {
 		this.s_seat = s_seat;
 	}
+
 	public int getAseat() {
 		return aseat;
 	}
+
 	public void setAseat(int aseat) {
 		this.aseat = aseat;
 	}
@@ -104,6 +124,7 @@ public class plistDto {
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -114,6 +135,9 @@ public class plistDto {
 				+ playtime + ", mno=" + mno + ", sno=" + sno + ", s_seat=" + s_seat + ", aseat=" + aseat + ", title="
 				+ title + "]";
 	}
+
+
+	
 	
     
 }
