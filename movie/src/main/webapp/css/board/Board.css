@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-*{
-border: 2px solid red;
-}
 
 .container{
 	display: flex;
@@ -24,4 +21,19 @@ border: 2px solid red;
 
 .reply_box{
 	width: 100%;
+}
+
+.re_btn{
+	border: none;
+	background-color: #002338;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.print_table{
+	background-color: #022842;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
 }

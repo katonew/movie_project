@@ -1,12 +1,12 @@
 console.log('search 확인')
 
+
+if(memberInfo==null){
+	alert('로그인해주세요.')
+	location.href="/movie/member/login.jsp"
+}
 console.log('회원아이디 확인' + memberInfo.mid)
 console.log('회원번호 확인' + memberInfo.mno)
-if(memberInfo.mid==null){
-	alert('로그인해주세요.')
-	location.href="/movie/member/join.jsp"
-}
-
 
 
 Search();
@@ -81,7 +81,7 @@ function search_m(){
 			console.log(list) // 형변환 확인
 			
 			let html = `<div class="searchtitle">
-					<h3> "${search}" 검색 결과 </h3>
+					<h2> "${search}" 검색 결과 </h2>
 				</div>
 				<div class = "search_m css_m_p">`;
 			

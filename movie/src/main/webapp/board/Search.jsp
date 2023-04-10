@@ -24,13 +24,13 @@
 			</div>
 			
 			<div class="m_title">
-				<h3>박스오피스 탑 10</h3>
+				<h2>박스오피스 탑 10</h2>
 			</div>
 			<div class="m_p css_m_p">
 			</div>
 		
 			<div class="m_title">
-				<h3>넷플릭스 영화 순위</h3>
+				<h2>넷플릭스 영화 순위</h2>
 			</div>
 			<div class="m_p2 css_m_p">
 			</div>

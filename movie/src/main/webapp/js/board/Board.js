@@ -20,11 +20,11 @@ function board_print(){
 							<table class="print_table">
 							<tr>
 								<td class="img${i}" width="20%"></td>
-								<td width="10%">점수 : ${o.bscore} / 10</td>
 								<td width="30%">${o.bcontent} </td>
+								<td width="10%">${o.bscore} / 10점</td>
 								<td width="10%"> ${o.mid} </td>
 								<td width="10%">${o.bdate}</td>
-								<td width="10%"><button type="button" onclick="reply_view(${o.bno})"> 버튼~</button></td>
+								<td width="10%"><button type="button" onclick="reply_view(${o.bno})" class="re_btn"> 더보기 </button></td>
 							</tr>
 							</table>
 							<div class="replyviewbox${o.bno}">
@@ -79,10 +79,12 @@ function reply_view(bno){
 			r.forEach((o,i)=>{
 				html += `
 					<tr class="print_table">
-						
-						<td width="80%">${o.rcontent}</td>
+						<td width="18%"></td>
+						<td width="43%">${o.rcontent}</td>
 						<td width="10%">${o.mid}</td>
 						<td width="10%">${o.rdate}</td>
+						<td width="10%></td>
+						<td width="10%"></td>
 					</tr>
 					`
 			})
