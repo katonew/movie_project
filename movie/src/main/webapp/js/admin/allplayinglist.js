@@ -50,7 +50,7 @@ function printChart1(){
 				} // options e
 			}); // chart e
 		} // success e
-	}) // ajax e
+	}) // ajax e 
 } // printchart1 e
 
 
