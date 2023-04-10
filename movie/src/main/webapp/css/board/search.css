@@ -134,10 +134,11 @@
 /*모달 버튼*/
 .modal_btns2 button{
 	border: none;
-	background-color: #F44336;
+	background-color:#00456B;
 	color: white;
 	padding: 10px;
 	border-radius: 5px;
+	
 	
 }
 
@@ -155,10 +156,35 @@
 }
 
 
+.writeForm{
+	padding: 5px;
+}
 
+.inputcss{
+	width: 30%;
+	padding: 5px 5px;
+	background-color: #00456B !important;
+	border: none;
+	color: white;
+	border-radius: 10px;
+}
 
+.css_textarea{
+	padding: 5px 5px;
+	background-color: #00456B !important;
+	border: none;
+	color: white;
+	border-radius: 10px;
+	margin: 10px 0;
+}
 
-
+.css_btn{
+		border: none;
+	background-color:#00456B;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
 
 
 

@@ -79,8 +79,8 @@ function reply_view(bno){
 			r.forEach((o,i)=>{
 				html += `
 					<tr class="print_table">
-						<td width="18%"></td>
-						<td width="43%">${o.rcontent}</td>
+						<td width="21%"></td>
+						<td width="40%">${o.rcontent}</td>
 						<td width="10%">${o.mid}</td>
 						<td width="10%">${o.rdate}</td>
 						<td width="10%></td>

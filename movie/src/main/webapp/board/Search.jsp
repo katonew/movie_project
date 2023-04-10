@@ -70,11 +70,11 @@
 				
 				<form class="writeForm">   
 				<div>
-					평점 : <input type="text" class="bscore" id="bscore">/10
+					평점 : <input type="text" class="bscore inputcss" id="bscore">/10
 				</div>
 				<div>
-					<textarea class="bcontent" rows="" cols="" id="bcontent"></textarea>
-					<button class="bwrite" onclick="bwrite()" type="button">작성</button>
+					<textarea class="bcontent css_textarea" rows="5" cols="48" id="bcontent"></textarea>
+					<button class="bwrite css_btn" onclick="bwrite()" type="button">작성하기</button>
 				</div>
 				</form>
 			</div>
