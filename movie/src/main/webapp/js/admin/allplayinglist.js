@@ -20,31 +20,38 @@ let selectmoviinfo = null;
 
 const ctx = document.getElementById('myChart');
 // 영화 예매 차트 출력
-$.post("/movie/admin/test", (r)=>{
-	console.log(r)
-	console.log(Object.keys(r))
-	console.log(Object.values(r))
-
-	new Chart(ctx, {
-		type: 'bar',	// bar : 막대차트 / line : 선 차트
-		data: {
-		  labels: Object.keys(r),
-		  datasets: [{
-		    label: '예매좌석수',
-		    data: Object.values(r),
-		    borderWidth: 1
-		  }]
-		},
-		options: {
-		  scales: {
-		    y: {
-		      beginAtZero: true
-		    }
-		  }
-		}
-	});
-}) // ajax e
-
+printChart1();
+function printChart1(){
+	$.ajax({
+		url : "/movie/admin/test",
+		method : "post",
+		data : {"type" : 1},
+		success : (r)=>{
+			console.log(r)
+			console.log(Object.keys(r))
+			console.log(Object.values(r))
+		
+			new Chart(ctx, {
+				type: 'bar',	// bar : 막대차트 / line : 선 차트
+				data: {
+				  labels: Object.keys(r),
+				  datasets: [{
+				    label: '예매좌석수',
+				    data: Object.values(r),
+				    borderWidth: 1
+				  }]
+				},
+				options: {
+				  scales: {
+				    y: {
+				      beginAtZero: true
+				    }
+				  }
+				} // options e
+			}); // chart e
+		} // success e
+	}) // ajax e
+} // printchart1 e
 
 
 startweb()

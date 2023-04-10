@@ -43,14 +43,20 @@ public class Admin extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HashMap<String, Integer> result = MovieDao.getInstance().getResult();
+		int type = Integer.parseInt(request.getParameter("type"));
+		HashMap<String, Integer> result = null;
+		if(type==1) {
+			result = MovieDao.getInstance().getResult();
+		}else if(type==2) {
+			
+		}
 		System.out.println("result : " + result.toString());
-	ObjectMapper mapper = new ObjectMapper();
-	String jsonArray = mapper.writeValueAsString(result);
-		System.out.println("jsonArray : " + jsonArray.toString());
-	response.setCharacterEncoding("UTF-8");
-	response.setContentType("application/json");
-	response.getWriter().print(jsonArray);
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonArray = mapper.writeValueAsString(result);
+			System.out.println("jsonArray : " + jsonArray.toString());
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		response.getWriter().print(jsonArray);
 	}
 
 }
