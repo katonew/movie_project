@@ -92,18 +92,24 @@
 		<div class="modal_box">
 			  
 			<div class="modal_content">
+				
+				<div class="movie_info2_img"></div> <!-- 모달영화 이미지 -->
+				
 				<div class="movie_info2"> <!-- 영화 정보 -->
+				
 					<div class="movie_title modal_title"> </div>
-					<span class="date modal_date"> </span>    |<!-- 날짜 -->
-					<span class="time  modal_time"> </span>   <!-- 시간 -->
-					<div class="screen_box modal_screen">  </div>	<!-- 상영관 -->
+					<div class="span1">
+						<span class="date modal_date"> </span>    |<!-- 날짜 -->
+						<span class="time  modal_time"> </span>   <!-- 시간 -->
+						<div class="screen_box modal_screen">  </div>	<!-- 상영관 -->
+						
+						<div class="pay_people"> 인원  <span class="pay_people2"></span></div>
+						<div class="s_seat"> 시트  <span class="s_seat2"></span></div>
+						<div class="pay_money3"> 금액  <span class="pay_money2"></span></div>
+					</div>
 				</div>	<!-- movie_info e -->
 				
-				<div class="movie_info2">	<!-- 인원, 결제금액 -->
-					<div class="pay_people"> 인원  <span class="pay_people2"></span></div>
-					<div class="s_seat"> 시트  <span class="s_seat2"></span></div>
-					<div class="pay_money3"> 금액  <span class="pay_money2"></span></div>
-				</div>
+
 			
 			</div>	<!-- modal_content e -->
 

@@ -63,6 +63,7 @@ function img_print(){
 				         html =	`<img class="movie img" src="https://image.tmdb.org/t/p/w500/${i.poster_path}">`
 						 console.log(html)
 				         document.querySelector(`.movie_img`).innerHTML = html;
+				         document.querySelector(`.movie_info2_img`).innerHTML = html;
 			         }//if e
 			         
 			      }) // for e
