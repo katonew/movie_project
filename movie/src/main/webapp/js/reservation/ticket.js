@@ -232,12 +232,18 @@ function pay_modal(){
 	
 	let html = '';
 
-	if( a_num>0 ){
-		html+= `성인 ${a_num} 명 `
-		
+	if( a_num>0 ){ 
+		html+= `성인 ${a_num} 명`
+		if( t_num >0 || b_num >0){
+			html+=`, `
+		}
 	}
+	
 	if( t_num>0 ){
-		html+= ` 청소년 ${t_num} 명 `
+		html+= ` 청소년 ${t_num} 명`
+		if(  b_num >0){
+			html+=`, `
+		}
 	}
 	if( b_num>0 ){
 		html+= ` 시니어 ${b_num} 명 `
@@ -245,8 +251,13 @@ function pay_modal(){
 	
 	let s_html='';
 	
-	s_seat.forEach((o)=>{
-		s_html+= `${o} ,`
+	s_seat.forEach((o,i)=>{
+		s_html+= `${o} `
+		if(i<s_seat.length-1 ){
+			s_html+=`,`
+		}
+			
+		
 	})
 	
 	document.querySelector('.pay_people2').innerHTML= html;
