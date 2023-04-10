@@ -17,6 +17,36 @@ let selectday = year+"-"+(month<10 ? "0"+month : month)+"-01";
 let selecttime = null;
 let selectmoviinfo = null;
 
+
+const ctx = document.getElementById('myChart');
+// 영화 예매 차트 출력
+$.post("/movie/admin/test", (r)=>{
+	console.log(r)
+	console.log(Object.keys(r))
+	console.log(Object.values(r))
+
+	new Chart(ctx, {
+		type: 'bar',	// bar : 막대차트 / line : 선 차트
+		data: {
+		  labels: Object.keys(r),
+		  datasets: [{
+		    label: '예매좌석수',
+		    data: Object.values(r),
+		    borderWidth: 1
+		  }]
+		},
+		options: {
+		  scales: {
+		    y: {
+		      beginAtZero: true
+		    }
+		  }
+		}
+	});
+}) // ajax e
+
+
+
 startweb()
 function startweb(){
 	// 특정 달의 첫번째 날의 요일 가져오기

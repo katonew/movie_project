@@ -2,6 +2,7 @@ package controller.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.dao.admin.MovieDao;
 import model.dto.board.SearchDto;
 
 
@@ -41,7 +43,14 @@ public class Admin extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HashMap<String, Integer> result = MovieDao.getInstance().getResult();
+		System.out.println("result : " + result.toString());
+	ObjectMapper mapper = new ObjectMapper();
+	String jsonArray = mapper.writeValueAsString(result);
+		System.out.println("jsonArray : " + jsonArray.toString());
+	response.setCharacterEncoding("UTF-8");
+	response.setContentType("application/json");
+	response.getWriter().print(jsonArray);
 	}
 
 }

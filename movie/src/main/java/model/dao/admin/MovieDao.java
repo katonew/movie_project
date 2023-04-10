@@ -1,6 +1,7 @@
 package model.dao.admin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.dao.Dao;
 import model.dto.admin.MovieDto;
@@ -49,5 +50,24 @@ public class MovieDao extends Dao{
 		}
 		return null;
 	} // getMovie e
+	
+	// 영화 차트 가져오기
+	public HashMap<String, Integer> getResult(){
+		HashMap<String, Integer> map = new HashMap<>();
+		String sql = "SELECT m.title, COUNT(r.rno) AS 예매수 "
+				+ "FROM movie m "
+				+ "LEFT JOIN reservation r ON m.mno = r.mno "
+				+ "GROUP BY m.title;";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2));
+			}
+		} catch (Exception e) {
+			System.out.println("getResult 오류 : " + e);
+		}
+		return map;
+	}
 	
 } // class e
