@@ -5,11 +5,11 @@ use movie;
 -- 회원 테이블
 drop table if exists member;
 create table member(
-   mno int auto_increment primary key,-- 회원번호
+	mno int auto_increment primary key,-- 회원번호
     mid varchar(20),-- ID
     mpwd varchar(20), -- 비밀번호
-    memail varchar(50),-- 이메일
-    mimg text-- 프로필 이미지
+    memail varchar(20),-- 이메일
+    mimg varchar(20)-- 프로필 이미지
 );
 insert into member(mid,mpwd,memail,mimg) values ('admin','admin1','admin@admin.com',null);
 insert into member(mid,mpwd,memail,mimg) values ('qwert','qwert1','admin@admin.com',null);
@@ -29,16 +29,16 @@ create table movie(
     mstate boolean						-- 상영여부 [ true : 상영중, false= 상영중지 ]
 );
 
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('스즈메의 문단속',20230308,'신카이 마코토','애니메이션',2207371,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('웅남이',20230322,'박성광','코미디',54783,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('존 윅 4',20230308,'신카이 마코토','애니메이션',2207371,true);
 insert into movie(title,openDt,directors,genre,audience,mstate) values ('더 퍼스트 슬램덩크',20230104,'이노우에 다케히코','애니메이션',4190218,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('소울메이트',20230315,'민용근','드라마',147846,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('파벨만스',20230322,'스티븐 스필버그','드라마',12876,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('모나리자와 블러드 문',20230322,'애나 릴리 아미푸르','판타지',8995,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('에브리씽 에브리웨어 올 앳 원스',20230301,'다니엘 콴','액션',74222,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('귀멸의 칼날: 상현집결, 그리고 도공 마을로',20230302,'소토자키 하루오','애니메이션',507505,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('플레인',20230315,'장-프랑소 와 리셰','액션',33046,true);
-insert into movie(title,openDt,directors,genre,audience,mstate) values ('아임 히어로 더 파이널',20230301,'오윤동','다큐멘터리',218529,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('킬링 로맨스',20230322,'박성광','코미디',54783,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('귀를 기울이면',20230315,'민용근','드라마',147846,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('스즈메의 문단속',20230322,'스티븐 스필버그','드라마',12876,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('옥수역 귀신',20230322,'애나 릴리 아미푸르','판타지',8995,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('위대한 쇼맨',20230301,'다니엘 콴','액션',74222,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('에어',20230302,'소토자키 하루오','애니메이션',507505,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('멍뭉이',20230315,'장-프랑소 와 리셰','액션',33046,true);
+insert into movie(title,openDt,directors,genre,audience,mstate) values ('거울 속 외딴 성',20230301,'오윤동','다큐멘터리',218529,true);
 
 -- 영화관 테이블
 drop table if exists screen;
@@ -46,11 +46,11 @@ create table screen(
 	sno int auto_increment primary key,		-- 고유번호
     seat int 								-- 좌석수
 );
-insert into screen(seat) values (100);
-insert into screen(seat) values (110);
-insert into screen(seat) values (120);
-insert into screen(seat) values (130);
-insert into screen(seat) values (140);
+insert into screen(seat) values (144);
+insert into screen(seat) values (144);
+insert into screen(seat) values (144);
+insert into screen(seat) values (144);
+insert into screen(seat) values (144);
 
 -- 상영정보 테이블
 drop table if exists playinglist;
@@ -65,30 +65,51 @@ create table playinglist(
     foreign key (mno) references movie(mno),
     foreign key (sno) references screen(sno)
 );
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 14:00',1,1);
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 22:00',1,2);
-insert into playinglist(pprice,playtime,mno,sno) values (16000,'2023-04-06 09:30',1,3);
-insert into playinglist(pprice,playtime,mno,sno) values (12000,'2023-04-06 08:40',1,4);
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 19:20',1,5);
+-- 영화 상영정보 랜덤 200개 생성
+INSERT INTO playinglist (playtime, mno, sno, pprice)
+SELECT
+  DATE_ADD(NOW(), INTERVAL FLOOR(RAND() * 30) DAY) + INTERVAL FLOOR(RAND() * 24) HOUR + INTERVAL (FLOOR(RAND() * 6) * 10) MINUTE,
+  m.mno,
+  s.sno,
+  CASE FLOOR(RAND() * 3)
+    WHEN 0 THEN 10000
+    WHEN 1 THEN 12000
+    ELSE 14000
+  END AS pprice
+FROM
+  movie m,
+  screen s
+ORDER BY RAND()
+LIMIT 200;
+
+select *from playinglist;
 
 
 -- 예약 테이블
 drop table if exists reservation;
 create table reservation(
-   rno int auto_increment primary key, -- 예약고유번호
-   seatnum varchar(10),            -- 선택한 좌석
-    mno int,                     -- 예약회원번호(FK)
-    pno int,                     -- 상영번호(FK)
-   foreign key (mno) references member(mno),   
-    foreign key (pno) references playinglist(pno)
+   rno int auto_increment primary key, 		-- 예약고유번호
+   seatnum varchar(10),           			-- 선택한 좌석
+    mno int,                			    -- 예약회원번호(FK)
+    pno int,                     			-- 상영번호(FK)
+   foreign key (mno) references member(mno),
+   foreign key (pno) references playinglist(pno)
 );
-insert into reservation(mno,pno) values (1,2);
-insert into reservation(mno,pno) values (2,3);
-insert into reservation(mno,pno) values (3,4);
-insert into reservation(mno,pno) values (4,5);
 
-select * from reservation;
+INSERT INTO reservation ( mno, pno, seatnum)
+SELECT
+  1 AS mno,
+  FLOOR(RAND() * 50) + 1 AS pno,
+  CONCAT(
+    CHAR(FLOOR(RAND() * 9) + 65), -- Random letter from A to I
+    FLOOR(RAND() * 16) + 1       -- Random number from 1 to 16
+  ) AS seatnum
+FROM
+  INFORMATION_SCHEMA.TABLES t1,
+  INFORMATION_SCHEMA.TABLES t2
+LIMIT 50;
 
+select *from reservation;
 
 -- 게시물 테이블 [ 번호 , 영화 , 내용 , 작성일 , 작성자 , 카테고리번호 ]
 create table board(
@@ -101,13 +122,6 @@ create table board(
     foreign key ( mno ) references member( mno ) on delete set null  	-- [회원]pk가 삭제되면 게시물fk는 null 변경
 );
 
--- select *from board;
--- select *from board where bno=2;
--- select bno , bmovie , bcontent , bdate , bscore , mno , mid from board natural join member;
--- select bno , bmovie , bcontent , bdate , bscore , mno , mid from board natural join member where bmovie="https://pedia.watcha.com/ko-KR/contents/md7YzgM";
--- select  b.bno , r.rno , r.rdate , r.rmovie , r.rindex , r.mno , r.rcontent from board b join reply r on b.bmovie="https://pedia.watcha.com/ko-KR/contents/mOgjx80" and b.bno=r.rindex;
--- select  b.bno , r.rno , r.rdate , r.rmovie , r.rindex , r.mno , r.rcontent from board b join reply r on  r.rindex=b.bno and r.rmovie like '%mOgjx80';
--- select  r.rno , r.rcontent, r.rmovie ,  r.rindex ,r.mno,  b.bno , r.rdate from board b , reply r where r.rindex=b.bno and r.rmovie='mOgjx80';
 
 -- 댓글 테이블 [ 댓글번호 , 내용 , 작성일 , 인덱스(계층구분) , 작성자 , 게시물번호 ]
 create table reply(
@@ -122,6 +136,8 @@ create table reply(
     foreign key( mno ) references member(mno) on delete set null ,
     foreign key( bno ) references board(bno) on delete cascade 
 );
--- select *from reply; 
--- select rno , rcontent , rmovie , rindex , mno , bno , rdate , mid from reply where bno=2;
 
+select *from playinglist;
+select *from reservation;
+
+SELECT movie.title, COUNT(reservation.rno) AS 예매수 FROM movie JOIN playinglist ON movie.mno = playinglist.mno JOIN reservation ON playinglist.pno = reservation.pno GROUP BY movie.title order by 예매수 desc;

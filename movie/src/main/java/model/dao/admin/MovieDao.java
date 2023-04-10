@@ -58,7 +58,7 @@ public class MovieDao extends Dao{
 				+ "FROM movie "
 				+ "JOIN playinglist ON movie.mno = playinglist.mno "
 				+ "JOIN reservation ON playinglist.pno = reservation.pno "
-				+ "GROUP BY movie.title;";
+				+ "GROUP BY movie.title order by 예매수 desc ;";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -78,7 +78,7 @@ public class MovieDao extends Dao{
 				+ "FROM movie "
 				+ "JOIN playinglist ON movie.mno = playinglist.mno "
 				+ "JOIN reservation ON playinglist.pno = reservation.pno "
-				+ "GROUP BY movie.title ";
+				+ "GROUP BY movie.title order by total_price desc ";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
