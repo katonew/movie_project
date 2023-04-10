@@ -226,8 +226,8 @@ function pay_money(){
 
 //----------------------- 결제버튼 --------------------
 function pay_modal(){
-	if(a_num+t_num+b_num == 0 || seat_num==0 ){
-		alert('인원과 좌석을 선택해주세요!'); return;
+	if(a_num+t_num+b_num == 0 || seat_num==0  || a_num+t_num+b_num != seat_num    ){
+		alert('인원과 좌석을 다시한번 확인해주세요'); return;
 	}	
 	
 	let html = '';
