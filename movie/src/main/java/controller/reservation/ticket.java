@@ -2,6 +2,7 @@ package controller.reservation;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,10 +42,25 @@ public class ticket extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//로그인 세션을 int로
+		Object Omno = request.getSession().getAttribute("login");
+		int mno = Integer.parseInt((String.valueOf(Omno)));
+		
+		//상영번호
+		int pno = Integer.parseInt( request.getParameter("pno") );
+		
+		//좌석
+		String s_seat = request.getParameter("s_seat");
+		String[] seat = s_seat.split(",");
+		
+		boolean result = rmovieDao.getInstance().reservation_ticket(seat, mno, pno);
+		
+		response.getWriter().print(result);
+		
 	}
 
 
-	//예약된 좌석 호출
+	//예약된 좌석 호출 put과 안어울림
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int pno = Integer.parseInt( request.getParameter("pno"));
 		System.out.println("put pno :" + pno);

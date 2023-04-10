@@ -89,7 +89,7 @@ function getallmovielist(){
 	$.ajax({
 		url : "/movie/admin/movieList",
 		method : "get",
-		data : { "type" : 2, "selectday" : selectday},
+		data : { "type" : 1, "selectday" : selectday},
 		success : (r)=>{
 			console.log(r)
 			selectmoviinfo = r;
@@ -167,27 +167,30 @@ function getplayinginfo(i){
 	let movieimg = null;
 	console.log(playingmovie.title)
 	$.ajax({
-		url : "/movie/SearchServlet",
+		url : "https://api.themoviedb.org/3/search/movie?api_key=fc5bcf6e9c88d59559fafe20b6032a0e",
 		method : "get",
 		async : false,
-		data : {"type" : 2, "search" : playingmovie.title},
+		data : {
+			"type" : 2, 
+			"query" : playingmovie.title,
+			"language" : "ko-KR"
+		},
 		success : (r)=>{
 			console.log(r)
 			let equalslist = [];
-			r.forEach((o)=>{
+			r.results.forEach((o)=>{
 				if(o.title==playingmovie.title){
-					console.log('같음')
-					equalslist.push(o.pimg);
+					console.log(o)
+					equalslist.push(o)
 				}
 			}) // for e
-			console.log(equalslist[0])
-			movieimg = equalslist[0]
+			movieimg = equalslist[0].poster_path
 		} // success e
 	}) // ajax e
 	console.log(movieimg)
 	document.querySelector('.modal2').style.display = 'block'
 	document.querySelector('.modal2_title').innerHTML = playingmovie.title
-	let html = `<img class="movieimg" src="${movieimg}">
+	let html = `<img class="movieimg" src="https://image.tmdb.org/t/p/w500/${movieimg}">
 				<table class="modaltable">
 					<tr>
 						<th scope="col">상영일자</th>

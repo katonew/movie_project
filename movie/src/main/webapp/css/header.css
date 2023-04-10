@@ -46,6 +46,8 @@ body{
 .RA-Webpage-2-hex { color: #02FCFF; }
 .RA-Webpage-3-hex { color: #0080A3; }
 .RA-Webpage-4-hex { color: #00B4DE; }
+.RA-Webpage-4-hex { color: #033252; }
+
 .RA-Webpage-5-hex { color: #00456B; }
 .RA-Webpage-6-hex { color: #B3FF00; }
 
@@ -155,7 +157,7 @@ body{
 	justify-content: space-between;
 	align-items: center;
 	margin: 10px 0 0 0px !important; /* 부트스트랩 여백 제거 */
-	background-color: #022842;
+	background-color: #033252;
 	padding: 20px;
 	border-radius: 10px;	
 } 

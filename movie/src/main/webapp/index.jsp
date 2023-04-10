@@ -21,8 +21,9 @@
 			</div>
 		</div>  
 	</div>
-	    
+	    <div style="background-image: "></div>
 	<script src="/movie/js/index.js" type="text/javascript"></script>
+	
 </body>
 </html>
 

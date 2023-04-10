@@ -37,11 +37,12 @@ public class plistDto {
 	this.title = title;
 	}
 	
-	public plistDto( String title , String playtime, int sno) {
+	public plistDto( String title , String playtime, int sno , int pprice) {
 		super();
 		this.playtime = playtime;
 		this.sno = sno;
 		this.title = title;
+		this.pprice = pprice;
 	}
 
 	public int getPno() {
