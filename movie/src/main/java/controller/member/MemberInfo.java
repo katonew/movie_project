@@ -88,10 +88,12 @@ public class MemberInfo extends HttpServlet {
 	    
 	    if ( newmimg == null ) {
 	    	newmimg = MemberDao.getInstance().getMemberDto(request.getSession().getAttribute("login")).getMimg();
+	    	System.out.println("newmimg : "+newmimg);
 	    }
 	    if ( newmpwd == null || newmpwd.equals("") ) {
 	    	newmpwd = mpwd;
 	    }
+	    
 	    MemberDto dto = new MemberDto(newmpwd, memail, newmimg);
 	    //String mno = (String)request.getSession().getAttribute("login");
 	    int mno = (int)request.getSession().getAttribute("login");

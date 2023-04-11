@@ -24,13 +24,13 @@
 					
 					<div class="inputtitle">비밀번호</div>
 					<div class="inputdiv">
-						<input onkeyup="pwdcheck()" class="mpwd inputcss" name="mpwd" type="text">  <br>
+						<input onkeyup="pwdcheck()" class="mpwd inputcss" name="mpwd" type="password">  <br>
 					</div>
 					<div class="confirminput"></div>
 					
 					<div class="inputtitle">비밀번호확인</div>
 					<div class="inputdiv">
-						<input onkeyup="repwdcheck()" class="rempwd inputcss" name="rempwd" type="text">  <br>
+						<input onkeyup="repwdcheck()" class="rempwd inputcss" name="rempwd" type="password">  <br>
 					</div>
 					<div class="confirminput"></div>
 					

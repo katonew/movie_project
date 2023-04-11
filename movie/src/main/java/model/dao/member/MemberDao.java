@@ -110,14 +110,21 @@ public class MemberDao extends Dao {
 	   
 	   // 회원정보 업데이트
 	   public boolean updateMember( MemberDto dto , int mno , String mpwd ) {
-		   String sql = "update member set mpwd = ? , memail = ? , mimg = ? where mno = ? and mpwd = ?";
+		   System.out.println("dto.getMimg() : "+ dto.getMimg());
+		   System.out.println("dto.getMemail() : "+ dto.getMemail());
+		   System.out.println("dto.getMemail().equals(getMemberDto(mno).getMemail()) : "+ dto.getMemail().equals(getMemberDto(mno).getMemail()));
+		   String sql = "";
+		   if ( mpwd == null && dto.getMemail().equals(getMemberDto(mno).getMemail()) ) {
+			   sql = "update member set mimg = '"+dto.getMimg()+"' where mno ="+mno;
+		   }else if( mpwd == null && !(dto.getMemail().equals(getMemberDto(mno).getMemail())) ){
+			   return false;
+		   }
+		   else {
+			   sql = "update member set mpwd = '"+dto.getMpwd()+"' , memail = '"+dto.getMemail()+"' , mimg = '"+dto.getMimg()+"' where mno = "+mno+" and mpwd = "+mpwd;
+		   }
 		   try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getMpwd());
-			ps.setString(2, dto.getMemail());
-			ps.setString(3, dto.getMimg());
-			ps.setInt(4, mno);
-			ps.setString(5, mpwd);
+			System.out.println(ps);
 			int count = ps.executeUpdate();
 			if ( count == 1 ) { return true; }
 			return true;
