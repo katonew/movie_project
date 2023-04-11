@@ -44,7 +44,8 @@ JSP project
 ### 폴더명
 * 각자 생성 후 read.me에 추가
 * 권태형 : 
-* 이정준 : ![이정준3](https://user-images.githubusercontent.com/120459763/231026518-0db6856d-3152-4e1f-b242-899fe96ab721.jpg)
+* 이정준 :
+*  ![이정준3](https://user-images.githubusercontent.com/120459763/231026518-0db6856d-3152-4e1f-b242-899fe96ab721.jpg)
 
 * 이경석 : 
 * 유슬비 : 
