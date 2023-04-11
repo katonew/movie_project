@@ -22,7 +22,7 @@
 				
 				<div class="inputtitle">비밀번호</div> 
 				<div class="inputdiv">
-					<input class="mpwd inputcss" type="text">
+					<input class="mpwd inputcss" type="password">
 				</div>
 				
 				<div class="finddiv">
