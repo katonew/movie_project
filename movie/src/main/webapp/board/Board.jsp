@@ -33,8 +33,13 @@
 		</div>
 		
 	</div>
+	
+	<%@include file="/footer.jsp" %>
+	<script src="/movie/js/index.js" type="text/javascript"></script>
+	
+	<script src="https://kit.fontawesome.com/601e7abb65.js" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/movie/js/board/Board.js"></script>
+	<script type="text/javascript" src="/movie/js/board/Board.js"></script>
 
 </body>
 </html>

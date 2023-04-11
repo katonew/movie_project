@@ -9,6 +9,16 @@ console.log('회원아이디 확인' + memberInfo.mid)
 console.log('회원번호 확인' + memberInfo.mno)
 
 
+
+addEventListener("keyup" , (e)=>{
+	if(e.key.includes('Enter')){
+		search_m();
+	}
+})
+
+
+
+
 Search();
 
 // 영화검색페이지 시작시 박스오피스탑10 / 넷플릭스 영화 순위 불러오기

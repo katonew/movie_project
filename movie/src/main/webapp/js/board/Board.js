@@ -80,7 +80,7 @@ function reply_view(bno){
 				html += `
 					
 					<tr class="print_table2 css_reply_view">
-						<td width="21%"></td>
+						<td width="21%" class="icon"><i class="fa fa-arrow-right"></i></td>
 						<td width="40%">${o.rcontent}</td>
 						<td width="10%">${o.mid}</td>
 						<td width="10%">${o.rdate}</td>
