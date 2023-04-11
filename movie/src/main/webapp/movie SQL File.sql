@@ -17,7 +17,7 @@ insert into member(mid,mpwd,memail,mimg) values ('asdfg','asdfg1','admin@admin.c
 insert into member(mid,mpwd,memail,mimg) values ('zxcvb','zxcvb1','admin@admin.com',null);
 
 
--- 영화 테이블
+-- 영화 테이블 
 drop table if exists movie;
 create table movie(
 	mno	int auto_increment primary key,	-- 영화번호
