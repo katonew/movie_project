@@ -117,4 +117,17 @@ public class rmovieDao extends Dao{
 		}catch(Exception e) {System.err.println(e);}
 		return false;
 	}
+	
+	//취소하기
+	public boolean reservation_delete(int pno , int mno) {
+		String sql ="delete from reservation where pno="+pno+" and mno="+mno;
+		
+	try {
+			ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true; 
+		}catch(Exception e) {System.err.println(e);}
+		
+		return false;
+	}
 }

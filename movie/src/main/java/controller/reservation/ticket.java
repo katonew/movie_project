@@ -77,6 +77,16 @@ public class ticket extends HttpServlet {
 		response.getWriter().print(jsonArray ); // 변환된 json형식의 문자열 전달
 	}
 	
+	//예매취소
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int pno = Integer.parseInt( request.getParameter("pno"));
+		int mno = Integer.parseInt( request.getParameter("mno"));
+		
+		boolean result = rmovieDao.getInstance().reservation_delete(pno, mno);
+		
+		response.getWriter().print(result);
+	}
+	
 	
 
 }

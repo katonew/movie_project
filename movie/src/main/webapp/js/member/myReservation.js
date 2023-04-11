@@ -121,7 +121,7 @@ function myReservationPrint(){
 			
 	
 			
-			// html 출력
+			// html 출력 (2023-04-11 <div class="cancel">추가)
 			let html = ''
 			rlist.forEach((o,i)=>{
 				movietitlelist.push((o[0].plistdto.moviedto.title))
@@ -134,6 +134,7 @@ function myReservationPrint(){
 				//<div class="pimg"><img class="poster , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" src=""></div>  
 				html += `
 						<div class="oneReservation , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" style="background-image: URL();">
+							<div class="cancel" onclick="reservation_delete(${o[0].plistdto.pno})"> 예매 취소 </div>
 							<img class="reinfogradient" src="/movie/member/img/mypage/gradientblack.png">
 							<div class="reinfo">
 								<div class="title">${o[0].plistdto.moviedto.title}</div>
@@ -285,4 +286,22 @@ function mypageOpen(){
 		document.querySelector('.signupForm').style.display = 'block';
 		document.querySelector('.reservation').style.display = 'none';				
 	}	
+}
+
+
+//2023-04-11 예매취소
+function reservation_delete(pno){
+	$.ajax({
+		url:"/movie/ticket",
+		method:"delete",
+		data:{"pno":pno,"mno":memberInfo.mno},
+		success:(r)=>{
+			if(r=='true'){
+				alert('예매가 취소되었습니다.')
+				location.href="http://localhost:8080/movie/index.jsp"
+			}else{
+				alert('알수없는 오류로 예매가 취소되지 않았습니다.')
+			}
+		}
+	})
 }

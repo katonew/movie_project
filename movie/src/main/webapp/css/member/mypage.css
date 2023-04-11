@@ -157,3 +157,28 @@
 .signupForm{
 	transition : all 0.4s;
 }
+
+
+/*------2023 04 11 ------*/
+.cancel{
+    position: absolute;
+    top: 170px;
+    left: 105px;
+    width: 60px;
+    padding: 10px;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: red;
+    display:none;
+}
+
+.oneReservation :hover {
+	background-color: rgba(0,0,0,80%);
+}
+
+.oneReservation:hover .cancel{
+	display:block;
+	z-index:999;
+	cursor: pointer;
+}

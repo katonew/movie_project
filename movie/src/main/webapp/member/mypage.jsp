@@ -106,7 +106,6 @@
 				<button onclick="closeModal()" class="modal_cencel" type="button">취소</button>
 			</div>
 		</div>
-		
 	</div> 
 	
 	<%@include file="/footer.jsp" %>
