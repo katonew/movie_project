@@ -6,9 +6,6 @@ let s_date; // 선택한 년-월-일
 
 let s_mno;  //선택한 영화의 번호
 
-let a_seat; // 남은 좌석(이용가능좌석)
-let seat; // 전체좌석
-
 let s_pno // 선택한 상영번호
 let s_sno
 
