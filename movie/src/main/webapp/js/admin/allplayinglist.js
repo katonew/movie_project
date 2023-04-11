@@ -78,9 +78,9 @@ function printChart2(){
 			new Chart(ctx2, {
 				type: 'bar',	// bar : 막대차트 / line : 선 차트
 				data: {
-					backgroundColor: 'rgb(25, 142, 171)',
 				  	labels: Object.keys(r),
 					datasets: [{
+						backgroundColor: 'rgb(179, 255, 0)',
 					  label: '영화별 매출',
 					  data: Object.values(r),
 					  borderWidth: 0.5

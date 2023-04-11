@@ -45,6 +45,7 @@
 	
 	<div class="wrap">
 		<div class="container">
+			<center><h2>통계</h2></center>
 			<div class="canvasbtn">
 				<button onclick="printChart1()" type="button">예매량</button>
 				<button onclick="printChart2()" type="button">영화별 매출</button>
