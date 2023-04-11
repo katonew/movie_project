@@ -236,19 +236,25 @@ function screen_print(){
 	data: { mno:s_mno , s_date:s_date },
 	success:((r)=>{
 		console.log(r)
-		if(r==null){html=`<div class="none_date">다른 날짜를 확인해주세요`}
+		if(r.length == 0){html=`<div class="none_date">다른 날짜를 확인해주세요</div>`}
 		else{ 
+			r.forEach((o)=>{
 		//이용가능한 좌석이 0 이면 
-			html += `<div class="date_box" ${ r.aseat>0 ? 'onclick="select_screen()"' : 'onclick="no()"'}>	<!-- 상영관 박스 -->
-						<div class="date_time">${r.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
+			html += `<div class="date_box"` 
+			
+			o.aseat>0 ? html +=` onclick="select_screen('${o.pno}')"> ` : html +='onclick="no()">'	
+			
+			html +=		`<div class="date_time">${o.playtime.split(' ')[1].substr(0,5)}</div> <!-- 상영시간 -->
 								
 							<div class="date_text">
-								<span class="date_seat"> <span class="available">${r.aseat} </span>/${r.s_seat}</span>	<!-- 남은좌석 -->
-								<span class="date_sno">${r.sno}관</span>	<!-- 상영관 위치 -->
+								<span class="date_seat"> <span class="available${o.pno} available">${o.aseat} / </span><span class="all2_seat${o.pno}">${o.s_seat}</span></span>	<!-- 남은좌석 -->
+								<span class="date_sno">${o.sno}관</span>	<!-- 상영관 위치 -->
 							</div>
 						</div>
-					</div>`
-			a_seat = r.aseat; seat =r.s_seat;  s_sno = r.sno; s_pno = r.pno;
+					</div>
+					`
+			})
+			
 		 }
 		document.querySelector('.date_form').innerHTML = html
 	})//success e
@@ -261,12 +267,12 @@ function no(){
 }
 
  
-/* --------------------- 모달 출력 -------------------- */
-function select_screen(){
+/* --------------------- 좌석클릭시 모달 출력 -------------------- */
+function select_screen(pno){ 
 	document.querySelector('.modal_wrap').style.display = 'flex';
 	document.querySelector('.modal_title').innerHTML = s_movie;
-	document.querySelector('.a_seat').innerHTML = a_seat;
-	document.querySelector('.all_seat').innerHTML = seat;
+	document.querySelector('.a_seat').innerHTML = document.querySelector(`.available${pno}`).innerHTML
+	document.querySelector('.all_seat').innerHTML = document.querySelector(`.all2_seat${pno}`).innerHTML
 }
 
 function closeModal(){

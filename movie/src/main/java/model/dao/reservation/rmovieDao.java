@@ -35,8 +35,9 @@ public class rmovieDao extends Dao{
 	}
 	
 	//상영관 정보 출력
-	public plistDto screen_print(int mno, String s_date){
+	public ArrayList<plistDto> screen_print(int mno, String s_date){
 		
+		ArrayList<plistDto> plist = new ArrayList<>();
 		
 		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat , p.pno"
 				+ " from movie m natural join playinglist p natural join screen s "
@@ -49,9 +50,9 @@ public class rmovieDao extends Dao{
 				plistDto pDto = new plistDto(
 				rs.getString(1), rs.getInt(2), rs.getInt(3)
 				,rs.getInt(4) , rs.getInt(5));
-				return pDto;
+				plist.add(pDto);
 			}
-				
+			return plist;				
 		}catch(Exception e) {System.err.println(e);}
 		
 		return null;
