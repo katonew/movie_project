@@ -28,7 +28,7 @@
     width: 54px;
     text-align: center;
     font-weight: bold;
-    border-radius: 20%;
+    border-radius: 28%;
     background: linear-gradient(to right, #00456B, #00B4DE);
 }
 .mimg{
@@ -58,7 +58,7 @@
     margin: 2%;
 }
 
-.dateinfo h5{
+.dateinfo h5,h3{
 	font-weight: bold;
 }
 

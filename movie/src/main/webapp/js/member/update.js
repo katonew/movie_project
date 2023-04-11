@@ -33,7 +33,7 @@ function update(){
 				console.log(r)
 				if ( r == 'true'){
 					alert('회원정보 수정성공')
-					location.href="/movie/member/update.jsp"
+					location.href="/movie/index.jsp"
 				}else{
 					alert('현재비밀번호가 맞지 않습니다.')
 				}
