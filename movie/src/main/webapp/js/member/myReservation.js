@@ -131,10 +131,11 @@ function myReservationPrint(){
 				console.log(o[0].plistdto.screendto.sno)
 				console.log(o[0].seatnum)
 				console.log(o[0].plistdto.pprice.toLocaleString())
+				
 				//<div class="pimg"><img class="poster , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" src=""></div>  
 				html += `
 						<div class="oneReservation , ${(o[0].plistdto.moviedto.title+i).split(' ').join('')}" style="background-image: URL();">
-							<img class="reinfogradient" src="/movie/member/img/mypage/gradientblack.png">
+							<img class="reinfogradient" onclick="onpenReCancelModal(${o[0].plistdto.pno})" src="/movie/member/img/mypage/gradientblack.png">
 							<div class="reinfo">
 								<div class="title">${o[0].plistdto.moviedto.title}</div>
 								<div class="rinfotext playtime">${o[0].plistdto.playtime}</div>
@@ -170,6 +171,26 @@ function recountcheck(){
 	}else{
 		document.querySelector('.reservation').style.display = 'block';
 	}
+}
+
+//////////////////////////////////////////////////////////////////
+// 예매취소
+function canclereservation(){
+	let pno = document.querySelector('.cancelpno').value
+	console.log("pno : "+pno)
+	$.ajax({
+		url : "/movie/myreservation" ,
+		method : "delete" ,
+		data : { "pno":pno } ,
+		success : (r)=>{
+			console.log(r)
+			if ( r == 'true' ){
+				location.href="/movie/member/mypage.jsp?page=1"
+			}else{
+				console.log('예매취소 실패 - 관리자문의')
+			}
+		}
+	})
 }
 
 ///////////////////////////////////////////////////////////////////

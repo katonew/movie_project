@@ -65,9 +65,9 @@ create table playinglist(
     foreign key (mno) references movie(mno),
     foreign key (sno) references screen(sno)
 );
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 14:00',1,1);
-insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 22:00',1,2);
-insert into playinglist(pprice,playtime,mno,sno) values (16000,'2023-04-06 09:30',1,3);
+insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-10 14:00',1,1);
+insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-10 22:00',1,2);
+insert into playinglist(pprice,playtime,mno,sno) values (16000,'2023-04-10 09:30',1,3);
 insert into playinglist(pprice,playtime,mno,sno) values (12000,'2023-04-06 08:40',1,4);
 insert into playinglist(pprice,playtime,mno,sno) values (14000,'2023-04-06 19:20',1,5);
 

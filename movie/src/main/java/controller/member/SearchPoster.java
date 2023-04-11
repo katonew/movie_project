@@ -15,11 +15,11 @@ public class SearchPoster {
 			//ArrayList<SearchDto> list = new ArrayList<>();
 			// 검색한 단어를 넣은 크롤링 주소값 넣기
 			Document doc = Jsoup.connect("https://pedia.watcha.com/ko-KR/search?query="+search+"&category=contents").get();
-			System.out.println(doc);
+			//System.out.println(doc);
 			
 			// 검색해서 나온 결과값의 사이즈 구하기
 			int listsize = doc.getElementsByClass("css-8y23cj").size();
-			System.out.println("listsize : " + listsize);
+			//System.out.println("listsize : " + listsize);
 			
 			// 사이즈만큼 반복
 			for(int i = 0 ; i<listsize ; i++) {
