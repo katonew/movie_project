@@ -116,6 +116,11 @@ function openModal(e){ // e = link주소
 	// 영화정보 저장
 	bmovie = e;
 	document.querySelector('.modal_wrap').style.display = 'flex';
+	let movie = bmovie.split("/")[5];
+			
+	console.log(movie);
+	movie.submit;
+	
 	modal_select(e); // 모달 열리면 modal_select()함수에 e값을 보내주고 실행
 	bprint();
 	
@@ -181,7 +186,12 @@ function bwrite() {
 	
 	let bscore = document.getElementById("bscore").value;
 	let bcontent = document.getElementById("bcontent").value;
-	
+	let reg = /^[0-9]*$/
+	if(!reg.test(bscore) || bscore > 10){
+		alert("10이하의 정수만 입력가능합니다.")
+		location.href="/movie/board/Search.jsp"
+		return false;
+	}
 	let info = {
 		
 		bmovie : bmovie ,
@@ -231,7 +241,7 @@ function bprint(){
 				html += `<div>
 							<div class="review_list">
 								<div class="b_mid">ID:${o.mid}</div>
-								<div class="b_bscore">별점:${o.bscore}</div>
+								<div class="b_bscore">${o.bscore}/10점</div>
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">${o.bcontent}</div>
@@ -283,7 +293,7 @@ function reply_view(bno){
 							<input type="hidden" class="rmovie" value="${o.bmovie}">
 							<div class="review_list">
 								<div class="b_mid">ID:${o.mid}</div>
-								<div class="b_bscore">별점:${o.bscore}</div>
+								<div class="b_bscore">${o.bscore}/10점</div>
 								<div class="b_bdate">${o.bdate}</div>
 							</div>
 							<div class="b_bcontent">내용 : ${o.bcontent}</div>
@@ -348,10 +358,9 @@ function reply_print(bno){
 					if(bno == o.bno){
 						html += `
 						<div class="css_review_list">
-						<div>-------------------------</div>
 						<div class="review_list">
 								<div class="find_user">${o.mid}</div>
-								<div>${o.rdate}</div>
+								<div class="find_rdate">${o.rdate}</div>
 						</div>
 						<div>${o.rcontent}</div>
 						</div>

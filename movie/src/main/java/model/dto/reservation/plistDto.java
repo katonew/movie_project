@@ -32,7 +32,7 @@ public class plistDto {
 	}
 
 	public plistDto(int mno, String title) {
-	super();
+	super(); 
 	this.mno = mno;
 	this.title = title;
 	}

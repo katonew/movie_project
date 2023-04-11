@@ -20,7 +20,7 @@ public class MypageDao extends Dao {
 	// 주문번호 불러오기
 	public ArrayList<ReservationDto> getRnoPnoMno(int mno ) {
 		ArrayList<ReservationDto> rlist = new ArrayList<>();
-		String sql = "select * from reservation r join playinglist p on r.pno = p.pno where r.mno = "+mno+" order by playtime desc";
+		String sql = "select * from reservation r join playinglist p on r.pno = p.pno where r.mno = "+mno+" order by r.rno desc";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();

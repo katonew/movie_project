@@ -20,14 +20,14 @@ function board_print(){
 							<table class="print_table">
 							<tr>
 								<td class="img${i}" width="20%"></td>
-								<td width="30%">${o.bcontent} </td>
+								<td width="30%">${o.bcontent}</td>
 								<td width="10%">${o.bscore} / 10점</td>
 								<td width="10%"> ${o.mid} </td>
 								<td width="10%">${o.bdate}</td>
 								<td width="10%"><button type="button" onclick="reply_view(${o.bno})" class="re_btn"> 더보기 </button></td>
 							</tr>
 							</table>
-							<div class="replyviewbox${o.bno}">
+							<div class="replyviewbox${o.bno} css_replybox">
 							</div>
 							`;
 				
@@ -52,7 +52,7 @@ function img_find(bmovie , i){
 		success : (r)=>{
 			console.log("board_print확인 : " + r)
 			
-			let html = `<img  src="${r}" width="20%">`;
+			let html = `<img  src="${r}" width="25%">`;
 			
 			document.querySelector(`.img${i}`).innerHTML = html;
 		}
@@ -78,7 +78,8 @@ function reply_view(bno){
 			
 			r.forEach((o,i)=>{
 				html += `
-					<tr class="print_table">
+					
+					<tr class="print_table2 css_reply_view">
 						<td width="21%"></td>
 						<td width="40%">${o.rcontent}</td>
 						<td width="10%">${o.mid}</td>
@@ -89,7 +90,8 @@ function reply_view(bno){
 					`
 			})
 			html += `</table>`
-			document.querySelector(`.replyviewbox${bno}`).innerHTML = html;		
+			document.querySelector(`.replyviewbox${bno}`).innerHTML = html;
+			document.getElementsByClassName("css_replybox").style.backgroundColor = "#00456B";
 			}
 			
 	})

@@ -51,13 +51,14 @@ public class MovieDao extends Dao{
 		return null; 
 	} // getMovie e
 	
-	// 영화 차트 가져오기
+	// 영화 예매수
 	public HashMap<String, Integer> getResult(){
 		HashMap<String, Integer> map = new HashMap<>();
-		String sql = "SELECT m.title, COUNT(r.rno) AS 예매수 "
-				+ "FROM movie m "
-				+ "LEFT JOIN reservation r ON m.mno = r.mno "
-				+ "GROUP BY m.title;";
+		String sql = "SELECT movie.title, COUNT(reservation.rno) AS 예매수 "
+				+ "FROM movie "
+				+ "JOIN playinglist ON movie.mno = playinglist.mno "
+				+ "JOIN reservation ON playinglist.pno = reservation.pno "
+				+ "GROUP BY movie.title order by 예매수 desc ;";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -68,6 +69,25 @@ public class MovieDao extends Dao{
 			System.out.println("getResult 오류 : " + e);
 		}
 		return map;
-	}
+	} //getResult e
 	
+	// 영화 총 판매량
+	public HashMap<String, Integer> getResultprice(){
+		HashMap<String, Integer> map = new HashMap<>();
+		String sql = "SELECT movie.title, SUM(playinglist.pprice) AS total_price "
+				+ "FROM movie "
+				+ "JOIN playinglist ON movie.mno = playinglist.mno "
+				+ "JOIN reservation ON playinglist.pno = reservation.pno "
+				+ "GROUP BY movie.title order by total_price desc ";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2));
+			}
+		} catch (Exception e) {
+			System.out.println("getResultprice 오류 : " + e);
+		}
+		return map;
+	} // getResultprice e
 } // class e

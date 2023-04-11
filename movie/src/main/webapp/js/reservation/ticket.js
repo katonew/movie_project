@@ -63,6 +63,7 @@ function img_print(){
 				         html =	`<img class="movie img" src="https://image.tmdb.org/t/p/w500/${i.poster_path}">`
 						 console.log(html)
 				         document.querySelector(`.movie_img`).innerHTML = html;
+				         document.querySelector(`.movie_info2_img`).innerHTML = html;
 			         }//if e
 			         
 			      }) // for e
@@ -226,18 +227,24 @@ function pay_money(){
 
 //----------------------- 결제버튼 --------------------
 function pay_modal(){
-	if(a_num+t_num+b_num == 0 || seat_num==0 ){
-		alert('인원과 좌석을 선택해주세요!'); return;
+	if(a_num+t_num+b_num == 0 || seat_num==0  || a_num+t_num+b_num != seat_num    ){
+		alert('인원과 좌석을 다시한번 확인해주세요'); return;
 	}	
 	
 	let html = '';
 
-	if( a_num>0 ){
-		html+= `성인 ${a_num} 명 `
-		
+	if( a_num>0 ){ 
+		html+= `성인 ${a_num} 명`
+		if( t_num >0 || b_num >0){
+			html+=`, `
+		}
 	}
+	
 	if( t_num>0 ){
-		html+= ` 청소년 ${t_num} 명 `
+		html+= ` 청소년 ${t_num} 명`
+		if(  b_num >0){
+			html+=`, `
+		}
 	}
 	if( b_num>0 ){
 		html+= ` 시니어 ${b_num} 명 `
@@ -245,8 +252,13 @@ function pay_modal(){
 	
 	let s_html='';
 	
-	s_seat.forEach((o)=>{
-		s_html+= `${o} ,`
+	s_seat.forEach((o,i)=>{
+		s_html+= `${o} `
+		if(i<s_seat.length-1 ){
+			s_html+=`,`
+		}
+			
+		
 	})
 	
 	document.querySelector('.pay_people2').innerHTML= html;
@@ -290,8 +302,8 @@ function requestPay() {
 			seatString += s ;
 			if( i == ( s_seat.length-1) ){
 			} else{
-				seatString += "," ;
-			}
+				seatString += "," ; 
+			} 
 			
 		})
         

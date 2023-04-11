@@ -56,7 +56,7 @@ function dateprint(){
 						<h5>${month}월</h5>
 						<h3>${date}일</h3>
 					</div>
-					<div class="dday"><span>D-</span>${days}</div>
+					<div class="dday"><span class="fontD">D-</span>${days}</div>
 					<div class="date${o} movieblock"></div>
 				</div>`
 	})
