@@ -9,7 +9,7 @@ create table member(
     mid varchar(20),-- ID
     mpwd varchar(20), -- 비밀번호
     memail varchar(20),-- 이메일
-    mimg varchar(20)-- 프로필 이미지
+    mimg varchar(20)-- 프로필 이미지 
 );
 insert into member(mid,mpwd,memail,mimg) values ('admin','admin1','admin@admin.com',null);
 insert into member(mid,mpwd,memail,mimg) values ('qwert','qwert1','admin@admin.com',null);
