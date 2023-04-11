@@ -6,9 +6,6 @@ let s_date; // 선택한 년-월-일
 
 let s_mno;  //선택한 영화의 번호
 
-let a_seat; // 남은 좌석(이용가능좌석)
-let seat; // 전체좌석
-
 let s_pno // 선택한 상영번호
 let s_sno
 
@@ -269,6 +266,7 @@ function no(){
  
 /* --------------------- 좌석클릭시 모달 출력 -------------------- */
 function select_screen(pno){ 
+	s_pno = pno
 	document.querySelector('.modal_wrap').style.display = 'flex';
 	document.querySelector('.modal_title').innerHTML = s_movie;
 	document.querySelector('.a_seat').innerHTML = document.querySelector(`.available${pno}`).innerHTML
