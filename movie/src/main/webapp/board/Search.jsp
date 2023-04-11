@@ -15,8 +15,8 @@
 			<div class="css_warp">
 			<div class="m_list">
 			<div>
-				<input class="search_m" type="text" placeholder="영화검색">
-				<button onclick="search_m()" type="button">검색</button>
+				<input class="search_m inputcss2" type="text" placeholder="영화검색">
+				<button onclick="search_m()" type="button" class="css_btn">검색</button>
 			</div>
 			
 			<div class="searchresult">
