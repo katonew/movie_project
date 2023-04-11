@@ -13,6 +13,7 @@ public class BoxOffice {
 	
 	public static ArrayList<SearchDto> search() throws IOException {
 		ArrayList<SearchDto> list = new ArrayList<>();
+		System.out.println("a");
 		Document doc = Jsoup.connect("https://pedia.watcha.com/ko-KR").get();
 		System.out.println(doc);
 		

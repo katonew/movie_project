@@ -49,7 +49,7 @@ public class pmovie extends HttpServlet {
 		int mno = Integer.parseInt( request.getParameter("mno") );
 		String s_date = request.getParameter("s_date");
 		
-		plistDto result = rmovieDao.getInstance().screen_print(mno,s_date );
+		 ArrayList<plistDto> result = rmovieDao.getInstance().screen_print(mno,s_date );
 		System.out.println("click result : "+result);
 		
 		ObjectMapper objMapper = new ObjectMapper(); 
