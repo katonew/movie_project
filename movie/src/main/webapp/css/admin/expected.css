@@ -19,18 +19,17 @@
 	font-family: 'LINESeedKR-Bd';
     position: absolute;
     z-index: 999;
-    top: 15px;
+    top: 44px;
     left: 71px;
-    font-size: 27px;
-    line-height: 1.7;
-    color: #af5050;
-    height: 40px;
-    width: 86px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: white;
+    height: 28px;
+    width: 54px;
     text-align: center;
     font-weight: bold;
-    border-radius: 73%;
-    background: linear-gradient(to right, #00456B, #00B4DE );
-    
+    border-radius: 20%;
+    background: linear-gradient(to right, #00456B, #00B4DE);
 }
 .mimg{
 	position: relative;
@@ -57,6 +56,10 @@
 	border: 3px solid #033252;
     padding: 10px;
     margin: 2%;
+}
+
+.dateinfo h5{
+	font-weight: bold;
 }
 
 /*------------- 모달-------------- */
