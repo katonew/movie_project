@@ -27,7 +27,7 @@ public class BoardDao extends Dao{
 			}
 			
 		} catch (Exception e) {System.out.println(e);}
-		System.out.println("board_print : " + list);
+		
 		return list;
 	}
 	

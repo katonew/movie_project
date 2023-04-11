@@ -17,9 +17,15 @@
 	justify-content: space-between;
 	padding: 20px;
 	background-color: #022842;
+	border: 2px solid #033252;
+	border-radius: 10px;
 
 }
 
+.css_search{
+
+	text-align: right;
+}
 
 .css_m_wrap{
 	
@@ -46,10 +52,7 @@
 	display: none;
 }
 
-.overflow_modal{
-	display: block;
-	
-}
+
 
 /*모달 상자*/
 .modal_box{
@@ -61,22 +64,27 @@
 	border-radius: 30px;
 	display: flex;
 	justify-content: space-between;
-	height: 700px; overflow-y: auto;
+	height: 700px; 
+	overflow : auto;
 	position: relative;
-	
-	
+		
 }
+
+.modal_box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+
 
 /*모달 버튼*/
 .modal_btns button{
 	border: none;
-	background-color: #F44336;
+	background-color:#002338;
 	color: white;
 	padding: 10px;
 	border-radius: 5px;
-	position: absolute;
-	right: 20px;
-	bottom: 20px;
+	position: static;
+	
 	
 }
 
@@ -204,6 +212,7 @@
 	background-color: #00456B;
 	padding: 2%;
 	border-radius: 10px;
+	margin-bottom: 2%;
 }
 
 .inputcss2{

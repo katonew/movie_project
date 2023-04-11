@@ -24,6 +24,10 @@
 	width: 100%;
 }
 
+.icon{
+	text-align: right;
+	padding-right: 20px;
+}
 .reply_box{
 	width: 100%;
 }
@@ -40,14 +44,13 @@
 	border-radius: 10px;
 	padding: 5px;
 	margin: 5px;
-	border: 2px solid silver;
+	
+	background-color: #033252;
 	
 }
 
 .css_replybox{
-	background-color: #033252;
 	border-radius: 10px;
-	
 	margin: 5px;
 
 	
@@ -58,11 +61,6 @@
 	padding: 5px;
 }
 
-.css_replybox table tr td {border-bottom:1px solid silver;}
-
-
-
-.css_replybox table tr:last-child td {border-bottom:none;}
 
 
 

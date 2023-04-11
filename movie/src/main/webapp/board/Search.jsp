@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 	<link href="/movie/css/board/search.css" rel="stylesheet">
 </head>
 <body>
@@ -14,23 +15,23 @@
 		<div class="css_1">
 			<div class="css_warp">
 			<div class="m_list">
-			<div>
-				<input class="search_m inputcss2" type="text" placeholder="영화검색">
-				<button onclick="search_m()" type="button" class="css_btn">검색</button>
+			<div class="input-group mb-2 css_search">
+			  	<input type="text" class="search_m inputcss2" placeholder="영화검색" aria-label="Recipient's username" aria-describedby="button-addon2">
+			 	<button class="css_btn" type="button" id="button-addon2" onclick="search_m()"><i class="fa-solid fa-magnifying-glass fa-beat-fade"></i></button>
 			</div>
-			
+		
 			<div class="searchresult">
 				
 			</div>
 			
 			<div class="m_title">
-				<h2>박스오피스 탑 10</h2>
+				<h1>박스오피스 탑 10</h1>
 			</div>
 			<div class="m_p css_m_p">
 			</div>
 		
 			<div class="m_title">
-				<h2>넷플릭스 영화 순위</h2>
+				<h1>넷플릭스 영화 순위</h1>
 			</div>
 			<div class="m_p2 css_m_p">
 			</div>
@@ -40,7 +41,7 @@
 		
 		
 		<!-- 모달 HTML -->
-		<div class="modal_wrap overflow-auto">
+		<div class="modal_wrap">
 		<div class="overflow_modal">
 		<div class="modal_box">
 			
@@ -83,7 +84,7 @@
 			
 			
 			<div class="modal_btns">
-				<button onclick="closeModal()" class="modal_cencel" type="button">닫기</button>
+				<button onclick="closeModal()" class="modal_cencel" type="button"><i class="fa-regular fa-circle-xmark fa-beat"></i></button>
 			</div>
 		</div>
 		</div>
@@ -109,10 +110,12 @@
 		</div>
 			
 		</div>
-	
+	<%@include file="/footer.jsp" %>
+	<script src="/movie/js/index.js" type="text/javascript"></script>
 
-
-
+<!-- 부트스트랩 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/601e7abb65.js" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/movie/js/board/Search.js"></script>
 </body>
 </html>
