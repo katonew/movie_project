@@ -39,6 +39,7 @@ function printChart1(){
 				data: {
 				  labels: Object.keys(r),
 				  datasets: [{
+					backgroundColor: 'rgb(0, 168, 210)',
 				    label: '예매좌석수',
 				    data: Object.values(r),
 				    borderWidth: 1
@@ -77,12 +78,13 @@ function printChart2(){
 			new Chart(ctx2, {
 				type: 'bar',	// bar : 막대차트 / line : 선 차트
 				data: {
-				  labels: Object.keys(r),
-				  datasets: [{
-				    label: '영화별 매출',
-				    data: Object.values(r),
-				    borderWidth: 1
-				  }]
+					backgroundColor: 'rgb(25, 142, 171)',
+				  	labels: Object.keys(r),
+					datasets: [{
+					  label: '영화별 매출',
+					  data: Object.values(r),
+					  borderWidth: 0.5
+					}]
 				},
 				options: {
 				  scales: {
