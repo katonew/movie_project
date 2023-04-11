@@ -269,6 +269,7 @@ function no(){
  
 /* --------------------- 좌석클릭시 모달 출력 -------------------- */
 function select_screen(pno){ 
+	s_pno=pno;
 	document.querySelector('.modal_wrap').style.display = 'flex';
 	document.querySelector('.modal_title').innerHTML = s_movie;
 	document.querySelector('.a_seat').innerHTML = document.querySelector(`.available${pno}`).innerHTML
