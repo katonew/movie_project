@@ -6,7 +6,7 @@ let s_date; // 선택한 년-월-일
  
 let s_mno;  //선택한 영화의 번호
 
-let s_pno // 선택한 상영번호
+let s_pno // 선택한 상영번호 
 let s_sno
 
 let p_mno = parseInt( document.querySelector('.hid').value); //다른페이지로 접속시 가져온 값

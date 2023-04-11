@@ -5,7 +5,7 @@ let t_num = 0// teen num 청소년 인원
 let b_num = 0// baby num 시니어 인원
 
 let seat_num=0 // 선택한 좌석
-let pprice = 0 //영화 1인 결제 가격
+let pprice = 0 //영화 1인 결제 가격 
 
 let s_seat=[]; // 선택한 좌석 select_seat
 let title ; //선택한영화 제목

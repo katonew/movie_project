@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8"> 
-<title>예매</title>
+<title>예매</title> 
 	
 	<!-- 부트스트랩 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">

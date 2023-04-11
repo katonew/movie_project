@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8"> 
-<title>좌석 예약</title>
+<title>좌석 예약</title> 
 	
 	<!-- 사용자 설정 css -->
 	<link href="/movie/css/reservation/ticket.css" rel="stylesheet">
