@@ -146,8 +146,3 @@ create table reply(
     foreign key( mno ) references member(mno) on delete set null ,
     foreign key( bno ) references board(bno) on delete cascade 
 );
-
-select *from playinglist;
-select *from reservation;
-
-SELECT movie.title, COUNT(reservation.rno) AS 예매수 FROM movie JOIN playinglist ON movie.mno = playinglist.mno JOIN reservation ON playinglist.pno = reservation.pno GROUP BY movie.title order by 예매수 desc;

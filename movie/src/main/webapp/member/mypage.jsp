@@ -60,17 +60,17 @@
 							
 							<div class="inputtitle">현재비밀번호</div>
 							<div class="inputdiv">
-								<input name="mpwd " class="inputcss" type="text">
+								<input name="mpwd " class="inputcss" type="password">
 							</div>
 							
 							<div class="inputtitle">비밀번호</div>
 							<div class="inputdiv">
-								<input name="newmpwd" class="newmpwd inputcss" type="text">
+								<input name="newmpwd" class="newmpwd inputcss" type="password">
 							</div>
 							
 							<div class="inputtitle">비밀번호확인</div>
 							<div class="inputdiv"> 
-								<input onkeyup="repwdcheck()"  name="newmpwdcheck" class="newmpwdcheck inputcss" type="text">
+								<input onkeyup="repwdcheck()"  name="newmpwdcheck" class="newmpwdcheck inputcss" type="password">
 							</div>
 							<div class="confirminput"></div>
 							

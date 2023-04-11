@@ -41,7 +41,7 @@ public class rmovieDao extends Dao{
 		
 		String sql ="select p.playtime ,  s.seat - p.pseat , s.sno ,s.seat , p.pno"
 				+ " from movie m natural join playinglist p natural join screen s "
-				+ " where mno = "+mno +" and playtime like '%"+s_date+"%'";
+				+ " where mno = "+mno +" and playtime like '%"+s_date+"%' order by playtime asc";
 		
 		try {
 			ps=con.prepareStatement(sql);

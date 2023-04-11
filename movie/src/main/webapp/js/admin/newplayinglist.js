@@ -78,7 +78,7 @@ function startweb(){
 	document.querySelector('.date').innerHTML = html;
 	// 시간 셀렉트 출력
 	html = ``;
-	for(let i =0;i<=24;i++){
+	for(let i =6;i<=22;i++){
 		if(i==12){
 			html += `<option selected>
 						${i}
@@ -93,7 +93,7 @@ function startweb(){
 	}
 	document.querySelector('.hour').innerHTML = html;
 	html = '';
-	for(let i =0;i<=60;i+=10){
+	for(let i =0;i<=50;i+=10){
 		html += `<option>
 					${i<10? "0"+i : i}
 				</option>`

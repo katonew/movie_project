@@ -75,6 +75,8 @@
 			</div>
 		</div>
 	</div>	
+	
+	<%@ include file="/footer.jsp" %>
 	<!-- chart js -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- 부트스트랩 js  -->
