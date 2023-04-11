@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link href="/movie/css/board/Board.css" rel="stylesheet">
+
 </head>
 <body>
 	<%@include file="../header.jsp" %>
@@ -34,5 +35,6 @@
 	</div>
 
 <script type="text/javascript" src="/movie/js/board/Board.js"></script>
+
 </body>
 </html>

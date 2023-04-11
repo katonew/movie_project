@@ -116,6 +116,11 @@ function openModal(e){ // e = link주소
 	// 영화정보 저장
 	bmovie = e;
 	document.querySelector('.modal_wrap').style.display = 'flex';
+	let movie = bmovie.split("/")[5];
+			
+	console.log(movie);
+	movie.submit;
+	
 	modal_select(e); // 모달 열리면 modal_select()함수에 e값을 보내주고 실행
 	bprint();
 	
@@ -181,7 +186,12 @@ function bwrite() {
 	
 	let bscore = document.getElementById("bscore").value;
 	let bcontent = document.getElementById("bcontent").value;
-	
+	let reg = /^[0-9]*$/
+	if(!reg.test(bscore) || bscore > 10){
+		alert("10이하의 정수만 입력가능합니다.")
+		location.href="/movie/board/Search.jsp"
+		return false;
+	}
 	let info = {
 		
 		bmovie : bmovie ,

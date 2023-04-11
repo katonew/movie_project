@@ -20,7 +20,7 @@ function board_print(){
 							<table class="print_table">
 							<tr>
 								<td class="img${i}" width="20%"></td>
-								<td width="30%">${o.bcontent} </td>
+								<td width="30%">${o.bcontent}</td>
 								<td width="10%">${o.bscore} / 10점</td>
 								<td width="10%"> ${o.mid} </td>
 								<td width="10%">${o.bdate}</td>
@@ -52,7 +52,7 @@ function img_find(bmovie , i){
 		success : (r)=>{
 			console.log("board_print확인 : " + r)
 			
-			let html = `<img  src="${r}" width="20%">`;
+			let html = `<img  src="${r}" width="25%">`;
 			
 			document.querySelector(`.img${i}`).innerHTML = html;
 		}
