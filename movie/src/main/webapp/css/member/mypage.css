@@ -127,9 +127,12 @@
 
 .reinfo{
 /* 	color: black !important; */
-	width: 100%;
+	width: 219px;
 	padding: 30px 30px;
 	z-index: 999;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .reinfogradient{
@@ -147,12 +150,19 @@
 
 .screeninfo{
 	display: flex;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .rinfotext{
 	margin-top: 5px;
 	font-size: 15px;
 }
-
+.seatnum{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 /* 회원정보수정 */
 .signupForm{
 	transition : all 0.4s;

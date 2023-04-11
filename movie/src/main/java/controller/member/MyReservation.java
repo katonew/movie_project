@@ -65,7 +65,12 @@ public class MyReservation extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		int pno = Integer.parseInt(request.getParameter("pno")); // 상영식별번호
+		int mno = (int)request.getSession().getAttribute("login"); // 회원식별번호
+		// pno와 mno가 동일한 [ 모든 레코드 찾아서 레코드수만큼 playinglist pseat차감 , reservation 레코드 삭제 ] 
+		boolean result = MypageDao.getInstance().cancelReservation(pno, mno);
+		response.getWriter().print(result);
 	}
 
 }

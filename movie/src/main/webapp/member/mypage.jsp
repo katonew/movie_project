@@ -92,8 +92,8 @@
 	
 	
 		
-	<!-- 모달 HTML -->
-	<div class="modal_wrap">
+	<!-- 탈퇴 모달 HTML -->
+	<div class="modal_wrap modal_wrap_deletemember">
 		<div class="modal_box">
 			<h3 class="modal_title">
 				정말 탈퇴하시겠습니까?
@@ -106,6 +106,21 @@
 				<button onclick="closeModal()" class="modal_cencel" type="button">취소</button>
 			</div>
 		</div>
+	</div> 
+	
+	<!-- 예매취소 모달 HTML -->
+	<div class="modal_wrap modal_wrap_recancel">
+		<div class="modal_box">
+			<h3 class="modal_title">
+				예매를 취소하시겠습니까?
+			</h3>
+			<input type="hidden" class="cancelpno" value="">
+			<div class="modal_btns">
+				<button onclick="canclereservation()" type="button">예매취소</button>
+				<button onclick="closeReCancelModal()" class="modal_cencel" type="button">닫기</button>
+			</div>
+		</div>
+		
 	</div> 
 	
 	<%@include file="/footer.jsp" %>
