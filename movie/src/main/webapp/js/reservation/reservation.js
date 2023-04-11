@@ -3,7 +3,7 @@ let s_year; 	// 선택한 년
 let s_month ; 	//선택한 월
 let s_day; 		// 선택한 일
 let s_date; // 선택한 년-월-일
-
+ 
 let s_mno;  //선택한 영화의 번호
 
 let s_pno // 선택한 상영번호

@@ -1,7 +1,7 @@
  //상영되는 영화 고유번호 
 let pno = document.querySelector('.pno').value
 let a_num = 0// adult num 성인 인원 
-let t_num = 0// teen num 청소년 인원
+let t_num = 0// teen num 청소년 인원 
 let b_num = 0// baby num 시니어 인원
 
 let seat_num=0 // 선택한 좌석
